@@ -9,6 +9,7 @@ import javax.swing.JPanel;
  */
 public class Main
 {
+    //Hello World!
     public static Board b;
     public static Graphics2D g;
     public static JFrame frame;
