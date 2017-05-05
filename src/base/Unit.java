@@ -1,3 +1,5 @@
+package base;
+
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 /**
@@ -8,29 +10,29 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Unit
 {
-    //Attributes For Each Unit
-    protected double maxHealth = 1; //Maximum Health Unit can have
+    //Attributes For Each base.Unit
+    protected double maxHealth = 1; //Maximum Health base.Unit can have
     protected double currentHealth = 1; //Current Health level of unit
-    protected double damage = 1; //Amount of Damage Caused per Attack of Unit
-    protected double attackRange = 1; //Attacking Range of Unit
-    protected double moveSpeed = 1; //Movement Speed of Unit
+    protected double damage = 1; //Amount of Damage Caused per Attack of base.Unit
+    protected double attackRange = 1; //Attacking Range of base.Unit
+    protected double moveSpeed = 1; //Movement Speed of base.Unit
     protected double delayBetweenAttacks = 1; //Delay Between Attacks
 
-    //Location Information For Each Unit
+    //Location Information For Each base.Unit
     private Rectangle2D bounds;
     private Point2D pos;
 
-    //Unit Sprite Information
+    //base.Unit Sprite Information
     private BufferedImage sprite;
 
-    private static boolean ISENEMY; //Defines Unit Allegiance
+    private static boolean ISENEMY; //Defines base.Unit Allegiance
     protected Unit()
     {
 
     }
 
     /**
-     * Creates Unit Unit With Given Attributes
+     * Creates base.Unit base.Unit With Given Attributes
      */
     protected Unit(int healthLevel, int damageLevel, int range, int speed, BufferedImage spriteToLoad, Rectangle2D currentPosition)
     {
@@ -46,7 +48,7 @@ public abstract class Unit
     }
 
     //
-    // Abstract Per-Unit Methods
+    // Abstract Per-base.Unit Methods
     //
 
     /**
@@ -55,7 +57,7 @@ public abstract class Unit
     public abstract void attack();
 
     /**
-     * When Unit Dies
+     * When base.Unit Dies
      */
     public abstract void onDeath();
 
@@ -64,43 +66,43 @@ public abstract class Unit
     //
 
     /**
-     * Sets Unit's Health To A Specific Amount
+     * Sets base.Unit's Health To A Specific Amount
      */
     public void setHealth(double newHealth)
     {
-        if (newHealth > maxHealth) //Prevents Unit From Getting More Health Than Max Amount
+        if (newHealth > maxHealth) //Prevents base.Unit From Getting More Health Than Max Amount
         {
             currentHealth = maxHealth;
         }
-        else if (newHealth <= 0) //Automatically Kills Unit If Health Is Set To 0 Or Below
+        else if (newHealth <= 0) //Automatically Kills base.Unit If Health Is Set To 0 Or Below
         {
             onDeath();
         }
-        else //If Parameters Are Valid, Set Unit Health To Desired Value
+        else //If Parameters Are Valid, Set base.Unit Health To Desired Value
         {
             currentHealth = newHealth;
         }
     }
 
     /**
-     * Damages Unit By a Given Amount
+     * Damages base.Unit By a Given Amount
      */
     public void damage(double amount)
     {
         currentHealth -= amount;
-        if (currentHealth <= 0) //If Unit Takes More Damage Than Health, Kill Unit
+        if (currentHealth <= 0) //If base.Unit Takes More Damage Than Health, Kill base.Unit
             onDeath();
     }
 
     public void heal(double amount)
     {
         currentHealth += amount;
-        if (currentHealth > maxHealth) //If Unit Is Healed By More Than Max Health, Heal Fully
+        if (currentHealth > maxHealth) //If base.Unit Is Healed By More Than Max Health, Heal Fully
             currentHealth = maxHealth;
     }
 
     /**
-     * Moves Unit's Location Relative To Movement Speed
+     * Moves base.Unit's Location Relative To Movement Speed
      * 
      * Changes The Point2D Which Represents The Bounding Box Rectangle Which Is the Hitbox
      */
@@ -113,22 +115,22 @@ public abstract class Unit
     // Getters
     //
 
-    public double getMaxHealth() //Returns Maximum Health of Unit
+    public double getMaxHealth() //Returns Maximum Health of base.Unit
     {
         return maxHealth;
     }
 
-    public double getCurrentHealth() //Returns Current Health of Unit
+    public double getCurrentHealth() //Returns Current Health of base.Unit
     {
         return currentHealth;
     }
 
-    public double getDamage() //Returns Attack Damage of Unit
+    public double getDamage() //Returns Attack Damage of base.Unit
     {
         return damage;
     }
 
-    public double getRange() //Returns Attack Range of Unit
+    public double getRange() //Returns Attack Range of base.Unit
     {
         return attackRange;
     }

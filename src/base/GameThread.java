@@ -1,3 +1,5 @@
+package base;
+
 import javax.swing.JPanel;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.Executors;

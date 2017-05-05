@@ -1,6 +1,9 @@
+package game;
+
+import base.Unit;
 
 /**
- * Methods For Enemy Units
+ * Methods For game.Enemy Units
  * 
  * @author Cody Richter
  * @version 1.0

@@ -1,3 +1,7 @@
+package game;
+
+import base.Board;
+
 import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,7 +33,7 @@ public class Main
         b = new Board(width, height);
 
         frame.add(b);
-        new Thread(new GameThread(b)).start();
+        new Thread(new base.GameThread(b)).start();
 
         frame.setVisible(true);
     }

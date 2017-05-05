@@ -1,7 +1,9 @@
+package base;
+
 import java.awt.*;
 import javax.swing.JPanel;
 /**
- * Game Board That Is Displayed In Background
+ * Game base.Board That Is Displayed In Background
  * 
  * @author (your name) 
  * @version (a version number or a date)

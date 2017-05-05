@@ -1,6 +1,9 @@
+package game;
+
+import game.Enemy;
 
 /**
- * Enemy Unit: Peasant
+ * game.Enemy base.Unit: game.Peasant
  * 
  * @author Cody Richter 
  * @version 1.0
@@ -8,7 +11,7 @@
 public class Peasant extends Enemy
 {
     /**
-     * [Peasant]
+     * [game.Peasant]
      * Health: 3
      * Damage: 1
      * Range: 1
