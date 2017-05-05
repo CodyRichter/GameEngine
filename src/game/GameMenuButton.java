@@ -32,7 +32,7 @@ public class GameMenuButton extends JPanel {
     {
         if (buttonType.equalsIgnoreCase("spawnEnemy"))
         {
-
+ 
         }
         else if (buttonType.equalsIgnoreCase("spawnFriendly"))
         {
