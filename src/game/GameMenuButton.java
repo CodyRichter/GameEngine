@@ -18,7 +18,6 @@ public class GameMenuButton extends JPanel {
     public GameMenuButton(String button)
     {
         buttonType = button; //Sets Type of Button
-        buttonBounds.setRect(0,0, BOX_SIZE, BOX_SIZE);
     }
 
     /**
