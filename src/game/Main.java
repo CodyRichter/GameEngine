@@ -39,28 +39,40 @@ public class Main
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
 
-        //Menu JPanel Setup
-        menu = new JPanel();
-        menu.setBounds(0,0,(int)width, menuSize);
-        menu.setPreferredSize(new Dimension((int)width,menuSize));
-        menu.setLayout(null);
-
         //Game JPanel Setup
         b = new CastleDefenseBoard();
         b.setBounds(0,menuSize,(int)width, (int)height-menuSize);
         b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
 
+        //Menu JPanel Setup
+        menu = new JPanel();
+        menu.setBounds(0,0,(int)width, menuSize);
+        menu.setPreferredSize(new Dimension((int)width,menuSize));
+        menu.setLayout(null);
+
+        //Menu Button JPanel Setup
+        int buttonWidth = (int)(width/8);
+        GameMenuButton button1 = new GameMenuButton("spawnFriendly");
+        button1.setBackground(Color.decode("#000000"));
+        button1.setBounds(0,menuSize, buttonWidth, menuSize);
+        button1.setPreferredSize(new Dimension(buttonWidth,menuSize));
+        button1.setLayout(null);
+
+
         //Adds Panels To Frame
         frame.add(b);
         frame.add(menu);
+        frame.add(button1);
+
 
         //Starts Runnable Thread
         new Thread(new base.GameThread(b)).start();
 
-        //Sets The Frames Visible In Panel
+        //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);
         menu.setVisible(true);
+        button1.setVisible(true);
     }
 }
 
