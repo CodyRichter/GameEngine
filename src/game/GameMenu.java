@@ -7,9 +7,23 @@ import javax.swing.*;
  */
 public class GameMenu extends JPanel {
 
+    private GameMenuButton[] boxes;
 
-    public GameMenu()
+
+    public GameMenu(int size)
+    {
+        boxes = new GameMenuButton[size];
+
+    }
+
+    /**
+     * Adds a Game Menu Button to a Box on the Menu
+     * @param button
+     * @param box
+     */
+    public void addButtonToBox(GameMenuButton button, int box)
     {
 
     }
+
 }
