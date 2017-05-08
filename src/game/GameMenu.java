@@ -10,7 +10,7 @@ public class GameMenu extends JPanel {
     private GameMenuButton[] boxes;
 
 
-    public GameMenu(int size)
+    public GameMenu(int size)//should the menu size be a double?
     {
         boxes = new GameMenuButton[size];
 

@@ -30,7 +30,7 @@ public class Main
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
 
-        b = new Board(width, height);
+        b = new CastleDefenseBoard(width, height);
 
         frame.add(b);
         new Thread(new base.GameThread(b)).start();
