@@ -9,6 +9,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class GameMenuButton extends JPanel {
 
+    private static final int BOX_SIZE = 50;
     private Rectangle2D buttonBounds;
     private Point2D location;
     private String buttonType;
@@ -16,7 +17,8 @@ public class GameMenuButton extends JPanel {
 
     public GameMenuButton(String button)
     {
-    buttonType = button; //Sets Type of Button
+        buttonType = button; //Sets Type of Button
+        buttonBounds.setRect(0,0, BOX_SIZE, BOX_SIZE);
     }
 
     /**
@@ -32,7 +34,7 @@ public class GameMenuButton extends JPanel {
     {
         if (buttonType.equalsIgnoreCase("spawnEnemy"))
         {
- 
+
         }
         else if (buttonType.equalsIgnoreCase("spawnFriendly"))
         {
