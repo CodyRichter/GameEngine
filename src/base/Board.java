@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * Game base.Board That Is Displayed In Background
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Cody Richter & Frank Williams
+ * @version 1.0
  */
 public class Board extends JPanel
 {
