@@ -1,6 +1,7 @@
 package game;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Cody on 5/5/2017.
@@ -24,6 +25,13 @@ public class GameMenu extends JPanel {
     public void addButtonToBox(GameMenuButton button, int box)
     {
 
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        repaint();
     }
 
 }

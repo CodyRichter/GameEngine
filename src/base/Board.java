@@ -15,13 +15,9 @@ public class Board extends JPanel
 {
     private List<Unit> unitList = new ArrayList<Unit>();
 
-    private double width;
-    private double height;
     Image background;
-    public Board(double inputWidth, double inputHeight)
+    public Board()
     {
-        width = inputWidth;
-        height = inputHeight;
         background = Toolkit.getDefaultToolkit().createImage("src/background.jpeg");
         repaint();
     }

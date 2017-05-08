@@ -8,8 +8,7 @@ import base.Board;
 public class CastleDefenseBoard extends Board {
 
     GameMenu menu;
-    public CastleDefenseBoard (double inputWidth, double inputHeight){
-        super(inputWidth, inputHeight);
+    public CastleDefenseBoard (){
         int arbitraryInt = 3; //should the menu size be a double?
         menu = new GameMenu(arbitraryInt); //should the menu size be a double?
     }
