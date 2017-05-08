@@ -26,4 +26,5 @@ public abstract class Enemy extends Unit
         super(healthLevel, damageLevel, range, speed,null,null);
     }
 
+
 }
