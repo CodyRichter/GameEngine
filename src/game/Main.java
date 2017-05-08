@@ -23,23 +23,32 @@ public class Main
 
     public static void main(String[] args)
     {
+        /*
+            Pre Game Setup Is Here
+            This Will Configure The Main JFrame and the JPanels In It.
+            Additionally, All Of The Menu Setup Will Be In Here.
+         */
+
+        //Initial Screen Size Information
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
+
+        int menuSize = (int)(height/8);
         //Main JFrame Setup
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
 
         //Menu JPanel Setup
         menu = new JPanel();
-        menu.setBounds(0,0,(int)width, 200);
-        menu.setPreferredSize(new Dimension((int)width,200));
+        menu.setBounds(0,0,(int)width, menuSize);
+        menu.setPreferredSize(new Dimension((int)width,menuSize));
         menu.setLayout(null);
 
         //Game JPanel Setup
         b = new CastleDefenseBoard();
-        b.setBounds(0,200,(int)width, (int)height-200);
-        b.setPreferredSize(new Dimension((int)width,(int)height-200));
+        b.setBounds(0,menuSize,(int)width, (int)height-menuSize);
+        b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
 
         //Adds Panels To Frame
@@ -49,6 +58,7 @@ public class Main
         //Starts Runnable Thread
         new Thread(new base.GameThread(b)).start();
 
+        //Sets The Frames Visible In Panel
         frame.setVisible(true);
         menu.setVisible(true);
     }
