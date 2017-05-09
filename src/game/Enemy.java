@@ -15,7 +15,7 @@ public abstract class Enemy extends Unit
      */
     public Enemy()
     {
-        super(1,1,1,1,null,null);
+        super(1,1,1,-1,null,null);
     }
 
     /**
@@ -23,7 +23,7 @@ public abstract class Enemy extends Unit
      */
     public Enemy(int healthLevel, int damageLevel, int range, int speed)
     {
-        super(healthLevel, damageLevel, range, speed,null,null);
+        super(healthLevel, damageLevel, range, (speed * -1),null,null);
     }
 
 
