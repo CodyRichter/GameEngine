@@ -20,6 +20,7 @@ public class Main
     public static JPanel enemy;
     //Menu Variables
     public static JPanel menu;
+    public static JPanel button1;
 
     public static void main(String[] args)
     {
@@ -53,17 +54,17 @@ public class Main
 
         //Menu Button JPanel Setup
         int buttonWidth = (int)(width/8);
-        GameMenuButton button1 = new GameMenuButton("spawnFriendly");
+        button1 = new JPanel();
         button1.setBackground(Color.decode("#000000"));
-        button1.setBounds(0,menuSize, buttonWidth, menuSize);
+        button1.setBounds(0,0,buttonWidth, menuSize);
         button1.setPreferredSize(new Dimension(buttonWidth,menuSize));
-        button1.setLayout(null);
-
+        button1.setLayout(new BorderLayout());
+        menu.add(button1, BorderLayout.EAST);
 
         //Adds Panels To Frame
         frame.add(b);
         frame.add(menu);
-        frame.add(button1);
+
 
 
         //Starts Runnable Thread
