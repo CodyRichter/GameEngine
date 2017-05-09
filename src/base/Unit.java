@@ -152,4 +152,18 @@ public abstract class Unit
         return sprite;
     }
 
+
+    /**
+     * Spawns the unit within a certain rectangular bounds
+     * @param spawnArea
+     */
+    public void spawn(Rectangle2D spawnArea){
+        double randomX = (Math.random() * spawnArea.getWidth()) + spawnArea.getX();
+        double randomY = (Math.random() * spawnArea.getHeight()) + spawnArea.getY();
+
+        Point2D spawnPoint = new Point2D.Double(randomX,randomY);
+
+        pos = spawnPoint;
+    }
+
 }

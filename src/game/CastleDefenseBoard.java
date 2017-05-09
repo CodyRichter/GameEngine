@@ -19,6 +19,7 @@ public class CastleDefenseBoard extends Board {
         super.addUnit(u);
         if(u instanceof Enemy){
             // check if it is an enemy and then add it to a random place off the board
+
         } else if (u instanceof Friendly || u instanceof Peasant){
             //check if it isnt an enemy and add it to the user's side of the board
         }

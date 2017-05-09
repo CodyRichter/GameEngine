@@ -4,6 +4,8 @@ import base.Board;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
+
 /**
  * Runner Class
  * 
@@ -18,6 +20,7 @@ public class Main
     public static JFrame frame;
     public static JPanel field;
     public static JPanel enemy;
+    public static Rectangle2D enemySpawn;
     //Menu Variables
     public static JPanel menu;
     public static JPanel button1;
@@ -45,6 +48,8 @@ public class Main
         b.setBounds(0,menuSize,(int)width, (int)height-menuSize);
         b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
+
+        enemySpawn = new Rectangle2D.Double(width,0,(width/2.0),height);
 
         //Menu JPanel Setup
         menu = new JPanel();
