@@ -2,13 +2,30 @@ package game.enemies;
 
 import game.Enemy;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by Frank Williams on 5/8/2017.
  */
 public class BasicEnemy extends Enemy {
-    public BasicEnemy(){
-        super();
+    public BasicEnemy() throws IOException{
+
+            super(1, 1, 1, 1, new File("images/basic.bmp").exists() ? ImageIO.read(new File("images/basic.bmp")) : null);
+
     }
+
+    public void testMovement(){
+        for(int i = 0; i < Integer.MAX_VALUE; i++) {
+            move();
+        }
+    }
+
 
     @Override
     public void attack() {

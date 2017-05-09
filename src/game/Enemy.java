@@ -2,6 +2,8 @@ package game;
 
 import base.Unit;
 
+import java.awt.image.BufferedImage;
+
 /**
  * Methods For game.Enemy Units
  * 
@@ -21,9 +23,9 @@ public abstract class Enemy extends Unit
     /**
      * Makes new enemy unit with given attributes
      */
-    public Enemy(int healthLevel, int damageLevel, int range, int speed)
+    public Enemy(int healthLevel, int damageLevel, int range, int speed, BufferedImage sprite)
     {
-        super(healthLevel, damageLevel, range, (speed * -1),null,null);
+        super(healthLevel, damageLevel, range, (speed * -1),sprite,null);
     }
 
 

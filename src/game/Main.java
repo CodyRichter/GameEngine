@@ -21,6 +21,7 @@ public class Main
     public static JPanel field;
     public static JPanel enemy;
     public static Rectangle2D enemySpawn;
+    public static Rectangle2D testSpawn;
     //Menu Variables
     public static JPanel menu;
     public static JPanel button1;
@@ -50,6 +51,7 @@ public class Main
         b.setLayout(null);
 
         enemySpawn = new Rectangle2D.Double(width,0,(width/2.0),height);
+        testSpawn = new Rectangle2D.Double(0,0,width,height);
 
         //Menu JPanel Setup
         menu = new JPanel();

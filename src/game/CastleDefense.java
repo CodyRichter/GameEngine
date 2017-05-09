@@ -18,7 +18,7 @@ public class CastleDefense {
                 Enemy enemyToAdd = new BasicEnemy();
                 Main.b.addUnit(enemyToAdd);
                 addEnemy(enemyToAdd);
-                enemyToAdd.spawn(Main.enemySpawn);
+                enemyToAdd.spawn(Main.testSpawn);
             }
         }
     }
