@@ -37,33 +37,37 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
     public void keyPressed(KeyEvent e)
     {
+        //Selects Row 1 With [1] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_1)
         {
             selectedRow = 1;
             super.setBackgroundColor("ffffff");
 
         }
+
+        //Selects Row 2 With [2] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_2)
         {
             selectedRow = 2;
-            super.setBackgroundColor("ffffff");
+            super.setBackgroundColor("555555");
         }
+
+        //Selects Row 3 With [3] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_3)
         {
             selectedRow = 3;
-            super.setBackgroundColor("ffffff");
+            super.setBackgroundColor("333333");
+        }
+
+        //Closes Game When [Esc] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+        {
+            System.exit(0);
         }
     }
 
 
-    public void keyReleased(KeyEvent e)
-    {
-
-    }
-
-    public void keyTyped(KeyEvent e)
-    {
-
-    }
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
 
 }

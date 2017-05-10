@@ -23,8 +23,7 @@ public class GameThread implements Runnable
 
     public void run()
     {
-        //gameMenu.repaint(); //Updates Graphics On Menu
         gameBoard.repaint(); //Updates Graphics On Main Game Board
-
+        gameMenu.repaint(); //Updates Graphics On Menu
     }
 }
