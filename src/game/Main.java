@@ -81,6 +81,8 @@ public class Main
         frame.setVisible(true);
         menu.setVisible(true);
         button1.setVisible(true);
+
+
     }
 }
 
