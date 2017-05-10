@@ -1,9 +1,9 @@
-package game;
+package game.enemies;
 
 import game.Enemy;
 
 /**
- * game.Enemy base.Unit: game.Peasant
+ * game.Enemy base.Unit: game.enemies.Peasant
  * 
  * @author Cody Richter 
  * @version 1.0
@@ -11,7 +11,7 @@ import game.Enemy;
 public class Peasant extends Enemy
 {
     /**
-     * [game.Peasant]
+     * [game.enemies.Peasant]
      * Health: 3
      * Damage: 1
      * Range: 1

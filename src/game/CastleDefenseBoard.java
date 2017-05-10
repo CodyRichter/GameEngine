@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.enemies.Peasant;
 
 /**
  * Created by Frank Williams on 5/5/2017.
