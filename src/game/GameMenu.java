@@ -8,30 +8,22 @@ import java.awt.*;
  */
 public class GameMenu extends JPanel {
 
-    private GameMenuButton[] boxes;
 
-
-    public GameMenu(int size)//should the menu size be a double?
+    public GameMenu()//should the menu size be a double?
     {
-        boxes = new GameMenuButton[size];
 
     }
 
-    /**
-     * Adds a Game Menu Button to a Box on the Menu
-     * @param button
-     * @param box
+
+
+
+    /*
+     * Displays Menu On Top Of Screen
      */
-    public void addButtonToBox(GameMenuButton button, int box)
-    {
-
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        repaint();
     }
 
 }

@@ -1,9 +1,10 @@
 package base;
 
-import javax.swing.JPanel;
-import java.util.concurrent.ScheduledExecutorService;
+import javax.swing.*;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 /**
  * Threaded Support For Game
  * 

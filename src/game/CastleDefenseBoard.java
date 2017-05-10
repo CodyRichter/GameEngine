@@ -3,15 +3,16 @@ package game;
 import base.Board;
 import base.Unit;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  * Created by Frank Williams on 5/5/2017.
  */
-public class CastleDefenseBoard extends Board {
+public class CastleDefenseBoard extends Board implements KeyListener {
 
-    GameMenu menu;
     public CastleDefenseBoard (){
-        int arbitraryInt = 3; //should the menu size be a double?
-        menu = new GameMenu(arbitraryInt); //should the menu size be a double?
+        addKeyListener(this); //Registers New Key Listener To Board
     }
 
     @Override
@@ -20,8 +21,32 @@ public class CastleDefenseBoard extends Board {
         if(u instanceof Enemy){
             // check if it is an enemy and then add it to a random place off the board
 
-        } else if (u instanceof Friendly || u instanceof Peasant){
+        } else if (u instanceof Friendly){
             //check if it isnt an enemy and add it to the user's side of the board
         }
     }
+
+
+    //
+    //
+    // Key Listeners Below Here
+    //
+    //
+
+    public void keyPressed(KeyEvent e)
+    {
+        super.setBackgroundColor("ffffff");
+    }
+
+
+    public void keyReleased(KeyEvent e)
+    {
+
+    }
+
+    public void keyTyped(KeyEvent e)
+    {
+
+    }
+
 }

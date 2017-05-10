@@ -24,7 +24,6 @@ public class Main
     public static Rectangle2D testSpawn;
     //Menu Variables
     public static JPanel menu;
-    public static JPanel button1;
 
     public static void main(String[] args)
     {
@@ -43,44 +42,35 @@ public class Main
         //Main JFrame Setup
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
+        frame.setFocusable(false); //Prevents KeyListener From Focusing On Frame
 
         //Game JPanel Setup
         b = new CastleDefenseBoard();
         b.setBounds(0,menuSize,(int)width, (int)height-menuSize);
         b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
+        b.setFocusable(true); //Allow KeyListener To Focus On Board
+        b.requestFocus(); //Requests Focus
 
         enemySpawn = new Rectangle2D.Double(width,0,(width/2.0),height);
         testSpawn = new Rectangle2D.Double(0,0,width,height);
 
         //Menu JPanel Setup
-        menu = new JPanel();
+        menu = new GameMenu();
         menu.setBounds(0,0,(int)width, menuSize);
         menu.setPreferredSize(new Dimension((int)width,menuSize));
         menu.setLayout(null);
-
-        //Menu Button JPanel Setup
-        int buttonWidth = (int)(width/8);
-        button1 = new JPanel();
-        button1.setBackground(Color.decode("#000000"));
-        button1.setBounds(0,0,buttonWidth, menuSize);
-        button1.setPreferredSize(new Dimension(buttonWidth,menuSize));
-        button1.setLayout(new BorderLayout());
-        menu.add(button1, BorderLayout.EAST);
 
         //Adds Panels To Frame
         frame.add(b);
         frame.add(menu);
 
-
-
-        //Starts Runnable Thread
-        new Thread(new base.GameThread(b)).start();
-
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);
         menu.setVisible(true);
-        button1.setVisible(true);
+
+        //Starts Runnable Thread
+        new Thread(new base.GameThread(b)).start();
     }
 }
 

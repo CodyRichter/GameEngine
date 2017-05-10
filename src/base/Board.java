@@ -2,8 +2,6 @@ package base;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +11,14 @@ import java.util.List;
  * @author Cody Richter & Frank Williams
  * @version 1.0
  */
-public class Board extends JPanel implements KeyListener
+public class Board extends JPanel
 {
     private List<Unit> unitList = new ArrayList<Unit>();
 
     Image background;
     public Board()
     {
-        addKeyListener(this);
-        background = Toolkit.getDefaultToolkit().createImage("src/background.jpeg");
+        setBackgroundColor("42f448");
         repaint();
     }
 
@@ -30,9 +27,12 @@ public class Board extends JPanel implements KeyListener
         /* Implementation Not Shown */
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        this.setBackground(Color.decode("#42f448"));
-        //g2d.drawImage(background, 0, 0, null);
-        repaint();
+    }
+
+    public void setBackgroundColor(String colorCode)
+    {
+        String color = "#" + colorCode;
+        this.setBackground(Color.decode(color));
     }
 
     /**
@@ -51,31 +51,6 @@ public class Board extends JPanel implements KeyListener
     public void removeUnit(Unit u)
     {
         unitList.remove(u);
-    }
-
-    /*
-Will Run When A Key Is Pressed
- */
-    public void keyPressed(KeyEvent e)
-    {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_RIGHT)
-        {
-            this.setBackground(Color.decode("#ffffff"));
-        }
-    }
-
-    /*
-    Will Run When A Key Is Released
-     */
-    public void keyReleased(KeyEvent e)
-    {
-
-    }
-
-    public void keyTyped(KeyEvent e)
-    {
-
     }
 
 }
