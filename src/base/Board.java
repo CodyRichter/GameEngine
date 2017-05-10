@@ -58,9 +58,10 @@ Will Run When A Key Is Pressed
  */
     public void keyPressed(KeyEvent e)
     {
-        if (e.getKeyChar() == '1')
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_RIGHT)
         {
-
+            this.setBackground(Color.decode("#ffffff"));
         }
     }
 
