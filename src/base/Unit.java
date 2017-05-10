@@ -1,5 +1,6 @@
 package base;
 
+import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 /**
@@ -25,6 +26,8 @@ public abstract class Unit
     //base.Unit Sprite Information
     private BufferedImage sprite;
 
+    //SUGGESTION?
+    private Graphics2D g2d;
     private static boolean ISENEMY; //Defines base.Unit Allegiance
     protected Unit()
     {
@@ -44,6 +47,7 @@ public abstract class Unit
         if (spriteToLoad != null && currentPosition != null){
             sprite = spriteToLoad;
             bounds = currentPosition;
+            g2d.drawImage(sprite,null,0,0);
         }
     }
 
@@ -164,6 +168,7 @@ public abstract class Unit
         Point2D spawnPoint = new Point2D.Double(randomX,randomY);
 
         pos = spawnPoint;
+        game.Main.b.paintComponent(g2d);
     }
 
 }

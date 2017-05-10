@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.enemies.Peasant;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
