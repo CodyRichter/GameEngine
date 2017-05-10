@@ -2,9 +2,12 @@ package game;
 
 import base.Board;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
+import java.io.InputStream;
 
 /**
  * Runner Class
@@ -82,7 +85,7 @@ public class Main
         menu.setVisible(true);
         button1.setVisible(true);
 
-        CastleDefense.nextWave();
+
     }
 }
 

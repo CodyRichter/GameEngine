@@ -156,6 +156,10 @@ public abstract class Unit
         return sprite;
     }
 
+    public void setSprite(BufferedImage spriteToLoad) {
+        sprite = spriteToLoad;
+        g2d.drawImage(sprite,null,0,0);
+    }
 
     /**
      * Spawns the unit within a certain rectangular bounds

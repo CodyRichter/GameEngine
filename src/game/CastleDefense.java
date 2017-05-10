@@ -21,8 +21,9 @@ public class CastleDefense {
                     Main.b.addUnit(enemyToAdd);
                     addEnemy(enemyToAdd);
                     enemyToAdd.spawn(Main.testSpawn);
+                    System.out.println("Enemies spawned!");
                 }catch (IOException ioe) {
-
+                    System.out.println("IOException when spawning enemies");
                 }
             }
         }
