@@ -46,7 +46,8 @@ public class Main
 
         //Game JPanel Setup
         b = new CastleDefenseBoard();
-        b.setBounds(0,menuSize,(int)width, (int)height-menuSize);
+        b.setBounds(0,menuSize+5,(int)width, (int)height-menuSize);
+        //b.setSize((int) width, (int)height-menuSize);
         b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
         b.setFocusable(true);
@@ -57,7 +58,7 @@ public class Main
         testSpawn = new Rectangle2D.Double(0,0,width,height);
 
         //Menu JPanel Setup
-        menu = new JPanel();
+        menu = new GameMenu();
         menu.setBounds(0,0,(int)width, menuSize);
         menu.setPreferredSize(new Dimension((int)width,menuSize));
         menu.setLayout(null);
@@ -69,7 +70,7 @@ public class Main
 
 
         //Starts Runnable Thread
-        new Thread(new base.GameThread(b)).start();
+        new Thread(new base.GameThread(b, menu)).start();
 
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);

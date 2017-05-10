@@ -13,17 +13,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class GameThread implements Runnable
 {
-    private JPanel panel;
+    private JPanel gameBoard;
+    private JPanel gameMenu;
 
-    public GameThread(JPanel panel)
+    public GameThread(JPanel board, JPanel menu)
     {
-        this.panel = panel;
+        gameBoard = board;
+        gameMenu = menu;
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(this, 0, 20 , TimeUnit.MILLISECONDS);
     }
 
     public void run()
     {
-        panel.repaint();
+        gameBoard.repaint(); //Updates Graphics On Main Game Board
+        gameMenu.repaint(); //Updates Graphics On Menu
+
     }
 }

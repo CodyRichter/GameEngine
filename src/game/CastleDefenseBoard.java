@@ -2,7 +2,6 @@ package game;
 
 import base.Board;
 import base.Unit;
-import game.enemies.Peasant;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,6 +10,8 @@ import java.awt.event.KeyListener;
  * Created by Frank Williams on 5/5/2017.
  */
 public class CastleDefenseBoard extends Board implements KeyListener {
+
+    public static int selectedRow = 1;
 
     public CastleDefenseBoard (){
         addKeyListener(this); //Registers New Key Listener To Board
@@ -36,7 +37,22 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
     public void keyPressed(KeyEvent e)
     {
-        super.setBackgroundColor("ffffff");
+        if (e.getKeyCode() == KeyEvent.VK_1)
+        {
+            selectedRow = 1;
+            super.setBackgroundColor("ffffff");
+
+        }
+        if (e.getKeyCode() == KeyEvent.VK_2)
+        {
+            selectedRow = 2;
+            super.setBackgroundColor("ffffff");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_3)
+        {
+            selectedRow = 3;
+            super.setBackgroundColor("ffffff");
+        }
     }
 
 
