@@ -1,5 +1,7 @@
 package game;
 
+import game.Enemy;
+
 /**
  * game.Enemy base.Unit: game.Peasant
  * 
@@ -18,7 +20,7 @@ public class Peasant extends Enemy
      */
     public Peasant()
     {
-        //super(3, 1, 1, 1);
+        super(3, 1, 1, 1,null);
     }
 
     public void onDeath()
