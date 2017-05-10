@@ -1,15 +1,13 @@
 package game;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
  * Created by Cody on 5/5/2017.
  */
-public class GameMenuButton extends JPanel implements KeyListener {
+public class GameMenuButton extends JPanel {
 
     private static final int BOX_SIZE = 50;
     private Rectangle2D buttonBounds;
@@ -20,7 +18,6 @@ public class GameMenuButton extends JPanel implements KeyListener {
     public GameMenuButton(String button)
     {
         buttonType = button; //Sets Type of Button
-        addKeyListener(this);
     }
 
     /**
@@ -44,27 +41,4 @@ public class GameMenuButton extends JPanel implements KeyListener {
         }
     }
 
-    /*
-    Will Run When A Key Is Pressed
-     */
-    public void keyPressed(KeyEvent e)
-    {
-     if (e.getKeyChar() == '1')
-     {
-
-     }
-    }
-
-    /*
-    Will Run When A Key Is Released
-     */
-    public void keyReleased(KeyEvent e)
-    {
-
-    }
-
-    public void keyTyped(KeyEvent e)
-    {
-
-    }
 }

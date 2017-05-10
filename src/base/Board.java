@@ -2,6 +2,8 @@ package base;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +13,14 @@ import java.util.List;
  * @author Cody Richter & Frank Williams
  * @version 1.0
  */
-public class Board extends JPanel
+public class Board extends JPanel implements KeyListener
 {
     private List<Unit> unitList = new ArrayList<Unit>();
 
     Image background;
     public Board()
     {
+        addKeyListener(this);
         background = Toolkit.getDefaultToolkit().createImage("src/background.jpeg");
         repaint();
     }
@@ -50,5 +53,28 @@ public class Board extends JPanel
         unitList.remove(u);
     }
 
+    /*
+Will Run When A Key Is Pressed
+ */
+    public void keyPressed(KeyEvent e)
+    {
+        if (e.getKeyChar() == '1')
+        {
+
+        }
+    }
+
+    /*
+    Will Run When A Key Is Released
+     */
+    public void keyReleased(KeyEvent e)
+    {
+
+    }
+
+    public void keyTyped(KeyEvent e)
+    {
+
+    }
 
 }
