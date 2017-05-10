@@ -42,7 +42,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             selectedRow = 1;
             super.setBackgroundColor("ffffff");
-
+            Main.menu.repaint();
         }
 
         //Selects Row 2 With [2] Is Pressed
@@ -50,6 +50,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             selectedRow = 2;
             super.setBackgroundColor("555555");
+            Main.menu.repaint();
         }
 
         //Selects Row 3 With [3] Is Pressed
@@ -57,6 +58,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             selectedRow = 3;
             super.setBackgroundColor("333333");
+            Main.menu.repaint();
         }
 
         //Closes Game When [Esc] Is Pressed

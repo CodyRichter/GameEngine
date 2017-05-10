@@ -26,6 +26,7 @@ public class GameMenu extends JPanel{
         super.paintComponent(g);
         g.drawString("[1-3] Select Current Row", 0, 25);
         g.drawString("Currently Selected: " + CastleDefenseBoard.selectedRow, 0, 50);
+
     }
 
 
