@@ -13,6 +13,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
     public static int selectedRow = 1;
 
+
     public CastleDefenseBoard (){
         addKeyListener(this); //Registers New Key Listener To Board
     }
@@ -37,6 +38,10 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
     public void keyPressed(KeyEvent e)
     {
+        /*
+        Unit Spawning Row Selected
+         */
+
         //Selects Row 1 With [1] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_1)
         {
@@ -66,6 +71,17 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             System.exit(0);
         }
+
+        /*
+        Unit Spawning Cooldown
+         */
+
+        //Spawns In Friendly Unit "Militia" When [M] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_M)
+        {
+
+        }
+
     }
 
 

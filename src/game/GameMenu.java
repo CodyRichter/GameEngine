@@ -24,10 +24,18 @@ public class GameMenu extends JPanel{
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        g.drawString("[1-3] Select Current Row", 0, 25);
-        g.drawString("Currently Selected: " + CastleDefenseBoard.selectedRow, 0, 50);
-
+        displayBoard(g);
     }
 
+    private void displayBoard(Graphics g)
+    {
+        //Row Selection Control
+        g.drawString("[1-3] Select Current Row | Current Row: " + CastleDefenseBoard.selectedRow, 0, 25);
+
+        //Avaliable Units
+        g.drawString("[M] Spawn Militia",0, 50);
+
+
+    }
 
 }
