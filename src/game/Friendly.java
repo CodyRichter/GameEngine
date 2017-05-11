@@ -10,6 +10,7 @@ import base.Unit;
  */
 public abstract class Friendly extends Unit
 {
+
     /**
      * Makes New game.Friendly base.Unit
      */
@@ -25,5 +26,6 @@ public abstract class Friendly extends Unit
     {
         super(healthLevel, damageLevel, range, speed,null,null);
     }
+
 
 }
