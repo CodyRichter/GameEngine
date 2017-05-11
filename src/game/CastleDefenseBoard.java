@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.friendly.Militia;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -79,7 +80,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Militia" When [M] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_M)
         {
-
+            if (Militia.isReadyToSpawn()) {
+                Militia.startCooldown();
+            }
         }
 
     }

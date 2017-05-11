@@ -59,11 +59,11 @@ public class GameMenu extends JPanel{
         String readyColor = "21d164";
 
         if (unitType.equalsIgnoreCase("militia")) {
-            if (Militia.getCooldown() > 0) {
-                return getColor(notReadyColor);
-            } else {
+            if (Militia.isReadyToSpawn())
                 return getColor(readyColor);
-            }
+            else
+                return getColor(notReadyColor);
+
         }
             return getColor("000000");
     }
