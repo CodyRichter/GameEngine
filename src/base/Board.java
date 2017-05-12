@@ -1,5 +1,6 @@
 package base;
 
+import game.CastleDefenseBoard;
 import game.GameMenu;
 
 import javax.swing.*;
@@ -16,10 +17,6 @@ import java.util.List;
 public class Board extends JPanel
 {
     private List<Unit> unitList = new ArrayList<Unit>();
-    Rectangle r1;
-    Rectangle r2;
-    Rectangle r3;
-
 
     Image background;
     public Board()
@@ -34,13 +31,23 @@ public class Board extends JPanel
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
 
+        //
+        // Displays The Rows That Units Will Move Down
+        //
+
         g.setColor(GameMenu.getColor("ffffff"));
 
         //Row 1
+        if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
+        else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, this.getHeight()/8, 3000, 100);
         //Row 2
+        if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
+        else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, 3*this.getHeight()/8, 3000, 100);
         //Row 3
+        if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
+        else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, 5*this.getHeight()/8, 3000, 100);
 
         for(Unit u : unitList){
