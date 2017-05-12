@@ -18,7 +18,7 @@ import java.net.URL;
 public class BasicEnemy extends Enemy {
     public BasicEnemy() throws IOException{
         super(1, 1, 1, 1, null);
-        this.setSprite(ImageIO.read(new URL("game/images/basic.bmp")));
+        this.setSprite("basic");
     }
 
     public void testMovement(){

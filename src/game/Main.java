@@ -76,7 +76,6 @@ public class Main
         frame.setVisible(true);
         menu.setVisible(true);
 
-
     }
 }
 

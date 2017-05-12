@@ -1,8 +1,12 @@
 package base;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Contains All Methods for Enemies
  * 
@@ -26,8 +30,7 @@ public abstract class Unit
     //base.Unit Sprite Information
     private BufferedImage sprite;
 
-    //SUGGESTION?
-    private Graphics2D g2d;
+
     private static boolean ISENEMY; //Defines base.Unit Allegiance
     protected Unit()
     {
@@ -44,10 +47,10 @@ public abstract class Unit
         damage = damageLevel;
         attackRange = range;
         moveSpeed = speed;
+
         if (spriteToLoad != null && currentPosition != null){
             sprite = spriteToLoad;
             bounds = currentPosition;
-            g2d.drawImage(sprite,null,0,0);
         }
     }
 
@@ -158,8 +161,21 @@ public abstract class Unit
 
     public void setSprite(BufferedImage spriteToLoad) {
         sprite = spriteToLoad;
-        g2d.drawImage(sprite,null,0,0);
     }
+
+    public void setSprite(String fileName){
+        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName + ".bmp");
+        try {
+            sprite = ImageIO.read(in);
+        } catch (IOException ioe){
+            System.out.println("IO Exception " + ioe.getMessage());
+        }
+    }
+
+    public double getX(){return pos.getX();}
+
+    public double getY(){return pos.getY();}
+
 
     /**
      * Spawns the unit within a certain rectangular bounds
@@ -172,7 +188,6 @@ public abstract class Unit
         Point2D spawnPoint = new Point2D.Double(randomX,randomY);
 
         pos = spawnPoint;
-        game.Main.b.paintComponent(g2d);
     }
 
 }

@@ -26,7 +26,12 @@ public class Board extends JPanel
     protected void paintComponent(Graphics g) {
         /* Implementation Not Shown */
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D)g;
+        for(Unit u : unitList){
+            g2d.drawImage(u.getSprite(),(int)u.getX(),(int)getY(),null);
+        }
     }
+
 
     /*
     Sets Background Color
