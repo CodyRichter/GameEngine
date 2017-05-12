@@ -4,6 +4,7 @@ import game.Friendly;
 import game.Main;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Cody on 5/11/2017.
@@ -35,9 +36,15 @@ public class Militia extends Friendly {
     {
         isComplete = false;
         Main.menu.repaint();
-        //Somehow Create Delay For 1 Second Here
-        isComplete = true;
-        Main.menu.repaint();
+
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                isComplete = true;
+                Main.menu.repaint();
+            }
+        }, cooldown*1000);
     }
 
     public static boolean isReadyToSpawn()
