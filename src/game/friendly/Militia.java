@@ -37,6 +37,7 @@ public class Militia extends Friendly {
         isComplete = false;
         Main.menu.repaint();
 
+        //Sets Timer For Cooldown
         Timer t = new Timer();
         t.schedule(new TimerTask() {
             @Override

@@ -48,7 +48,7 @@ public class GameMenu extends JPanel{
 
     }
 
-    private Color getColor(String hexadecimal)
+    public static Color getColor(String hexadecimal)
     {
         return Color.decode("#"+hexadecimal);
     }
