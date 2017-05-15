@@ -65,7 +65,7 @@ public class Main
         menu.setOpaque(true);
         menu.setPreferredSize(new Dimension((int)width,menuSize));
 
-        //JPanel In JFrame That Hold JPanels
+        //JPanel In JFrame That Hold JPanels - Prevents Screen From Flashing On Update
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(menu);
