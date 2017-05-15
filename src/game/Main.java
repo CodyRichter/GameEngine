@@ -1,10 +1,10 @@
 package game;
 
 import base.Board;
+import game.enemies.Peasant;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 /**
  * Runner Class
@@ -18,10 +18,6 @@ public class Main
     public static Board b;
     public static Graphics2D g;
     public static JFrame frame;
-    public static JPanel field;
-    public static JPanel enemy;
-    public static Rectangle2D enemySpawn;
-    public static Rectangle2D testSpawn;
     //Menu Variables
     public static JPanel menu;
 
@@ -54,10 +50,6 @@ public class Main
         b.setFocusable(true);
         b.requestFocus();
 
-
-        enemySpawn = new Rectangle2D.Double(width,0,(width/2.0),height);
-        testSpawn = new Rectangle2D.Double(0,0,width,height);
-
         //Menu JPanel Setup
         menu = new GameMenu();
         menu.setLayout(null);
@@ -80,6 +72,11 @@ public class Main
         frame.setVisible(true);
         menu.setVisible(true);
 
+        //
+        // Add Wave Behaviour Here!!!
+        // V V V V V V V V V V V V
+
+        Enemy e = new Peasant();
     }
 }
 

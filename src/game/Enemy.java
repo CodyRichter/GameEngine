@@ -18,6 +18,7 @@ public abstract class Enemy extends Unit
     public Enemy()
     {
         super(1,1,1,-1,null,null);
+        isEnemy = true;
     }
 
     /**

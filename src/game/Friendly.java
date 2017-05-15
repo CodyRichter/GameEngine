@@ -25,6 +25,7 @@ public abstract class Friendly extends Unit
     public Friendly(int healthLevel, int damageLevel, int range, int speed)
     {
         super(healthLevel, damageLevel, range, speed,null,null);
+        isEnemy = true;
     }
 
 

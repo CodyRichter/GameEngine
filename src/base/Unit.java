@@ -1,9 +1,11 @@
 package base;
 
+import game.Main;
+
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -23,22 +25,23 @@ public abstract class Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
     protected double delayBetweenAttacks = 1; //Delay Between Attacks
 
-    //Location Information For Each base.Unit
-    private Rectangle2D bounds;
-    private Point2D pos;
+    //Location Information For Each Unit
+    protected Rectangle2D bounds;
+    protected Point2D pos;
 
     //base.Unit Sprite Information
-    private BufferedImage sprite;
+    protected BufferedImage sprite;
 
 
-    private static boolean ISENEMY; //Defines base.Unit Allegiance
+    protected boolean isEnemy; //Defines Unit Allegiance
+
     protected Unit()
     {
 
     }
 
     /**
-     * Creates base.Unit base.Unit With Given Attributes
+     * Creates Unit base.Unit With Given Attributes
      */
     protected Unit(int healthLevel, int damageLevel, int range, int speed, BufferedImage spriteToLoad, Rectangle2D currentPosition)
     {
@@ -164,12 +167,13 @@ public abstract class Unit
     }
 
     public void setSprite(String fileName){
-        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName + ".bmp");
+        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName);
         try {
             sprite = ImageIO.read(in);
         } catch (IOException ioe){
             System.out.println("IO Exception " + ioe.getMessage());
         }
+        bounds.setRect(0,0, 50, 100);
     }
 
     public double getX(){return pos.getX();}
@@ -178,16 +182,16 @@ public abstract class Unit
 
 
     /**
-     * Spawns the unit within a certain rectangular bounds
-     * @param spawnArea
+     * Spawns Unit In a Given Row
      */
-    public void spawn(Rectangle2D spawnArea){
-        double randomX = (Math.random() * spawnArea.getWidth()) + spawnArea.getX();
-        double randomY = (Math.random() * spawnArea.getHeight()) + spawnArea.getY();
+    public void spawn(int row){
+        if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
 
-        Point2D spawnPoint = new Point2D.Double(randomX,randomY);
-
-        pos = spawnPoint;
+        Main.b.addUnit(this);
+        int x = Main.b.getWidth();
+        int y = (-1+2*row)*(Main.b.getHeight()/8);
+        bounds.add(x, y);
+        pos.setLocation(x, y);
     }
 
 }
