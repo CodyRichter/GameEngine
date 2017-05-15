@@ -53,8 +53,6 @@ public class Board extends JPanel
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, 5*this.getHeight()/8, 3000, 100);
 
-        //g2d.drawImage(new Peasant().getSprite(), 500, 500, null);
-
         for(Unit u : unitList){
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
         }

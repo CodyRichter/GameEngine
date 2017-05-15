@@ -77,6 +77,7 @@ public class Main
         // V V V V V V V V V V V V
 
         Enemy e = new Peasant();
+        e.spawn(2);
     }
 }
 

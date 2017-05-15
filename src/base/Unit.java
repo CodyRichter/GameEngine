@@ -6,8 +6,8 @@ import javax.imageio.ImageIO;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Contains All Methods for Enemies
@@ -167,9 +167,9 @@ public abstract class Unit
     }
 
     public void setSprite(String fileName){
-        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName);
+        File f = new File("fileName");
         try {
-            sprite = ImageIO.read(in);
+            sprite = ImageIO.read(f);
         } catch (IOException ioe){
             System.out.println("IO Exception " + ioe.getMessage());
         }
@@ -187,8 +187,11 @@ public abstract class Unit
     public void spawn(int row){
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
 
+        //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);
-        int x = Main.b.getWidth();
+
+        //Sets X and Y Coordinates Of Spawned Unit
+        int x = 300; /*Main.b.getWidth();*/
         int y = (-1+2*row)*(Main.b.getHeight()/8);
         bounds.add(x, y);
         pos.setLocation(x, y);
