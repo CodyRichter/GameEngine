@@ -17,7 +17,7 @@ public class GameMenu extends JPanel{
     public GameMenu()
     {
         super();
-
+        this.setBackground(Color.decode("#42f448"));
         //Sets Font For Text In Menu
         normalFont = new Font("Verdana", Font.BOLD, 24);
         titleFont = new Font("SansSerif", Font.ITALIC, 50);

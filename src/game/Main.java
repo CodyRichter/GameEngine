@@ -50,6 +50,7 @@ public class Main
         //b.setSize((int) width, (int)height-menuSize);
         b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
         b.setLayout(null);
+        b.setOpaque(true);
         b.setFocusable(true);
         b.requestFocus();
 
@@ -59,14 +60,17 @@ public class Main
 
         //Menu JPanel Setup
         menu = new GameMenu();
-        menu.setBounds(0,0,(int)width, menuSize);
-        menu.setPreferredSize(new Dimension((int)width,menuSize));
         menu.setLayout(null);
+        menu.setBounds(0,0,(int)width, menuSize);
+        menu.setOpaque(true);
+        menu.setPreferredSize(new Dimension((int)width,menuSize));
 
-
-        //Adds Panels To Frame
-        frame.add(b);
-        frame.add(menu);
+        //JPanel In JFrame That Hold JPanels
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(menu);
+        panel.add(b);
+        frame.add(panel);
 
 
         //Starts Runnable Thread

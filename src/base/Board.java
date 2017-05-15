@@ -22,7 +22,7 @@ public class Board extends JPanel
     public Board()
     {
         setBackgroundColor("42f448");
-        repaint();
+        //repaint();
     }
 
     @Override
@@ -30,6 +30,9 @@ public class Board extends JPanel
         /* Implementation Not Shown */
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
+        g2d.setRenderingHint(
+                RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         //
         // Displays The Rows That Units Will Move Down
