@@ -85,6 +85,10 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_N){
+            CastleDefense.nextWave();
+        }
+
     }
 
 

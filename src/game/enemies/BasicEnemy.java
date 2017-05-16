@@ -22,9 +22,7 @@ public class BasicEnemy extends Enemy {
     }
 
     public void testMovement(){
-        for(int i = 0; i < Integer.MAX_VALUE; i++) {
-            move();
-        }
+        move();
     }
 
 
