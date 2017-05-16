@@ -11,6 +11,10 @@ public class CastleDefense {
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
     private static int balance = 50;
 
+    public static final int ROW1X = 100;
+    public static final int ROW2X = 300;
+    public static final int ROW3X = 500;
+
     public static void nextWave(){
 
     }

@@ -1,5 +1,6 @@
 package base;
 
+import game.CastleDefense;
 import game.CastleDefenseBoard;
 import game.GameMenu;
 
@@ -43,15 +44,15 @@ public class Board extends JPanel
         //Row 1
         if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, this.getHeight()/8, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW1X, 3000, 100);
         //Row 2
         if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, 3*this.getHeight()/8, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW2X, 3000, 100);
         //Row 3
         if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, 5*this.getHeight()/8, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW3X, 3000, 100);
 
         for(Unit u : unitList){
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
