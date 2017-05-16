@@ -1,6 +1,7 @@
 package game;
 
 import base.Board;
+import base.GameGraphicsThread;
 import game.enemies.Peasant;
 
 import javax.swing.*;
@@ -66,7 +67,7 @@ public class Main
 
 
         //Starts Runnable Thread
-        new Thread(new base.GameThread(b, menu)).start();
+        new Thread(new GameGraphicsThread(b, menu)).start();
 
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);

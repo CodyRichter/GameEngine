@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Board extends JPanel
 {
-    private List<Unit> unitList = new ArrayList<Unit>();
+    public List<Unit> unitList = new ArrayList<Unit>();
 
     Image background;
     public Board()
@@ -88,5 +88,14 @@ public class Board extends JPanel
     {
         unitList.remove(u);
     }
+
+    /*
+    Returns Units On Board
+     */
+    public List<Unit> getUnits()
+    {
+        return unitList;
+    }
+
 
 }

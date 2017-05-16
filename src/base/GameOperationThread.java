@@ -11,12 +11,12 @@ import java.util.concurrent.TimeUnit;
  * @author Cody Richter
  * @version 1.0
  */
-public class GameThread implements Runnable
+public class GameOperationThread implements Runnable
 {
     private JPanel gameBoard;
     private JPanel gameMenu;
 
-    public GameThread(JPanel board, JPanel menu)
+    public GameOperationThread(JPanel board, JPanel menu)
     {
         gameBoard = board;
         gameMenu = menu;
@@ -26,6 +26,6 @@ public class GameThread implements Runnable
 
     public void run()
     {
-        gameBoard.repaint(); //Updates Graphics On Main Game Board
+
     }
 }

@@ -47,7 +47,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_1)
         {
             selectedRow = 1;
-            //super.setBackgroundColor("ffffff");
             Main.menu.repaint();
         }
 
@@ -55,7 +54,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_2)
         {
             selectedRow = 2;
-            //super.setBackgroundColor("555555");
             Main.menu.repaint();
         }
 
@@ -63,7 +61,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_3)
         {
             selectedRow = 3;
-            //super.setBackgroundColor("333333");
             Main.menu.repaint();
         }
 
