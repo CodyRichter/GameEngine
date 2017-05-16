@@ -35,7 +35,7 @@ public class GameMenu extends JPanel{
         //Game Title Information
         g.setFont(titleFont);
         g.setColor(getCorrectColor(""));
-        g.drawString("Castle Defense", 800 , 100);
+        g.drawString("Castle Defense", this.getWidth()/2 , 2*(this.getHeight()/3));
 
         //Row Selection Control
         g.setFont(normalFont);
