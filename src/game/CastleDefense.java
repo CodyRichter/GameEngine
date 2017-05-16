@@ -6,14 +6,16 @@ import java.util.ArrayList;
  * Created by Frank Williams on 5/8/2017.
  */
 public class CastleDefense {
+
+    //X-Values Of Board JPanel That Rows Are At And That Units Are Spawned At
+    public static final int ROW1X = 100;
+    public static final int ROW2X = 300;
+    public static final int ROW3X = 500;
+
     private static int wave = 0;
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
     private static int balance = 50;
-
-    public static final int ROW1X = 100;
-    public static final int ROW2X = 300;
-    public static final int ROW3X = 500;
 
     public static void nextWave(){
 

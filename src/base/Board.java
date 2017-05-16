@@ -54,7 +54,9 @@ public class Board extends JPanel
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, CastleDefense.ROW3X, 3000, 100);
 
+        g.setColor(Color.BLACK);
         for(Unit u : unitList){
+            g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX() + u.getSprite().getWidth()/2,(int)u.getY());
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
         }
     }
