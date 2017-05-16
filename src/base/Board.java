@@ -81,7 +81,6 @@ public class Board extends JPanel
      */
     public void addUnit(Unit u)
     {
-        u.getSprite();
         unitList.add(u);
     }
 
@@ -91,6 +90,7 @@ public class Board extends JPanel
      */
     public void removeUnit(Unit u)
     {
+        u.setSprite();
         unitList.remove(u);
     }
 

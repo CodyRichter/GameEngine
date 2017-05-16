@@ -162,6 +162,12 @@ public abstract class Unit
         //bounds.setRect(0,0, 50, 100);
     }
 
+    public void setSprite()
+    {
+        sprite = null;
+        pos = null;
+    }
+
     public double getX(){return pos.getX();}
 
     public double getY(){return pos.getY();}

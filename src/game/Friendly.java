@@ -67,7 +67,7 @@ public abstract class Friendly extends Unit
      */
     public void kill()
     {
-        CastleDefense.friendlies.remove(this);
+        Main.b.removeUnit(this);
     }
 
 }
