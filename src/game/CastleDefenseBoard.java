@@ -2,6 +2,8 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.friendly.Infantry;
+import game.friendly.Knight;
 import game.friendly.Militia;
 
 import java.awt.event.KeyEvent;
@@ -83,6 +85,30 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 Militia m = new Militia();
                 m.spawn(selectedRow);
                 CastleDefense.friendlies.add(m);
+            }
+        }
+
+        //Spawns In Friendly Unit "Infantry" When [I] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_I)
+        {
+            if (Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.getUnitCost()) {
+                Infantry.startCooldown();
+                CastleDefense.subtractMoney(Infantry.getUnitCost());
+                Infantry i = new Infantry();
+                i.spawn(selectedRow);
+                CastleDefense.friendlies.add(i);
+            }
+        }
+
+        //Spawns In Friendly Unit "Infantry" When [K] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_K)
+        {
+            if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.getUnitCost()) {
+                Knight.startCooldown();
+                CastleDefense.subtractMoney(Knight.getUnitCost());
+                Knight k = new Knight();
+                k.spawn(selectedRow);
+                CastleDefense.friendlies.add(k);
             }
         }
 

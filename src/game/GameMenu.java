@@ -1,5 +1,7 @@
 package game;
 
+import game.friendly.Infantry;
+import game.friendly.Knight;
 import game.friendly.Militia;
 
 import javax.swing.*;
@@ -48,6 +50,11 @@ public class GameMenu extends JPanel{
         g.setColor(getCorrectColor("militia"));
         g.drawString("[M] Spawn Militia - $50",0, 50);
 
+        g.setColor(getCorrectColor("infantry"));
+        g.drawString("[I] Spawn Infantry - $200",0, 75);
+
+        g.setColor(getCorrectColor("knight"));
+        g.drawString("[K] Spawn Knight - $350",0, 100);
 
     }
 
@@ -68,6 +75,21 @@ public class GameMenu extends JPanel{
                 return getColor(notReadyColor);
 
         }
+        if (unitType.equalsIgnoreCase("infantry")) {
+            if (Infantry.isReadyToSpawn() && Infantry.getUnitCost() <= CastleDefense.getBalance())
+                return getColor(readyColor);
+            else
+                return getColor(notReadyColor);
+
+        }
+        if (unitType.equalsIgnoreCase("knight")) {
+            if (Knight.isReadyToSpawn() && Knight.getUnitCost() <= CastleDefense.getBalance())
+                return getColor(readyColor);
+            else
+                return getColor(notReadyColor);
+
+        }
+
             return getColor("000000");
     }
 

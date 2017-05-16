@@ -20,7 +20,7 @@ public class CastleDefense {
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
-    private static int balance = 200;
+    private static int balance = 400;
 
     public static void nextWave(){
 
