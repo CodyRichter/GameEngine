@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -196,7 +195,13 @@ public abstract class Unit
 
         //Sets X and Y Coordinates Of Spawned Unit
         int x = Main.b.getWidth();
-        int y = (-1+2*row)*(Main.b.getHeight()/8);
+        int y;
+        if (row == 1)
+            y = (Main.b.getHeight()/8);
+        else if (row == 2)
+            y = 3*(Main.b.getHeight()/8);
+        else
+            y = 5*(Main.b.getHeight()/8);
         //bounds.add(x, y);
         pos.setLocation(x, y);
         System.out.println(this.toString() + " spawned in row " + row);
