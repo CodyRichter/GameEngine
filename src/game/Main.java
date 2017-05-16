@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.GameGraphicsThread;
+import base.GameOperationThread;
 import game.enemies.Peasant;
 
 import javax.swing.*;
@@ -68,6 +69,7 @@ public class Main
 
         //Starts Runnable Thread
         new Thread(new GameGraphicsThread(b, menu)).start();
+        new Thread(new GameOperationThread(b,menu)).start();
 
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);
@@ -79,7 +81,9 @@ public class Main
 
         Enemy e = new Peasant();
         e.spawn(2);
+        CastleDefense.enemies.add(e);
     }
+
 }
 
 

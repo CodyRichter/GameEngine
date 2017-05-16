@@ -27,7 +27,7 @@ public abstract class Unit
     protected double delayBetweenAttacks = 1; //Delay Between Attacks
 
     //Location Information For Each Unit
-    protected Rectangle2D bounds;
+    //protected Rectangle2D bounds;
     protected Point2D pos;
 
     //base.Unit Sprite Information
@@ -51,10 +51,11 @@ public abstract class Unit
         damage = damageLevel;
         attackRange = range;
         moveSpeed = speed;
+        pos = new Point2D.Double();
 
         if (spriteToLoad != null && currentPosition != null){
             sprite = spriteToLoad;
-            bounds = currentPosition;
+            //bounds = currentPosition;
         }
     }
 
@@ -146,14 +147,16 @@ public abstract class Unit
         return attackRange;
     }
 
+    /*
     /**
      * Get's Sprite's Bounds as a Rectangle2D
-     */
+     *
     public Rectangle2D getBounds()
     {
         // If Pos is null and sprite isn't, make rectangle with bounds, otherwise return current rectangle with bounds
         return bounds == null && sprite != null ? new Rectangle2D.Double(0,0,sprite.getWidth(), sprite.getHeight()) : bounds;
     }
+    */
 
     /**
      * Gets Sprite
@@ -174,7 +177,7 @@ public abstract class Unit
         } catch (IOException ioe){
             System.out.println("IO Exception " + ioe.getMessage());
         }
-        bounds.setRect(0,0, 50, 100);
+        //bounds.setRect(0,0, 50, 100);
     }
 
     public double getX(){return pos.getX();}
@@ -192,10 +195,11 @@ public abstract class Unit
         Main.b.addUnit(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
-        int x = 300; /*Main.b.getWidth();*/
+        int x = Main.b.getWidth();
         int y = (-1+2*row)*(Main.b.getHeight()/8);
-        bounds.add(x, y);
+        //bounds.add(x, y);
         pos.setLocation(x, y);
+        System.out.println(this.toString() + " spawned in row " + row);
     }
 
 }

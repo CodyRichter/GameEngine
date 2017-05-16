@@ -21,7 +21,7 @@ public class Peasant extends Enemy
     public Peasant()
     {
         super(3, 1, 1, 1, null);
-        this.setSprite("peasant.jpg");
+        this.setSprite("peasant");
     }
 
     public void onDeath()

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class CastleDefense {
     private static int wave = 0;
-    private static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
     public static void nextWave(){
 

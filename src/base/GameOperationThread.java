@@ -1,5 +1,7 @@
 package base;
 
+import game.CastleDefense;
+
 import javax.swing.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -26,6 +28,8 @@ public class GameOperationThread implements Runnable
 
     public void run()
     {
-
+        for(Unit u : CastleDefense.enemies){
+            u.move();
+        }
     }
 }
