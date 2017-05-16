@@ -8,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Contains All Methods for Enemies
@@ -167,9 +168,9 @@ public abstract class Unit
     }
 
     public void setSprite(String fileName){
-        File f = new File("fileName");
+        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName + ".bmp");
         try {
-            sprite = ImageIO.read(f);
+            sprite = ImageIO.read(in);
         } catch (IOException ioe){
             System.out.println("IO Exception " + ioe.getMessage());
         }
