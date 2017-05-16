@@ -1,6 +1,8 @@
 package base;
 
 import game.CastleDefense;
+import game.Enemy;
+import game.Friendly;
 
 import javax.swing.*;
 import java.util.concurrent.Executors;
@@ -28,11 +30,11 @@ public class GameOperationThread implements Runnable
 
     public void run()
     {
-        for(Unit u : CastleDefense.enemies){
-            u.move();
+        for(Enemy e : CastleDefense.enemies){
+            CastleDefense.doAction(e);
         }
-        for(Unit u : CastleDefense.friendlies){
-            u.move();
+        for(Friendly f : CastleDefense.friendlies){
+            CastleDefense.doAction(f);
         }
     }
 }

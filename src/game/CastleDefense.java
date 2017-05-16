@@ -9,6 +9,7 @@ public class CastleDefense {
     private static int wave = 0;
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
+    private static int balance = 50;
 
     public static void nextWave(){
 
@@ -22,22 +23,60 @@ public class CastleDefense {
     }
 
 
-    public void doAction(Friendly f)
+    public static void doAction(Friendly u)
     {
         //Basic Conditions That Need To Be Met
-        if (f.getCurrentHealth() > 0 && f.getX() < Main.b.getWidth())
+        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-10)
         {
-
+            u.move();
         }
-        else if (f.getCurrentHealth() <= 0)
+        else
         {
-            f.kill();
+            u.kill();
         }
     }
 
-    public void doAction(Enemy e)
+    public static void doAction(Enemy u)
     {
-
+        //Basic Conditions That Need To Be Met
+        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()+10)
+        {
+            u.move();
+        }
+        else
+        {
+            u.kill();
+        }
     }
 
-}
+    //
+    //
+    // Economy
+    //
+    //
+
+    /**
+     * Takes Money From Player's Balance
+     */
+    public static void subtractMoney(int amount)
+    {
+        if (amount < 0) {}
+        if (amount > balance) balance = 0;
+        else balance -= amount;
+    }
+
+    /**
+     * Adds Money To Player's Balance
+     */
+    public static void addMoney(int amount)
+    {
+        if (amount < 0) {}
+        else balance += amount;
+    }
+
+    public static int getBalance()
+    {
+        return balance;
+    }
+
+    }

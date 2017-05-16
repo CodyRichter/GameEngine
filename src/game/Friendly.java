@@ -69,4 +69,5 @@ public abstract class Friendly extends Unit
     {
         CastleDefense.friendlies.remove(this);
     }
+
 }

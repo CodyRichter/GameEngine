@@ -62,7 +62,7 @@ public abstract class Enemy extends Unit
     */
     public void kill()
     {
-        CastleDefense.friendlies.remove(this);
+        CastleDefense.enemies.remove(this);
     }
 
 }

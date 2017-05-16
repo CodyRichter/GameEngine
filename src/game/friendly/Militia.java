@@ -12,13 +12,14 @@ import java.util.TimerTask;
 public class Militia extends Friendly {
 
     //Spawning Cooldown Variables
-    protected static int cooldown = 1;
+    protected static int cooldown = 3;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
+    protected static int cost = 50;
 
     public Militia()
     {
-        super(3, 1, 1, 1, null);
+        super(4, 1, 1, 1, null);
         this.setSprite("militia");
     }
 
@@ -51,6 +52,16 @@ public class Militia extends Friendly {
     public static boolean isReadyToSpawn()
     {
         return isComplete;
+    }
+
+    //
+    // Economy
+    //
+
+    public static int getUnitCost()
+    {
+        if (cost <= 0) return -1;
+        else return cost;
     }
 
 }

@@ -41,9 +41,12 @@ public class GameMenu extends JPanel{
         g.setFont(normalFont);
         g.drawString("[1-3] Select Current Row | Current Row: " + CastleDefenseBoard.selectedRow, 0, 25);
 
+        //Economy Information
+        g.drawString("Balance: " + CastleDefense.getBalance(), this.getWidth()-300, 25);
+
         //Avaliable Units
         g.setColor(getCorrectColor("militia"));
-        g.drawString("[M] Spawn Militia",0, 50);
+        g.drawString("[M] Spawn Militia - $50",0, 50);
 
 
     }
@@ -59,7 +62,7 @@ public class GameMenu extends JPanel{
         String readyColor = "21d164";
 
         if (unitType.equalsIgnoreCase("militia")) {
-            if (Militia.isReadyToSpawn())
+            if (Militia.isReadyToSpawn() && Militia.getUnitCost() <= CastleDefense.getBalance())
                 return getColor(readyColor);
             else
                 return getColor(notReadyColor);

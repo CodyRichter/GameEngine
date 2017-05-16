@@ -77,8 +77,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Militia" When [M] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_M)
         {
-            if (Militia.isReadyToSpawn()) {
+            if (Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.getUnitCost()) {
                 Militia.startCooldown();
+                CastleDefense.subtractMoney(Militia.getUnitCost());
                 Militia m = new Militia();
                 m.spawn(selectedRow);
                 CastleDefense.friendlies.add(m);
