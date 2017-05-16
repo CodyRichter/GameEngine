@@ -12,10 +12,15 @@ public class CastleDefense {
     public static final int ROW2X = 300;
     public static final int ROW3X = 500;
 
+    //Current Wave Player Is On
     private static int wave = 0;
+
+    //Lists Holding All Units Spawned In On Board
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
-    private static int balance = 50;
+
+    //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
+    private static int balance = 200;
 
     public static void nextWave(){
 

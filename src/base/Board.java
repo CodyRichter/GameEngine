@@ -41,22 +41,24 @@ public class Board extends JPanel
 
         g.setColor(GameMenu.getColor("ffffff"));
 
-        //Row 1
+        //Paints Row 1 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, CastleDefense.ROW1X, 3000, 100);
-        //Row 2
+        //Paints Row 2 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, CastleDefense.ROW2X, 3000, 100);
-        //Row 3
+        //Paints Row 3 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, CastleDefense.ROW3X, 3000, 100);
 
         g.setColor(Color.BLACK);
         for(Unit u : unitList){
+            //Displays Health Bar Above Unit
             g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX() + u.getSprite().getWidth()/2,(int)u.getY());
+            //Displays Unit
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
         }
     }
