@@ -18,8 +18,8 @@ public class Militia extends Friendly {
 
     public Militia()
     {
-
-
+        super(3, 1, 1, 1, null);
+        this.setSprite("militia");
     }
 
     public void attack()
@@ -27,7 +27,7 @@ public class Militia extends Friendly {
 
     }
 
-    public void onDeath()
+    public void kill()
     {
 
     }

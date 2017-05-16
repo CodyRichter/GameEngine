@@ -55,7 +55,6 @@ public class Board extends JPanel
 
         for(Unit u : unitList){
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
-            System.out.println(u.toString() + " drawn at " + u.getX() + ", " + u.getY());
         }
     }
 

@@ -31,5 +31,8 @@ public class GameOperationThread implements Runnable
         for(Unit u : CastleDefense.enemies){
             u.move();
         }
+        for(Unit u : CastleDefense.friendlies){
+            u.move();
+        }
     }
 }

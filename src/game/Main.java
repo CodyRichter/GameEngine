@@ -4,6 +4,7 @@ import base.Board;
 import base.GameGraphicsThread;
 import base.GameOperationThread;
 import game.enemies.Peasant;
+import game.friendly.Militia;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,6 +83,7 @@ public class Main
         Enemy e = new Peasant();
         e.spawn(2);
         CastleDefense.enemies.add(e);
+        Friendly d = new Militia();
     }
 
 }

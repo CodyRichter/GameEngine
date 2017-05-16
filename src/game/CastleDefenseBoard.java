@@ -79,6 +79,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             if (Militia.isReadyToSpawn()) {
                 Militia.startCooldown();
+                Militia m = new Militia();
+                m.spawn(selectedRow);
+                CastleDefense.friendlies.add(m);
             }
         }
 

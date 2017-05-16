@@ -27,7 +27,42 @@ public abstract class Enemy extends Unit
     public Enemy(int healthLevel, int damageLevel, int range, int speed, BufferedImage sprite)
     {
         super(healthLevel, damageLevel, range, (speed * -1),sprite,null);
+        isEnemy = true;
     }
 
+    /*
+    Moves Enemy Unit From Right Side Of Screen To The Left Relative To Movement Speed
+     */
+    public void move()
+    {
+        pos.setLocation(pos.getX() + moveSpeed ,  pos.getY());
+    }
+
+    public void spawn(int row){
+        if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
+
+        //Adds Unit To List Of Units On Gameboard
+        Main.b.addUnit(this);
+
+        //Sets X and Y Coordinates Of Spawned Unit
+        int x = Main.b.getWidth();
+        int y;
+        if (row == 1)
+            y = (Main.b.getHeight()/8);
+        else if (row == 2)
+            y = 3*(Main.b.getHeight()/8);
+        else
+            y = 5*(Main.b.getHeight()/8);
+        //bounds.add(x, y);
+        pos.setLocation(x, y);
+    }
+
+    /*
+    Kills An Enemy and Removes It From The Board
+    */
+    public void kill()
+    {
+        CastleDefense.friendlies.remove(this);
+    }
 
 }

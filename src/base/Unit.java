@@ -1,7 +1,5 @@
 package base;
 
-import game.Main;
-
 import javax.imageio.ImageIO;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -70,7 +68,7 @@ public abstract class Unit
     /**
      * When base.Unit Dies
      */
-    public abstract void onDeath();
+    public abstract void kill();
 
     //
     // Setters
@@ -87,7 +85,7 @@ public abstract class Unit
         }
         else if (newHealth <= 0) //Automatically Kills base.Unit If Health Is Set To 0 Or Below
         {
-            onDeath();
+            kill();
         }
         else //If Parameters Are Valid, Set base.Unit Health To Desired Value
         {
@@ -102,7 +100,7 @@ public abstract class Unit
     {
         currentHealth -= amount;
         if (currentHealth <= 0) //If base.Unit Takes More Damage Than Health, Kill base.Unit
-            onDeath();
+            kill();
     }
 
     public void heal(double amount)
@@ -112,15 +110,11 @@ public abstract class Unit
             currentHealth = maxHealth;
     }
 
-    /**
-     * Moves base.Unit's Location Relative To Movement Speed
-     * 
-     * Changes The Point2D Which Represents The Bounding Box Rectangle Which Is the Hitbox
+
+    /*
+    Will Move Unit's Point2D That Represents The Position On The Unit - Different Implementation For Friendly and Enemy
      */
-    public void move()
-    {
-        pos.setLocation(pos.getX() + moveSpeed ,  pos.getY());
-    }
+    public abstract void move();
 
     //
     // Getters
@@ -145,17 +139,6 @@ public abstract class Unit
     {
         return attackRange;
     }
-
-    /*
-    /**
-     * Get's Sprite's Bounds as a Rectangle2D
-     *
-    public Rectangle2D getBounds()
-    {
-        // If Pos is null and sprite isn't, make rectangle with bounds, otherwise return current rectangle with bounds
-        return bounds == null && sprite != null ? new Rectangle2D.Double(0,0,sprite.getWidth(), sprite.getHeight()) : bounds;
-    }
-    */
 
     /**
      * Gets Sprite
@@ -187,24 +170,6 @@ public abstract class Unit
     /**
      * Spawns Unit In a Given Row
      */
-    public void spawn(int row){
-        if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
-
-        //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
-
-        //Sets X and Y Coordinates Of Spawned Unit
-        int x = Main.b.getWidth();
-        int y;
-        if (row == 1)
-            y = (Main.b.getHeight()/8);
-        else if (row == 2)
-            y = 3*(Main.b.getHeight()/8);
-        else
-            y = 5*(Main.b.getHeight()/8);
-        //bounds.add(x, y);
-        pos.setLocation(x, y);
-        System.out.println(this.toString() + " spawned in row " + row);
-    }
+    public abstract void spawn(int row);
 
 }
