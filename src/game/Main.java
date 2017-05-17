@@ -41,6 +41,7 @@ public class Main
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
         frame.setFocusable(false);
+        frame.setResizable(false);
 
         //Game JPanel Setup
         b = new CastleDefenseBoard();
