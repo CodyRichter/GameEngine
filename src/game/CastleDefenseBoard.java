@@ -84,7 +84,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 CastleDefense.subtractMoney(Militia.getUnitCost());
                 Militia m = new Militia();
                 m.spawn(selectedRow);
-                CastleDefense.friendlies.add(m);
             }
         }
 
@@ -96,7 +95,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 CastleDefense.subtractMoney(Infantry.getUnitCost());
                 Infantry i = new Infantry();
                 i.spawn(selectedRow);
-                CastleDefense.friendlies.add(i);
             }
         }
 
@@ -108,7 +106,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 CastleDefense.subtractMoney(Knight.getUnitCost());
                 Knight k = new Knight();
                 k.spawn(selectedRow);
-                CastleDefense.friendlies.add(k);
             }
         }
 

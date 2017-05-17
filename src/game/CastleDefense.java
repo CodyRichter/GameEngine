@@ -33,12 +33,19 @@ public class CastleDefense {
         enemies.add(e);
     }
 
+    public static void addFriendly(Friendly f){friendlies.add(f);}
 
     public static void doAction(Friendly u)
     {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
         if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-50)
         {
+            for (int i = (int)u.getX(); i < (int)u.getX()+u.getAttackRange(); i++)
+            {
+                if (true){
+
+                }
+            }
             u.move();
         }
         else

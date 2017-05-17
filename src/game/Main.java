@@ -83,7 +83,6 @@ public class Main
 
         Enemy e = new Peasant();
         e.spawn(2);
-        CastleDefense.enemies.add(e);
     }
 
 }

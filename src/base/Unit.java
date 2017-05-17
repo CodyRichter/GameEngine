@@ -172,6 +172,7 @@ public abstract class Unit
 
     public double getY(){return pos.getY();}
 
+    public double getAttackRange(){return attackRange;}
 
     /**
      * Spawns Unit In a Given Row

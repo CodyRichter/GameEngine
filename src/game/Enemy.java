@@ -43,6 +43,7 @@ public abstract class Enemy extends Unit
 
         //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);
+        CastleDefense.enemies.add(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
         int x = Main.b.getWidth();

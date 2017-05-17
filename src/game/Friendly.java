@@ -48,6 +48,7 @@ public abstract class Friendly extends Unit
 
         //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);
+        CastleDefense.addFriendly(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
         int x = 0;
