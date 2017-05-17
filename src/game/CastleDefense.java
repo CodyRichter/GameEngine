@@ -29,6 +29,7 @@ public class CastleDefense {
     public static void testEnemySpawn(){
 
     }
+
     public static void addEnemy(Enemy e){
         enemies.add(e);
     }
@@ -41,18 +42,24 @@ public class CastleDefense {
         if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-50)
         {
             //Will Exit Method If Unit Is Currently Completing an Action
-            if (true) return;
+            //if (true) return;
+
 
             for (int i = (int)u.getX(); i < (int)u.getX()+u.getAttackRange(); i++)
             {
-                if (CastleDefense.enemies.get(i).getX() == i){
-                    u.attack(CastleDefense.enemies.get(i));
+                for(Enemy e : enemies) {
+                    if (e.getX() == i) {
+                        u.attack(e);
+                    }
                 }
             }
+
             u.move();
+
         }
         else
         {
+
 
         }
     }
