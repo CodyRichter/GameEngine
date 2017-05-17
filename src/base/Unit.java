@@ -21,7 +21,7 @@ public abstract class Unit
     protected double damage = 1; //Amount of Damage Caused per Attack of base.Unit
     protected double attackRange = 1; //Attacking Range of base.Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
-    protected double delayBetweenAttacks = 1; //Delay Between Attacks
+    protected double delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;
@@ -63,7 +63,10 @@ public abstract class Unit
     /**
      * Attacks Target 
      */
-    public abstract void attack();
+    public void attack(Unit u)
+    {
+
+    }
 
     /**
      * When base.Unit Dies
