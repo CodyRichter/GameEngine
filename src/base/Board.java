@@ -57,7 +57,7 @@ public class Board extends JPanel
         g.setColor(Color.BLACK);
         for(Unit u : unitList){
             //Displays Health Bar Above Unit
-            g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX() + u.getSprite().getWidth()/2,(int)u.getY());
+            g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX(),(int)u.getY());
             //Displays Unit
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
         }

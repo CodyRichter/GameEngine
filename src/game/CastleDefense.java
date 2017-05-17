@@ -36,27 +36,27 @@ public class CastleDefense {
 
     public static void doAction(Friendly u)
     {
-        //Basic Conditions That Need To Be Met
-        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-10)
+        //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
+        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-50)
         {
             u.move();
         }
         else
         {
-            u.kill();
+
         }
     }
 
     public static void doAction(Enemy u)
     {
         //Basic Conditions That Need To Be Met
-        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()+10)
+        if (u.getCurrentHealth() > 0 && u.getX() > 0)
         {
             u.move();
         }
         else
         {
-            u.kill();
+
         }
     }
 
