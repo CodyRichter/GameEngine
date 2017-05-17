@@ -6,6 +6,8 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Contains All Methods for Enemies
@@ -21,7 +23,8 @@ public abstract class Unit
     protected double damage = 1; //Amount of Damage Caused per Attack of base.Unit
     protected double attackRange = 1; //Attacking Range of base.Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
-    protected double delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
+    protected int delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
+    protected boolean doingAction = false;
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;
@@ -65,6 +68,34 @@ public abstract class Unit
      */
     public void attack(Unit u)
     {
+        if (u.getCurrentHealth() - getDamage() <= 0) {
+            u.kill();
+            doingAction = true;
+
+            //Sets Timer For Cooldown
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    doingAction = false;
+                }
+            }, delayBetweenAttacks*1000);
+        }
+
+        else
+        {
+            u.damage(damage);
+            doingAction = true;
+
+            //Sets Timer For Cooldown
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    doingAction = false;
+                }
+            }, delayBetweenAttacks*1000);
+        }
 
     }
 
@@ -177,6 +208,7 @@ public abstract class Unit
 
     public double getAttackRange(){return attackRange;}
 
+    public boolean isInAction(){return doingAction;}
     /**
      * Spawns Unit In a Given Row
      */
