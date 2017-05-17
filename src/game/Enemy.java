@@ -12,21 +12,25 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Enemy extends Unit
 {
+    private int rewardMoney;
+
     /**
      * Makes new enemy unit
      */
     public Enemy()
     {
         super(1,1,1,-1,null,null);
+        rewardMoney = 10;
         isEnemy = true;
     }
 
     /**
      * Makes new enemy unit with given attributes
      */
-    public Enemy(int healthLevel, int damageLevel, int range, int speed, BufferedImage sprite)
+    public Enemy(int healthLevel, int damageLevel, int range, int speed, int money, BufferedImage sprite)
     {
         super(healthLevel, damageLevel, range, (speed * -1),sprite,null);
+        rewardMoney = money;
         isEnemy = true;
     }
 
@@ -64,6 +68,8 @@ public abstract class Enemy extends Unit
     public void kill()
     {
         Main.b.removeUnit(this);
+        CastleDefense.enemies.remove(this);
+        CastleDefense.addMoney(rewardMoney);
     }
 
 }

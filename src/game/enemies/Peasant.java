@@ -20,7 +20,7 @@ public class Peasant extends Enemy
      */
     public Peasant()
     {
-        super(3, 1, 1, 2, null);
+        super(3, 1, 1, 2,50, null);
         this.setSprite("peasant");
     }
 
