@@ -28,10 +28,7 @@ public class Knight extends Friendly {
 
     }
 
-    public void kill()
-    {
 
-    }
 
     public static void startCooldown()
     {

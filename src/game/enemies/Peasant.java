@@ -24,11 +24,6 @@ public class Peasant extends Enemy
         this.setSprite("peasant");
     }
 
-    public void kill()
-    {
-
-    }
-
     public void attack()
     {
 

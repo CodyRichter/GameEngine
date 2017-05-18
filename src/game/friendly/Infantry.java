@@ -28,10 +28,6 @@ public class Infantry extends Friendly {
 
     }
 
-    public void kill()
-    {
-
-    }
 
     public static void startCooldown()
     {

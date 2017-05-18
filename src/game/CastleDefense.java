@@ -45,16 +45,25 @@ public class CastleDefense {
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
+
             for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getAttackRange())*20; i++)
             {
+                u.currentlyAttacking = false;
                 for(Enemy e : enemies) {
                     if (e.getX() == i && e.getY() == u.getY()) {
                         u.attack(e);
+                        u.currentlyAttacking = true;
+                    } else {
+
                     }
+
+
                 }
             }
 
-            u.move();
+            if (!u.currentlyAttacking) {
+                u.move();
+            }
 
         }
         else
@@ -69,19 +78,26 @@ public class CastleDefense {
         //Basic Conditions That Need To Be Met
         if (u.getCurrentHealth() > 0 && u.getX() > 0)
         {
-                //Will Exit Method If Unit Is Currently Completing an Action
+            //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
-               for (int i = (int)u.getX(); i < (int)u.getX()+(u.getAttackRange())*20; i++)
-               {
-                  for(Friendly f : friendlies) {
-                     if (f.getX() == i && u.getY() == f.getY()) {
-                           u.attack(f);
-                       }
-                   }
-               }
 
+            for (int i = (int)u.getX(); i < (int)u.getX()+(u.getAttackRange())*20; i++)
+            {
+                u.currentlyAttacking = false;
+                for(Friendly f : friendlies) {
+                    if (f.getX() + 50 == i && u.getY() == f.getY()) {
+                        u.attack(f);
+                        u.currentlyAttacking = true;
+                    } else {
+
+                    }
+                }
+            }
+
+            if (!u.currentlyAttacking) {
                 u.move();
+            }
         }
         else if (u.getX() <= 0)
         {
@@ -92,8 +108,6 @@ public class CastleDefense {
     public static void endGame()
     {
         gameOver = true;
-        Main.graphics.stop();
-        Main.update.stop();
     }
 
     //
@@ -126,4 +140,4 @@ public class CastleDefense {
         return balance;
     }
 
-    }
+}

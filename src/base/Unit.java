@@ -25,6 +25,7 @@ public abstract class Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
     protected int delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
     protected boolean doingAction = false;
+    public boolean currentlyAttacking = false;
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;

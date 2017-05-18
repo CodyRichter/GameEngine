@@ -28,10 +28,7 @@ public class Militia extends Friendly {
 
     }
 
-    public void kill()
-    {
 
-    }
 
     public static void startCooldown()
     {
