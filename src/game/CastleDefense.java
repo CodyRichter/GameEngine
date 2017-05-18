@@ -74,7 +74,7 @@ public class CastleDefense {
                for (int i = (int)u.getX(); i < (int)u.getX()+(u.getAttackRange())*20; i++)
                {
                   for(Friendly f : friendlies) {
-                     if (f.getX() == i) {
+                     if (f.getX() == i && u.getY() == f.getY()) {
                            u.attack(f);
                        }
                    }
