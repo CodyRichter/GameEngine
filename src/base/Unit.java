@@ -71,16 +71,8 @@ public abstract class Unit
     {
         if (u.getCurrentHealth() - getDamage() <= 0) {
             u.kill();
-            doingAction = true;
-
-            //Sets Timer For Cooldown
-            Timer t = new Timer();
-            t.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    doingAction = false;
-                }
-            }, delayBetweenAttacks*1000);
+            doingAction = false;
+            currentlyAttacking = false;
         }
 
         else

@@ -69,6 +69,7 @@ public class Board extends JPanel
         //
 
         g.setColor(Color.BLACK);
+
         for(Unit u : unitList){
             //Displays Health Bar Above Unit
             g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX(),(int)u.getY());

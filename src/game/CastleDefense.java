@@ -40,15 +40,15 @@ public class CastleDefense {
     public static void doAction(Friendly u)
     {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
-        if (u.getCurrentHealth() > 0 && u.getX() < Main.b.getWidth()-50)
+        if (u.getX() < Main.b.getWidth()-50)
         {
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
-
+            u.currentlyAttacking = false;
             for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getAttackRange())*20; i++)
             {
-                u.currentlyAttacking = false;
+
                 for(Enemy e : enemies) {
                     if (e.getX() == i && e.getY() == u.getY()) {
                         u.attack(e);
@@ -76,15 +76,15 @@ public class CastleDefense {
     public static void doAction(Enemy u)
     {
         //Basic Conditions That Need To Be Met
-        if (u.getCurrentHealth() > 0 && u.getX() > 0)
+        if (u.getX() > 0)
         {
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
-
-            for (int i = (int)u.getX(); i < (int)u.getX()+(u.getAttackRange())*20; i++)
+            u.currentlyAttacking = false;
+            for (int i = (int)u.getX() - ((int)u.getAttackRange())*20; i < (int)u.getX(); i++)
             {
-                u.currentlyAttacking = false;
+
                 for(Friendly f : friendlies) {
                     if (f.getX() + 50 == i && u.getY() == f.getY()) {
                         u.attack(f);
