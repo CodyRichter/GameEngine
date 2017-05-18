@@ -47,7 +47,7 @@ public class CastleDefense {
             for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getAttackRange())*20; i++)
             {
                 for(Enemy e : enemies) {
-                    if (e.getX() == i) {
+                    if (e.getX() == i && e.getY() == u.getY()) {
                         u.attack(e);
                     }
                 }
