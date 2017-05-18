@@ -54,6 +54,20 @@ public class Board extends JPanel
         else {g.setColor(GameMenu.getColor("ffffff"));}
         g.fillRect(0, CastleDefense.ROW3X, 3000, 100);
 
+        //
+        // Game Over Code
+        if (CastleDefense.gameOver)
+        {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("SansSerif", Font.ITALIC, 100));
+            g.drawString("Game Over!", this.getWidth()/3,getHeight()/3);
+            return;
+        }
+
+
+        //
+        //
+
         g.setColor(Color.BLACK);
         for(Unit u : unitList){
             //Displays Health Bar Above Unit
@@ -61,6 +75,8 @@ public class Board extends JPanel
             //Displays Unit
             g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
         }
+
+
     }
 
 

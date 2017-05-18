@@ -22,6 +22,8 @@ public class Main
     public static JFrame frame;
     //Menu Variables
     public static JPanel menu;
+    public static Thread graphics;
+    public static Thread update;
 
     public static void main(String[] args)
     {
@@ -69,8 +71,10 @@ public class Main
 
 
         //Starts Runnable Thread
-        new Thread(new GameGraphicsThread(b, menu)).start();
-        new Thread(new GameOperationThread(b,menu)).start();
+        graphics = new Thread(new GameGraphicsThread(b, menu));
+        update = new Thread(new GameOperationThread(b,menu));
+        graphics.start();
+        update.start();
 
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);

@@ -14,6 +14,7 @@ public class CastleDefense {
 
     //Current Wave Player Is On
     private static int wave = 0;
+    public static boolean gameOver = false;
 
     //Lists Holding All Units Spawned In On Board
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -82,10 +83,17 @@ public class CastleDefense {
 
                 u.move();
         }
-        else
+        else if (u.getX() <= 0)
         {
-
+            endGame();
         }
+    }
+
+    public static void endGame()
+    {
+        gameOver = true;
+        Main.graphics.stop();
+        Main.update.stop();
     }
 
     //

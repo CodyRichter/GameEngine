@@ -41,6 +41,16 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
     public void keyPressed(KeyEvent e)
     {
+        //Closes Game When [Esc] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            CastleDefense.endGame();
+            System.exit(0);
+        }
+
+
+        //Stops Input If Game Is Over
+        if (CastleDefense.gameOver) return;
+
         /*
         Unit Spawning Row Selected
          */
@@ -64,12 +74,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         {
             selectedRow = 3;
             Main.menu.repaint();
-        }
-
-        //Closes Game When [Esc] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-        {
-            System.exit(0);
         }
 
         /*

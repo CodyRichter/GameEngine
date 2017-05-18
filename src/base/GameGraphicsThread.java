@@ -1,5 +1,7 @@
 package base;
 
+import game.CastleDefense;
+
 import javax.swing.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -26,6 +28,7 @@ public class GameGraphicsThread implements Runnable
 
     public void run()
     {
+        if (CastleDefense.gameOver) return;
         gameBoard.repaint(); //Updates Graphics On Main Game Board
     }
 }
