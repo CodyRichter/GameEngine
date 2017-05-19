@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 /**
  * Contains All Methods for Enemies
- * 
+ *
  * @author Cody Richter
  * @version 1.0
  */
@@ -70,26 +70,18 @@ public abstract class Unit
      */
     public void attack(Unit u)
     {
-        if (u.getCurrentHealth() - getDamage() <= 0) {
-            u.kill();
-            doingAction = false;
-            currentlyAttacking = false;
-        }
+        u.damage(damage);
+        doingAction = true;
 
-        else
-        {
-            u.damage(damage);
-            doingAction = true;
-
-            //Sets Timer For Cooldown
-            Timer t = new Timer();
-            t.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    doingAction = false;
-                }
-            }, delayBetweenAttacks*1000);
-        }
+        //Sets Timer For Cooldown
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                doingAction = false;
+                currentlyAttacking = false;
+            }
+        }, delayBetweenAttacks*1000);
 
     }
 
@@ -199,6 +191,8 @@ public abstract class Unit
     public double getAttackRange(){return attackRange;}
 
     public boolean isInAction(){return doingAction;}
+
+    public boolean isDead() {return isDead;}
     /**
      * Spawns Unit In a Given Row
      */

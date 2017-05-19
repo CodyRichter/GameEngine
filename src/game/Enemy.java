@@ -69,7 +69,7 @@ public abstract class Enemy extends Unit
     {
         CastleDefense.addMoney(rewardMoney);
         isDead = true;
-        pos.setLocation(0,0);
+        pos.setLocation(5,5);
     }
 
 }

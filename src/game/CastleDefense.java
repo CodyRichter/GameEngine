@@ -50,7 +50,7 @@ public class CastleDefense {
             {
 
                 for(Enemy e : enemies) {
-                    if (e.getX() == i && e.getY() == u.getY()) {
+                    if (!e.isDead() && e.getX() == i && e.getY() == u.getY()) {
                         u.attack(e);
                         u.currentlyAttacking = true;
                     } else {
@@ -86,7 +86,7 @@ public class CastleDefense {
             {
 
                 for(Friendly f : friendlies) {
-                    if (f.getX() + 50 == i && u.getY() == f.getY()) {
+                    if (!f.isDead() && f.getX() + 50 == i && u.getY() == f.getY()) {
                         u.attack(f);
                         u.currentlyAttacking = true;
                     } else {
