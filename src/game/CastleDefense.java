@@ -1,8 +1,7 @@
 package game;
 
-import game.enemies.Archer;
-import game.enemies.Barbarian;
-import game.enemies.Peasant;
+import game.enemies.*;
+import org.omg.CORBA.FREE_MEM;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -33,30 +32,31 @@ public class CastleDefense {
 
     private static Timer t = new Timer();
 
-    public static void main(int control){
+    public static ArrayList<Class> availableEnemies = new ArrayList<Class>();
 
+    public static void main(int control){
+        if (control == 0 && nextWave){
+            nextWave();
+            return;
+        }
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 int icontrol = control;
-                int row = (int) (Math.random() * 3) + 1;
-                int bossUnit = (int)((Math.random()*100)+1);
-                if (bossUnit <= 10)
-                {
-                    Enemy e = new Archer();
-                    e.spawn(row);
+                System.out.println("Enemy Spawn Started");
+                int enemyType = (int) Math.random() * availableEnemies.size();
+                try {
+                    Object e = availableEnemies.get(enemyType).newInstance();
+                    int row = (int) (Math.random() * 3) + 1;
+                    if (e instanceof Enemy){
+                        ((Enemy) e).spawn(row);
+                        System.out.println("Enemy Spawned");
+                    }
+                    System.out.println("Enemy Spawned");
+                    icontrol--;
+                }catch (Exception ie){
+                    System.out.println(ie.getMessage());
                 }
-                else if (bossUnit < 20)
-                {
-                    Enemy e = new Barbarian();
-                    e.spawn(row);
-                }
-                else {
-                    Enemy e = new Peasant();
-                    e.spawn(row);
-                }
-
-                icontrol--;
                 main(icontrol);
             }
         },5000);
@@ -66,11 +66,19 @@ public class CastleDefense {
 
     public static void nextWave(){
         wave++;
+        if (wave == 1){
+            availableEnemies.add(Peasant.class);
+        } else if (wave == 3) {
+            availableEnemies.add(Archer.class);
+        } else if (wave == 5) {
+            availableEnemies.add(Barbarian.class);
+        }
         waveControlVariable = 3 * wave;
         for(Friendly f : friendlies){
             f.kill();
             addMoney(500);
         }
+        System.out.println("Wave Started");
         main(waveControlVariable);
         Main.menu.repaint();
     }
@@ -120,8 +128,6 @@ public class CastleDefense {
             if (!u.currentlyAttacking) {
                 u.move();
             }
-
-
 
         }
         else
