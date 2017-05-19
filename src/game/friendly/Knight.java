@@ -15,11 +15,11 @@ public class Knight extends Friendly {
     protected static int cooldown = 20;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    protected static int cost = 350;
+    private static final int COST = 350;
 
     public Knight()
     {
-        super(12, 4, 1, 3, null);
+        super(12, 4, 1, 3, COST);
         this.setSprite("knight");
     }
 
@@ -49,16 +49,6 @@ public class Knight extends Friendly {
     public static boolean isReadyToSpawn()
     {
         return isComplete;
-    }
-
-    //
-    // Economy
-    //
-
-    public static int getUnitCost()
-    {
-        if (cost <= 0) return -1;
-        else return cost;
     }
 
 }

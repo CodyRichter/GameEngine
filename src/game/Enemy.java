@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Methods For game.Enemy Units
- * 
+ *
  * @author Cody Richter
  * @version 1.0
  */
@@ -67,6 +67,7 @@ public abstract class Enemy extends Unit
     */
     public void kill()
     {
+        Main.b.removeUnit(this);
         CastleDefense.addMoney(rewardMoney);
         isDead = true;
         pos.setLocation(5,5);

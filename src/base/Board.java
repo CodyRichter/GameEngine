@@ -107,10 +107,7 @@ public class Board extends JPanel
      * Removes Unit From Board
      * @param u
      */
-    public void removeUnit(Unit u)
-    {
-        unitList.remove(u);
-    }
+    public void removeUnit(Unit u) {unitList.remove(u);}
 
     /*
     Returns Units On Board

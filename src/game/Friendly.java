@@ -2,17 +2,15 @@ package game;
 
 import base.Unit;
 
-import java.awt.image.BufferedImage;
-
 /**
  * Methods For game.Friendly Units
- * 
+ *
  * @author Cody Richter
  * @version 1.0
  */
 public abstract class Friendly extends Unit
 {
-
+    protected static int cost;
     /**
      * Makes New game.Friendly base.Unit
      */
@@ -25,10 +23,11 @@ public abstract class Friendly extends Unit
     /**
      * Makes new friendly unit with given attributes
      */
-    public Friendly(int healthLevel, int damageLevel, int range, int speed, BufferedImage sprite)
+    public Friendly(int healthLevel, int damageLevel, int range, int speed, int costToSpawn)
     {
-        super(healthLevel, damageLevel, range, (speed * -1),sprite,null);
+        super(healthLevel, damageLevel, range, (speed * -1),null ,null);
         isEnemy = false;
+        cost = costToSpawn;
     }
 
     /*
@@ -71,6 +70,16 @@ public abstract class Friendly extends Unit
         Main.b.removeUnit(this);
         isDead = true;
         pos.setLocation(5,5);
+    }
+
+    //
+    // Economy
+    //
+
+    public static int getUnitCost()
+    {
+        if (cost <= 0) return -1;
+        else return cost;
     }
 
 }

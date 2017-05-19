@@ -1,7 +1,6 @@
 package game;
 
 import game.enemies.Peasant;
-import org.omg.CORBA.FREE_MEM;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -94,9 +93,18 @@ public class CastleDefense {
                 }
             }
 
+            if (u.getX() >= Main.b.getWidth()-50)
+            {
+                double multiplier = u.getCurrentHealth()/u.getMaxHealth();
+                addMoney((int)(u.getUnitCost()*multiplier));
+                u.kill();
+            }
+
             if (!u.currentlyAttacking) {
                 u.move();
             }
+
+
 
         }
         else
