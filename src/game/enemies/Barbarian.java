@@ -8,12 +8,12 @@ import game.Enemy;
  * @author Cody Richter 
  * @version 1.0
  */
-public class Peasant extends Enemy
+public class Barbarian extends Enemy
 {
-    public Peasant()
+    public Barbarian()
     {
-        super(3, 1, 1, 1,50, null);
-        this.setSprite("peasant");
+        super(12, 2, 1, 1,120, null);
+        this.setSprite("barbarian");
     }
 
 }

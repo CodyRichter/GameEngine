@@ -3,10 +3,12 @@ package game;
 import base.Board;
 import base.GameGraphicsThread;
 import base.GameOperationThread;
+import game.enemies.Archer;
 import game.enemies.Peasant;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.TimerTask;
 
 /**
  * Runner Class
@@ -90,7 +92,14 @@ public class Main
             e.spawn(i);
         }
 
-
+        java.util.Timer t = new java.util.Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Enemy a = new Archer();
+                a.spawn(2);
+            }
+        }, 10000);
 
     }
 
