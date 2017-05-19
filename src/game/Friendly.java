@@ -69,6 +69,8 @@ public abstract class Friendly extends Unit
     public void kill()
     {
         Main.b.removeUnit(this);
+        isDead = true;
+        pos.setLocation(5,5);
     }
 
 }
