@@ -12,7 +12,8 @@ public class Barbarian extends Enemy
 {
     public Barbarian()
     {
-        super(12, 2, 1, 1,120, null);
+        super(14, 2, 1, 1,120, null);
+        delayBetweenAttacks = 2;
         this.setSprite("barbarian");
     }
 

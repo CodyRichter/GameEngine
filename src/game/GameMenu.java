@@ -46,6 +46,9 @@ public class GameMenu extends JPanel{
         //Economy Information
         g.drawString("Balance: " + CastleDefense.getBalance(), this.getWidth()-300, 25);
 
+        //Wave Information
+        g.drawString("wave: " + CastleDefense.getWave(), this.getWidth()-300, 50);
+
         //Avaliable Units
         g.setColor(getCorrectColor("militia"));
         g.drawString("[M] Spawn Militia - $50",0, 50);

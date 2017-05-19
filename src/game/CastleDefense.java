@@ -1,5 +1,7 @@
 package game;
 
+import game.enemies.Archer;
+import game.enemies.Barbarian;
 import game.enemies.Peasant;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class CastleDefense {
     public static final int ROW3X = 500;
 
     //Current Wave Player Is On
-    private static int wave = 1;
+    private static int wave = 0;
     private static int waveControlVariable = 0;
     public static boolean gameOver = false;
     public static boolean nextWave = false;
@@ -27,7 +29,7 @@ public class CastleDefense {
     public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
-    private static int balance = 400;
+    private static int balance = 100;
 
     private static Timer t = new Timer();
 
@@ -37,9 +39,23 @@ public class CastleDefense {
             @Override
             public void run() {
                 int icontrol = control;
-                Enemy e = new Peasant();
                 int row = (int) (Math.random() * 3) + 1;
-                e.spawn(row);
+                int bossUnit = (int)((Math.random()*100)+1);
+                if (bossUnit <= 10)
+                {
+                    Enemy e = new Archer();
+                    e.spawn(row);
+                }
+                else if (bossUnit < 20)
+                {
+                    Enemy e = new Barbarian();
+                    e.spawn(row);
+                }
+                else {
+                    Enemy e = new Peasant();
+                    e.spawn(row);
+                }
+
                 icontrol--;
                 main(icontrol);
             }
@@ -56,6 +72,7 @@ public class CastleDefense {
             addMoney(500);
         }
         main(waveControlVariable);
+        Main.menu.repaint();
     }
 
     public static void testEnemySpawn(){
@@ -181,4 +198,5 @@ public class CastleDefense {
         return balance;
     }
 
+    public static int getWave() {return wave;}
 }

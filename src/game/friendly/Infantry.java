@@ -20,6 +20,7 @@ public class Infantry extends Friendly {
     public Infantry()
     {
         super(10, 3, 1, 1);
+        delayBetweenAttacks = 2;
         this.setSprite("infantry");
     }
 
