@@ -1,6 +1,9 @@
 package game;
 
 import base.Unit;
+import game.friendly.Infantry;
+import game.friendly.Knight;
+import game.friendly.Militia;
 
 /**
  * Methods For game.Friendly Units
@@ -10,7 +13,6 @@ import base.Unit;
  */
 public abstract class Friendly extends Unit
 {
-    protected static int cost;
     /**
      * Makes New game.Friendly base.Unit
      */
@@ -23,11 +25,10 @@ public abstract class Friendly extends Unit
     /**
      * Makes new friendly unit with given attributes
      */
-    public Friendly(int healthLevel, int damageLevel, int range, int speed, int costToSpawn)
+    public Friendly(int healthLevel, int damageLevel, int range, int speed)
     {
         super(healthLevel, damageLevel, range, (speed * -1),null ,null);
         isEnemy = false;
-        cost = costToSpawn;
     }
 
     /*
@@ -72,14 +73,15 @@ public abstract class Friendly extends Unit
         pos.setLocation(5,5);
     }
 
-    //
-    // Economy
-    //
-
-    public static int getUnitCost()
+    public static int getUnitCost(Friendly f)
     {
-        if (cost <= 0) return -1;
-        else return cost;
+        if (f instanceof Militia)
+            return Militia.COST;
+        if (f instanceof Infantry)
+            return Militia.COST;
+        if (f instanceof Knight)
+            return Militia.COST;
+        return -1;
     }
 
 }

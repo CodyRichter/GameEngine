@@ -15,11 +15,11 @@ public class Militia extends Friendly {
     protected static int cooldown = 3;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    private static final int COST = 50;
+    public static final int COST = 50;
 
     public Militia()
     {
-        super(4, 1, 1, 1, COST);
+        super(4, 1, 1, 1);
         this.setSprite("militia");
     }
 
@@ -50,5 +50,9 @@ public class Militia extends Friendly {
     {
         return isComplete;
     }
+
+    //
+    // Economy
+    //
 
 }

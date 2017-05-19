@@ -69,21 +69,21 @@ public class GameMenu extends JPanel{
         String readyColor = "21d164";
 
         if (unitType.equalsIgnoreCase("militia")) {
-            if (Militia.isReadyToSpawn() && Militia.getUnitCost() <= CastleDefense.getBalance())
+            if (Militia.isReadyToSpawn() && Militia.COST <= CastleDefense.getBalance())
                 return getColor(readyColor);
             else
                 return getColor(notReadyColor);
 
         }
         if (unitType.equalsIgnoreCase("infantry")) {
-            if (Infantry.isReadyToSpawn() && Infantry.getUnitCost() <= CastleDefense.getBalance())
+            if (Infantry.isReadyToSpawn() && Infantry.COST <= CastleDefense.getBalance())
                 return getColor(readyColor);
             else
                 return getColor(notReadyColor);
 
         }
         if (unitType.equalsIgnoreCase("knight")) {
-            if (Knight.isReadyToSpawn() && Knight.getUnitCost() <= CastleDefense.getBalance())
+            if (Knight.isReadyToSpawn() && Knight.COST <= CastleDefense.getBalance())
                 return getColor(readyColor);
             else
                 return getColor(notReadyColor);

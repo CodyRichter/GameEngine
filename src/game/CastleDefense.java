@@ -93,10 +93,10 @@ public class CastleDefense {
                 }
             }
 
-            if (u.getX() >= Main.b.getWidth()-50)
+            if (u.getX() >= Main.b.getWidth()-51)
             {
                 double multiplier = u.getCurrentHealth()/u.getMaxHealth();
-                addMoney((int)(u.getUnitCost()*multiplier));
+                addMoney((int)(u.getUnitCost(u)*multiplier));
                 u.kill();
             }
 

@@ -83,9 +83,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Militia" When [M] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_M)
         {
-            if (Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.getUnitCost()) {
+            if (Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.COST) {
                 Militia.startCooldown();
-                CastleDefense.subtractMoney(Militia.getUnitCost());
+                CastleDefense.subtractMoney(Militia.COST);
                 Militia m = new Militia();
                 m.spawn(selectedRow);
             }
@@ -94,9 +94,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Infantry" When [I] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_I)
         {
-            if (Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.getUnitCost()) {
+            if (Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.COST) {
                 Infantry.startCooldown();
-                CastleDefense.subtractMoney(Infantry.getUnitCost());
+                CastleDefense.subtractMoney(Infantry.COST);
                 Infantry i = new Infantry();
                 i.spawn(selectedRow);
             }
@@ -105,9 +105,9 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Infantry" When [K] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_K)
         {
-            if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.getUnitCost()) {
+            if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.COST) {
                 Knight.startCooldown();
-                CastleDefense.subtractMoney(Knight.getUnitCost());
+                CastleDefense.subtractMoney(Knight.COST);
                 Knight k = new Knight();
                 k.spawn(selectedRow);
             }

@@ -15,11 +15,11 @@ public class Infantry extends Friendly {
     protected static int cooldown = 10;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    private static final int COST = 200;
+    public static final int COST = 200;
 
     public Infantry()
     {
-        super(10, 3, 1, 1, COST);
+        super(10, 3, 1, 1);
         this.setSprite("infantry");
     }
 
@@ -48,6 +48,16 @@ public class Infantry extends Friendly {
     public static boolean isReadyToSpawn()
     {
         return isComplete;
+    }
+
+    //
+    // Economy
+    //
+
+    public static int getUnitCost()
+    {
+        if (COST <= 0) return -1;
+        else return COST;
     }
 
 }
