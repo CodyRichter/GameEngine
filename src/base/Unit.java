@@ -112,7 +112,7 @@ public abstract class Unit
         }
         else if (newHealth <= 0) //Automatically Kills base.Unit If Health Is Set To 0 Or Below
         {
-            kill();
+
         }
         else //If Parameters Are Valid, Set base.Unit Health To Desired Value
         {
@@ -126,8 +126,10 @@ public abstract class Unit
     public void damage(double amount)
     {
         currentHealth -= amount;
-        if (currentHealth <= 0) //If base.Unit Takes More Damage Than Health, Kill base.Unit
+        if(currentHealth <= 0){
             kill();
+        }
+
     }
 
     public void heal(double amount)
@@ -187,12 +189,6 @@ public abstract class Unit
             System.out.println("IO Exception " + ioe.getMessage());
         }
         //bounds.setRect(0,0, 50, 100);
-    }
-
-    public void setSprite()
-    {
-        sprite = null;
-        pos = null;
     }
 
     public double getX(){return pos.getX();}

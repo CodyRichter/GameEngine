@@ -85,8 +85,13 @@ public class Main
         // V V V V V V V V V V V V
 
 
-        Enemy e = new Peasant();
-        e.spawn(2);
+        for (int i = 1; i < 4; i++){
+            Enemy e = new Peasant();
+            e.spawn(i);
+        }
+
+
+
     }
 
 }

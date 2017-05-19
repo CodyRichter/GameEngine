@@ -71,10 +71,10 @@ public class Board extends JPanel
         g.setColor(Color.BLACK);
 
         for(Unit u : unitList){
-            //Displays Health Bar Above Unit
-            g2d.drawString("" + (int)u.getCurrentHealth() + "/" + (int)u.getMaxHealth(), (int)u.getX(),(int)u.getY());
-            //Displays Unit
-            g2d.drawImage(u.getSprite(),(int)u.getX(),(int)u.getY(),null);
+                //Displays Health Bar Above Unit
+                g2d.drawString("" + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
+                //Displays Unit
+                g2d.drawImage(u.getSprite(), (int) u.getX(), (int) u.getY(), null);
         }
 
 
@@ -107,7 +107,6 @@ public class Board extends JPanel
      */
     public void removeUnit(Unit u)
     {
-        u.setSprite();
         unitList.remove(u);
     }
 
