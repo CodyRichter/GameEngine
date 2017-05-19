@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Game base.Board That Is Displayed In Background
- * 
+ *
  * @author Cody Richter & Frank Williams
  * @version 1.0
  */
@@ -70,11 +70,13 @@ public class Board extends JPanel
 
         g.setColor(Color.BLACK);
 
-        for(Unit u : unitList){
+        for(Unit u : unitList) {
+            if (!u.isDead){
                 //Displays Health Bar Above Unit
                 g2d.drawString("" + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
                 //Displays Unit
                 g2d.drawImage(u.getSprite(), (int) u.getX(), (int) u.getY(), null);
+            }
         }
 
 

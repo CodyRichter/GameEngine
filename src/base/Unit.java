@@ -26,6 +26,7 @@ public abstract class Unit
     protected int delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
     protected boolean doingAction = false;
     public boolean currentlyAttacking = false;
+    protected boolean isDead = false;
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;

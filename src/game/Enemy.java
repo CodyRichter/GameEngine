@@ -68,8 +68,8 @@ public abstract class Enemy extends Unit
     public void kill()
     {
         CastleDefense.addMoney(rewardMoney);
-        Main.b.removeUnit(this);
-        CastleDefense.enemies.remove(this);
+        isDead = true;
+        pos.setLocation(0,0);
     }
 
 }

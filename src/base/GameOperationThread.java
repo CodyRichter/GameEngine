@@ -42,10 +42,12 @@ public class GameOperationThread implements Runnable
 
         //Updates Unit's Positions On Board And Checks Their Actions
         for(Enemy e : CastleDefense.enemies){
-            CastleDefense.doAction(e);
+            if (!e.isDead)
+                CastleDefense.doAction(e);
         }
         for(Friendly f : CastleDefense.friendlies){
-            CastleDefense.doAction(f);
+            if (!f.isDead)
+                CastleDefense.doAction(f);
         }
 
         //Adds Money To Player Over Time
