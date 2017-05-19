@@ -1,6 +1,11 @@
 package game;
 
+import game.enemies.Peasant;
+import org.omg.CORBA.FREE_MEM;
+
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Frank Williams on 5/8/2017.
@@ -13,8 +18,10 @@ public class CastleDefense {
     public static final int ROW3X = 500;
 
     //Current Wave Player Is On
-    private static int wave = 0;
+    private static int wave = 1;
+    private static int waveControlVariable = 0;
     public static boolean gameOver = false;
+    public static boolean nextWave = false;
 
     //Lists Holding All Units Spawned In On Board
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -23,8 +30,33 @@ public class CastleDefense {
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
     private static int balance = 400;
 
-    public static void nextWave(){
+    private static Timer t = new Timer();
 
+    public static void main(int control){
+
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int icontrol = control;
+                Enemy e = new Peasant();
+                int row = (int) (Math.random() * 3) + 1;
+                e.spawn(row);
+                icontrol--;
+                main(icontrol);
+            }
+        },5000);
+
+
+    }
+
+    public static void nextWave(){
+        wave++;
+        waveControlVariable = 3 * wave;
+        for(Friendly f : friendlies){
+            f.kill();
+            addMoney(500);
+        }
+        main(waveControlVariable);
     }
 
     public static void testEnemySpawn(){
@@ -42,6 +74,7 @@ public class CastleDefense {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
         if (u.getX() < Main.b.getWidth()-50)
         {
+            nextWave = false;
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
@@ -68,8 +101,7 @@ public class CastleDefense {
         }
         else
         {
-
-
+            nextWave = true;
         }
     }
 
@@ -78,6 +110,7 @@ public class CastleDefense {
         //Basic Conditions That Need To Be Met
         if (u.getX() > 0)
         {
+            nextWave = false;
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
