@@ -49,6 +49,9 @@ public class GameOperationThread implements Runnable
             if (!f.isDead)
                 CastleDefense.doAction(f);
         }
+        if(CastleDefense.nextWave){
+            CastleDefense.nextWave();
+        }
 
         //Adds Money To Player Over Time
         fraction += fractionIncrement;

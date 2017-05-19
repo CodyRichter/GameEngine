@@ -86,11 +86,7 @@ public class Main
         // Add Wave Behaviour Here!!!
         // V V V V V V V V V V V V
 
-
-        for (int i = 1; i < 4; i++){
-            Enemy e = new Peasant();
-            e.spawn(i);
-        }
+        CastleDefense.nextWave();
 
         java.util.Timer t = new java.util.Timer();
         t.schedule(new TimerTask() {
