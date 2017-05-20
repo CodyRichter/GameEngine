@@ -23,6 +23,7 @@ public class CastleDefense {
     private static int waveControlVariable = 0;
     public static boolean gameOver = false;
     public static boolean nextWave = false;
+    public static boolean waitingForWave = false;
 
     //Lists Holding All Units Spawned In On Board
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -37,35 +38,40 @@ public class CastleDefense {
 
     public static void main(int control){
         if (control == 0 && nextWave){
+            nextWave = false;
+            waitingForWave = true;
             nextWave();
             return;
-        }
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                int icontrol = control;
-                System.out.println("Enemy Spawn Started");
-                int enemyType = (int) Math.random() * availableEnemies.size();
-                try {
-                    Object e = availableEnemies.get(enemyType).newInstance();
-                    int row = (int) (Math.random() * 3) + 1;
-                    if (e instanceof Enemy){
-                        ((Enemy) e).spawn(row);
+        } else if (control > 0) {
+            waitingForWave = true;
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    int icontrol = control;
+                    System.out.println("Enemy Spawn Started");
+                    int enemyType = (int) (Math.random() * availableEnemies.size());
+                    try {
+                        Object e = availableEnemies.get(enemyType).newInstance();
+                        int row = (int) (Math.random() * 3) + 1;
+                        if (e instanceof Enemy) {
+                            ((Enemy) e).spawn(row);
+                            System.out.println("Enemy Spawned");
+                        }
                         System.out.println("Enemy Spawned");
+                        icontrol--;
+                        waitingForWave = false;
+                    } catch (Exception ie) {
+                        System.out.println(ie.getMessage());
                     }
-                    System.out.println("Enemy Spawned");
-                    icontrol--;
-                }catch (Exception ie){
-                    System.out.println(ie.getMessage());
+                    main(icontrol);
                 }
-                main(icontrol);
-            }
-        },5000);
+            }, 5000);
 
-
+        }
     }
 
     public static void nextWave(){
+        if (waitingForWave) return;
         wave++;
         if (wave == 1){
             availableEnemies.add(Peasant.class);
@@ -77,7 +83,7 @@ public class CastleDefense {
         waveControlVariable = 3 * wave;
         for(Friendly f : friendlies){
             f.kill();
-            addMoney(500);
+            addMoney(50);
         }
         System.out.println("Wave Started");
         main(waveControlVariable);
@@ -119,21 +125,28 @@ public class CastleDefense {
                 }
             }
 
-            if (u.getX() >= Main.b.getWidth()-51)
-            {
-                double multiplier = u.getCurrentHealth()/u.getMaxHealth();
-                addMoney((int)(u.getUnitCost(u)*multiplier));
-                u.kill();
-            }
 
             if (!u.currentlyAttacking) {
                 u.move();
             }
 
         }
-        else
+        else if (u.getX() >= Main.b.getWidth()-51)
         {
-            nextWave = true;
+            double multiplier = u.getCurrentHealth()/u.getMaxHealth();
+            addMoney((int)(u.getUnitCost(u)*multiplier));
+            u.kill();
+        }
+        nextWave = true;
+        for (Friendly f : friendlies){
+            if (!f.isDead()){
+                nextWave = false;
+            }
+        }
+        for (Enemy e : enemies){
+            if (!e.isDead()){
+                nextWave = false;
+            }
         }
     }
 

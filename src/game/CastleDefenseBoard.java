@@ -113,10 +113,12 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
+
         //Moves On To Next Wave
 
         if(e.getKeyCode() == KeyEvent.VK_N){
-            CastleDefense.nextWave();
+            //CastleDefense.nextWave();
+            CastleDefense.addMoney(1000);
         }
 
     }

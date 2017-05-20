@@ -47,7 +47,7 @@ public class GameMenu extends JPanel{
         g.drawString("Balance: " + CastleDefense.getBalance(), this.getWidth()-300, 25);
 
         //Wave Information
-        g.drawString("wave: " + CastleDefense.getWave(), this.getWidth()-300, 50);
+        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-300, 50);
 
         //Avaliable Units
         g.setColor(getCorrectColor("militia"));
