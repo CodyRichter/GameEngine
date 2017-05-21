@@ -34,7 +34,7 @@ public class CastleDefense {
 
     private static Timer t = new Timer();
 
-    public static ArrayList<Class> availableEnemies = new ArrayList<Class>();
+    public static ArrayList<Class> availableEnemies = new ArrayList<>();
 
     public static void main(int control){
         if (control == 0 && nextWave){
@@ -55,15 +55,17 @@ public class CastleDefense {
                         int row = (int) (Math.random() * 3) + 1;
                         if (e instanceof Enemy) {
                             ((Enemy) e).spawn(row);
-                            System.out.println("Enemy Spawned");
+                            System.out.println(e.toString() + " Spawned in row " + row);
                         }
-                        System.out.println("Enemy Spawned");
                         icontrol--;
                         waitingForWave = false;
-                    } catch (Exception ie) {
-                        System.out.println(ie.getMessage());
+                    } catch (InstantiationException ie) {
+                        System.out.println("InstantiationException when spawning enemy: " + ie.getMessage());
+                    } catch (IllegalAccessException iae){
+                        System.out.println("IllegalAccessException when spawning enemy: " + iae.getMessage());
                     }
                     main(icontrol);
+                    System.out.println();
                 }
             }, 5000);
 
@@ -73,19 +75,22 @@ public class CastleDefense {
     public static void nextWave(){
         if (waitingForWave) return;
         wave++;
-        if (wave == 1){
+        if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
             availableEnemies.add(Peasant.class);
-        } else if (wave == 3) {
+        }
+        if (wave >= 3 && !availableEnemies.contains(Archer.class)) {
             availableEnemies.add(Archer.class);
-        } else if (wave == 5) {
+        }
+        if (wave >= 5 && !availableEnemies.contains(Barbarian.class)) {
             availableEnemies.add(Barbarian.class);
         }
+
         waveControlVariable = 3 * wave;
         for(Friendly f : friendlies){
             f.kill();
             addMoney(50);
         }
-        System.out.println("Wave Started");
+        System.out.println("Wave " + wave + " Started \n");
         main(waveControlVariable);
         Main.menu.repaint();
     }

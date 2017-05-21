@@ -179,8 +179,10 @@ public abstract class Unit
         try {
             sprite = ImageIO.read(in);
         } catch (IOException ioe){
-            System.out.println("IO Exception " + ioe.getMessage());
-        }
+            System.out.println("IO Exception when setting sprite: " + ioe.getMessage());
+        } catch (IllegalArgumentException iae){
+                        System.out.println("IllegalArgumentException when setting sprite: " + iae.getMessage());
+                    }
         //bounds.setRect(0,0, 50, 100);
     }
 
