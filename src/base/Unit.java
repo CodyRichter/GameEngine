@@ -27,6 +27,7 @@ public abstract class Unit
     protected boolean doingAction = false;
     public boolean currentlyAttacking = false;
     protected boolean isDead = false;
+    protected boolean areaAttack = false;
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;
@@ -70,6 +71,7 @@ public abstract class Unit
      */
     public void attack(Unit u)
     {
+        if ((!this.hasAreaAttack() && doingAction)) return;
         u.damage(damage);
         doingAction = true;
 
@@ -195,6 +197,9 @@ public abstract class Unit
     public boolean isInAction(){return doingAction;}
 
     public boolean isDead() {return isDead;}
+
+    public boolean hasAreaAttack(){return areaAttack;}
+
     /**
      * Spawns Unit In a Given Row
      */
