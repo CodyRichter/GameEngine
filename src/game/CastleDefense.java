@@ -84,6 +84,7 @@ public class CastleDefense {
         if (wave >= 5 && !availableEnemies.contains(Barbarian.class)) {
             availableEnemies.add(Barbarian.class);
         }
+        if (wave >= 7 && !availableEnemies.contains(Cavalry.class))
 
         waveControlVariable = 3 * wave;
         for(Friendly f : friendlies){
