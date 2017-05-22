@@ -96,6 +96,7 @@ public class CastleDefense {
         System.out.println("Wave " + wave + " Started \n");
         main(waveControlVariable);
         Main.menu.repaint();
+
     }
 
     public static void testEnemySpawn(){
