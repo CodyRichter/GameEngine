@@ -20,6 +20,7 @@ public class Catapult extends Friendly {
     public Catapult() {
         super(10,0,100,1);
         this.setSprite("catapult");
+        delayBetweenAttacks = 6;
     }
 
     @Override

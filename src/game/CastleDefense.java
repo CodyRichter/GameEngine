@@ -39,11 +39,11 @@ public class CastleDefense {
 
     private static ArrayList<Class> availableEnemies = new ArrayList<>();
 
-    public static void main(int control){
-        if (control == 0 && nextWave){
+    public static void main(int control) {
+        if (control == 0 && nextWave) {
             nextWave = false;
             waitingForWave = true;
-            if(Main.VERBOSE) System.out.println("WAITING FOR WAVE");
+            if (Main.VERBOSE) System.out.println("WAITING FOR WAVE");
             nextWave();
             return;
         } else if (control > 0) {
@@ -55,7 +55,8 @@ public class CastleDefense {
                     System.out.println("Enemy Spawn Started");
                     int enemyType = (int) (Math.random() * availableEnemies.size());
                     try {
-                        if(Main.VERBOSE) System.out.println("SPAWNING ENEMY OF TYPE " + availableEnemies.get(enemyType).getName());
+                        if (Main.VERBOSE)
+                            System.out.println("SPAWNING ENEMY OF TYPE " + availableEnemies.get(enemyType).getName());
                         Object e = availableEnemies.get(enemyType).newInstance();
                         int row = (int) (Math.random() * 3) + 1;
                         if (e instanceof Enemy) {
@@ -66,7 +67,7 @@ public class CastleDefense {
                         waitingForWave = false;
                     } catch (InstantiationException ie) {
                         System.out.println("InstantiationException when spawning enemy: " + ie.getMessage());
-                    } catch (IllegalAccessException iae){
+                    } catch (IllegalAccessException iae) {
                         System.out.println("IllegalAccessException when spawning enemy: " + iae.getMessage());
                     }
                     main(icontrol);
