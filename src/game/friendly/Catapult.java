@@ -19,15 +19,14 @@ public class Catapult extends Friendly {
 
     public Catapult() {
         super(10,0,100,1);
-        this.setSprite("peasant");
+        this.setSprite("catapult");
     }
 
     @Override
     public void attack(Unit u) {
         Projectile p = new Projectile();
         p.spawn(this.currentRow);
-        while(p.getX() != this.getX())
-            p.move();
+
         doingAction = true;
 
         //Sets Timer For Cooldown
@@ -44,7 +43,7 @@ public class Catapult extends Friendly {
     public class Projectile extends Friendly {
         public Projectile(){
             super(1,10,1,1);
-            this.setSprite("peasant");
+            this.setSprite("catapultProjectile");
         }
     }
 
