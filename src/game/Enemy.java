@@ -67,6 +67,7 @@ public abstract class Enemy extends Unit
     */
     public void kill()
     {
+        if(Main.VERBOSE) System.out.println(this + " DYING");
         //Main.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         CastleDefense.addMoney(rewardMoney);
         isDead = true;
