@@ -44,6 +44,7 @@ public abstract class Friendly extends Unit
     Spawns Unit Into Game Onto Given Row
      */
     public void spawn(int row){
+        currentRow = row;
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
 
         //Adds Unit To List Of Units On Gameboard

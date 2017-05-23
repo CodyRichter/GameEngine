@@ -44,7 +44,7 @@ public abstract class Enemy extends Unit
 
     public void spawn(int row){
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
-
+        currentRow = row;
         //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);
         CastleDefense.enemies.add(this);

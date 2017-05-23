@@ -26,6 +26,7 @@ public abstract class Unit
     protected double attackRange = 1; //Attacking Range of base.Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
     protected double delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
+    protected int currentRow = 0;
     protected boolean doingAction = false;
     public boolean currentlyAttacking = false;
     protected boolean isDead = false;
