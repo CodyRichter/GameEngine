@@ -1,5 +1,7 @@
 package base;
 
+import game.Main;
+
 import javax.imageio.ImageIO;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -56,6 +58,7 @@ public abstract class Unit
         moveSpeed = speed;
         pos = new Point2D.Double();
 
+        if(Main.VERBOSE) System.out.println(this + " CONSTRUCTED");
         if (spriteToLoad != null && currentPosition != null){
             sprite = spriteToLoad;
             //bounds = currentPosition;
