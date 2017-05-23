@@ -14,7 +14,7 @@ public class Archer extends Enemy
     {
         super(5, 1, 10, 1,30, null);
         this.setSprite("archer");
-        this.delayBetweenAttacks = 3;
+        this.delayBetweenAttacks = 2;
     }
 
     public String toString(){return "Archer";}
