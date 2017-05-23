@@ -67,7 +67,7 @@ public abstract class Enemy extends Unit
     */
     public void kill()
     {
-        Main.b.removeUnit(this);
+        //Main.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         CastleDefense.addMoney(rewardMoney);
         isDead = true;
         pos.setLocation(5,5);
