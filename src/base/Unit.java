@@ -204,6 +204,8 @@ public abstract class Unit
 
     public boolean hasAreaAttack(){return areaAttack;}
 
+    public abstract String toString();
+
     /**
      * Spawns Unit In a Given Row
      */

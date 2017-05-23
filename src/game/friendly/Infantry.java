@@ -61,4 +61,6 @@ public class Infantry extends Friendly {
         else return COST;
     }
 
+    public String toString(){return "Infantry";}
+
 }

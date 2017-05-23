@@ -52,6 +52,8 @@ public class Militia extends Friendly {
         return isComplete;
     }
 
+    public String toString(){return "Militia";}
+
     //
     // Economy
     //

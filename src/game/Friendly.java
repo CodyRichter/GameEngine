@@ -1,6 +1,7 @@
 package game;
 
 import base.Unit;
+import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
@@ -80,9 +81,11 @@ public abstract class Friendly extends Unit
         if (f instanceof Militia)
             return Militia.COST;
         if (f instanceof Infantry)
-            return Militia.COST;
+            return Infantry.COST;
         if (f instanceof Knight)
-            return Militia.COST;
+            return Knight.COST;
+        if (f instanceof Catapult)
+            return Catapult.COST;
         return -1;
     }
 

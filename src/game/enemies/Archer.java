@@ -17,4 +17,6 @@ public class Archer extends Enemy
         this.delayBetweenAttacks = 3;
     }
 
+    public String toString(){return "Archer";}
+
 }

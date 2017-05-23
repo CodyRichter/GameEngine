@@ -60,4 +60,6 @@ public class Knight extends Friendly {
         if (COST <= 0) return -1;
         else return COST;
     }
+
+    public String toString(){return "Knight";}
 }

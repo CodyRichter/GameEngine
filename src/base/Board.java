@@ -6,7 +6,6 @@ import game.GameMenu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -74,6 +73,9 @@ public class Board extends JPanel
 
         for(Unit u : unitList) {
             if (!u.isDead){
+
+                //Displays Name Above Unit
+                g2d.drawString(u.toString(), (int)u.getX(), (int)u.getY()-12);
                 //Displays Health Bar Above Unit
                 g2d.drawString("" + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
                 //Displays Unit

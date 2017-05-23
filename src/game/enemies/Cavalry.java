@@ -11,4 +11,6 @@ public class Cavalry extends Enemy {
         setSprite("cavalry");
     }
 
+    public String toString(){return "Cavalry";}
+
 }

@@ -17,4 +17,6 @@ public class Barbarian extends Enemy
         this.setSprite("barbarian");
     }
 
+    public String toString(){return "Barbarian";}
+
 }

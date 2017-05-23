@@ -16,4 +16,6 @@ public class Peasant extends Enemy
         this.setSprite("peasant");
     }
 
+    public String toString(){return "Peasant";}
+
 }

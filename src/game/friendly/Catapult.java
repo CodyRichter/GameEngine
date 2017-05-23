@@ -20,13 +20,13 @@ public class Catapult extends Friendly {
     public Catapult() {
         super(10,0,100,1);
         this.setSprite("catapult");
-        delayBetweenAttacks = 10;
+        delayBetweenAttacks = 20;
     }
 
     @Override
     public void attack(Unit u) {
-        Friendly p = new CatapultProjectile();
-        //p.spawn(this.currentRow);
+        CatapultProjectile p = new CatapultProjectile();
+        p.spawn(this);
         doingAction = true;
 
         //Sets Timer For Cooldown
@@ -71,4 +71,7 @@ public class Catapult extends Friendly {
         if (COST <= 0) return -1;
         else return COST;
     }
+
+    public String toString(){return "Catapult";}
+
 }
