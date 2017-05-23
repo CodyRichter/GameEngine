@@ -1,8 +1,9 @@
 package game;
 
-import game.enemies.*;
-
-import org.omg.CORBA.FREE_MEM;
+import game.enemies.Archer;
+import game.enemies.Barbarian;
+import game.enemies.Cavalry;
+import game.enemies.Peasant;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -96,10 +97,10 @@ public class CastleDefense {
         }
 
         waveControlVariable = 3 * wave;
-        for(Friendly f : friendlies){
-            f.kill();
-            addMoney(50);
-        }
+//        for(Friendly f : friendlies){
+//            f.kill();
+//            addMoney(50);
+//        }
         System.out.println("Wave " + wave + " Started \n");
         main(waveControlVariable);
         Main.menu.repaint();
