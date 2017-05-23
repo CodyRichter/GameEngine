@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
@@ -105,7 +106,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        //Spawns In Friendly Unit "Infantry" When [K] Is Pressed
+        //Spawns In Friendly Unit "Knight" When [K] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_K)
         {
             if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.COST) {
@@ -113,6 +114,17 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 CastleDefense.subtractMoney(Knight.COST);
                 Knight k = new Knight();
                 k.spawn(selectedRow);
+            }
+        }
+
+        //Spawns In Catapult When [C] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_C){
+
+            if (Catapult.isReadyToSpawn() && CastleDefense.getBalance() >= Catapult.COST) {
+                Catapult.startCooldown();
+                CastleDefense.subtractMoney(Catapult.COST);
+                Catapult c = new Catapult();
+                c.spawn(selectedRow);
             }
         }
 

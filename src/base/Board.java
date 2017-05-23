@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 
 /**
  * Game base.Board That Is Displayed In Background
@@ -17,7 +19,7 @@ import java.util.List;
  */
 public class Board extends JPanel
 {
-    public List<Unit> unitList = new ArrayList<Unit>();
+    public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
 
     Image background;
     public Board()

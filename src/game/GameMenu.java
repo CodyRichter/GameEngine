@@ -1,5 +1,6 @@
 package game;
 
+import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
@@ -59,6 +60,9 @@ public class GameMenu extends JPanel{
         g.setColor(getCorrectColor("knight"));
         g.drawString("[K] Spawn Knight - $350",0, 100);
 
+        g.setColor(getCorrectColor("catapult"));
+        g.drawString("[C] Spawn Catapult - $1000",0, 125);
+
     }
 
     public static Color getColor(String hexadecimal)
@@ -91,6 +95,12 @@ public class GameMenu extends JPanel{
             else
                 return getColor(notReadyColor);
 
+        }
+        if(unitType.equalsIgnoreCase("catapult")) {
+            if (Catapult.isReadyToSpawn() && Catapult.COST <= CastleDefense.getBalance())
+                return getColor(readyColor);
+            else
+                return getColor(notReadyColor);
         }
 
             return getColor("000000");
