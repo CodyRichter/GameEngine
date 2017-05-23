@@ -40,6 +40,7 @@ public class CastleDefense {
         if (control == 0 && nextWave){
             nextWave = false;
             waitingForWave = true;
+            if(Main.VERBOSE) System.out.println("WAITING FOR WAVE");
             nextWave();
             return;
         } else if (control > 0) {
@@ -51,6 +52,7 @@ public class CastleDefense {
                     System.out.println("Enemy Spawn Started");
                     int enemyType = (int) (Math.random() * availableEnemies.size());
                     try {
+                        if(Main.VERBOSE) System.out.println("SPAWNING ENEMY OF TYPE " + availableEnemies.get(enemyType).getName());
                         Object e = availableEnemies.get(enemyType).newInstance();
                         int row = (int) (Math.random() * 3) + 1;
                         if (e instanceof Enemy) {
@@ -75,16 +77,21 @@ public class CastleDefense {
     public static void nextWave(){
         if (waitingForWave) return;
         wave++;
+        if(Main.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
+            if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
             availableEnemies.add(Peasant.class);
         }
         if (wave >= 3 && !availableEnemies.contains(Archer.class)) {
+            if(Main.VERBOSE) System.out.println("ARCHER AVAILABLE");
             availableEnemies.add(Archer.class);
         }
         if (wave >= 5 && !availableEnemies.contains(Barbarian.class)) {
+            if(Main.VERBOSE) System.out.println("BARBARIAN AVAILABLE");
             availableEnemies.add(Barbarian.class);
         }
         if (wave >= 7 && !availableEnemies.contains(Cavalry.class)){
+            if(Main.VERBOSE) System.out.println("CAVALRY AVAILABLE");
             availableEnemies.add(Cavalry.class);
         }
 
@@ -125,6 +132,7 @@ public class CastleDefense {
                 for(Enemy e : enemies) {
                     if (!e.isDead() && e.getX() == i && e.getY() == u.getY()) {
                         u.attack(e);
+                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + e);
                         u.currentlyAttacking = true;
                     } else {
 
@@ -137,6 +145,7 @@ public class CastleDefense {
 
             if (!u.currentlyAttacking) {
                 u.move();
+               // if(Main.VERBOSE) System.out.println(u + " moving");
             }
 
         }
@@ -144,6 +153,7 @@ public class CastleDefense {
         {
             double multiplier = u.getCurrentHealth()/u.getMaxHealth();
             addMoney((int)(u.getUnitCost(u)*multiplier));
+            if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. KILLING...");
             u.kill();
         }
         nextWave = true;
@@ -176,6 +186,7 @@ public class CastleDefense {
                     if (!f.isDead() && f.getX() + 50 == i && u.getY() == f.getY()) {
                         u.attack(f);
                         u.currentlyAttacking = true;
+                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + f);
                     } else {
 
                     }
@@ -184,11 +195,14 @@ public class CastleDefense {
 
             if (!u.currentlyAttacking) {
                 u.move();
+                //if(Main.VERBOSE) System.out.println(u + " moving");
             }
         }
         else if (u.getX() <= 0)
         {
+            if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
             endGame();
+
         }
     }
 

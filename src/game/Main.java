@@ -97,7 +97,7 @@ public class Main
         // Add Wave Behaviour Here!!!
         // V V V V V V V V V V V V
 
-        if(VERBOSE) System.out.println("STARTING GAME");
+        if(VERBOSE) System.out.println("STARTING GAME\n\n");
         CastleDefense.nextWave();
 
     }
