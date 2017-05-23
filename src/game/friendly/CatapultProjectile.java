@@ -9,6 +9,7 @@ public class CatapultProjectile extends Friendly {
     public CatapultProjectile(){
         super(3,10,1,5);
         areaAttack = true;
+        delayBetweenAttacks = 0;
         this.setSprite("catapultProjectile");
     }
 }
