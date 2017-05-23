@@ -61,7 +61,7 @@ public class GameMenu extends JPanel{
         g.drawString("[K] Spawn Knight - $350",0, 100);
 
         g.setColor(getCorrectColor("catapult"));
-        g.drawString("[C] Spawn Catapult - $1000",0, 125);
+        g.drawString("[C] Spawn Catapult - $1000",360, 50);
 
     }
 
