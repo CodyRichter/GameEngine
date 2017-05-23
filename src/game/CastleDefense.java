@@ -6,8 +6,10 @@ import game.enemies.Cavalry;
 import game.enemies.Peasant;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Frank Williams on 5/8/2017.
@@ -27,15 +29,15 @@ public class CastleDefense {
     public static boolean waitingForWave = false;
 
     //Lists Holding All Units Spawned In On Board
-    public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-    public static ArrayList<Friendly> friendlies = new ArrayList<Friendly>();
+    public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
+    public static List<Friendly> friendlies = new CopyOnWriteArrayList<Friendly>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
     private static int balance = 100;
 
     private static Timer t = new Timer();
 
-    public static ArrayList<Class> availableEnemies = new ArrayList<>();
+    private static ArrayList<Class> availableEnemies = new ArrayList<>();
 
     public static void main(int control){
         if (control == 0 && nextWave){

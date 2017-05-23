@@ -42,7 +42,7 @@ public class Catapult extends Friendly {
 
     public class Projectile extends Friendly {
         public Projectile(){
-            super(1,10,1,1);
+            super(2,10,1,1);
             this.setSprite("catapultProjectile");
         }
     }
