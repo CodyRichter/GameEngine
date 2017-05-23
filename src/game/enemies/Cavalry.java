@@ -7,7 +7,7 @@ import game.Enemy;
  */
 public class Cavalry extends Enemy {
     public Cavalry() {
-        super(6,2,3,5,50,null);
+        super(6,2,3,5,60,null);
         setSprite("cavalry");
     }
 

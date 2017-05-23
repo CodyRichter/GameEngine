@@ -12,7 +12,7 @@ public class Archer extends Enemy
 {
     public Archer()
     {
-        super(5, 1, 10, 1,150, null);
+        super(5, 1, 10, 1,30, null);
         this.setSprite("archer");
         this.delayBetweenAttacks = 3;
     }

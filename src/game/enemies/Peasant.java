@@ -12,7 +12,8 @@ public class Peasant extends Enemy
 {
     public Peasant()
     {
-        super(3, 1, 1, 1,50, null);
+        super(3, 1, 1, 1,20, null);
+        moveSpeed = 1.3;
         this.setSprite("peasant");
     }
 

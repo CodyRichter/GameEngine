@@ -25,7 +25,7 @@ public abstract class Unit
     protected double damage = 1; //Amount of Damage Caused per Attack of base.Unit
     protected double attackRange = 1; //Attacking Range of base.Unit
     protected double moveSpeed = 1; //Movement Speed of base.Unit
-    protected int delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
+    protected double delayBetweenAttacks = 1; //Delay Between Attacks (Seconds)
     protected boolean doingAction = false;
     public boolean currentlyAttacking = false;
     protected boolean isDead = false;
@@ -86,7 +86,7 @@ public abstract class Unit
                 doingAction = false;
                 currentlyAttacking = false;
             }
-        }, delayBetweenAttacks*1000);
+        }, (int)(delayBetweenAttacks*1000));
 
     }
 

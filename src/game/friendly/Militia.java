@@ -19,7 +19,7 @@ public class Militia extends Friendly {
 
     public Militia()
     {
-        super(4, 1, 1, 1);
+        super(5, 1, 1, 1);
         this.setSprite("militia");
     }
 
