@@ -20,6 +20,7 @@ public class Militia extends Friendly {
     public Militia()
     {
         super(5, 1, 1, 1);
+        delayBetweenAttacks = 1.3;
         this.setSprite("militia");
     }
 
