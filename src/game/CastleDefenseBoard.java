@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 public class CastleDefenseBoard extends Board implements KeyListener {
 
     public static int selectedRow = 1;
+    private static int rowThing = 0;
 
 
     public CastleDefenseBoard (){
@@ -126,6 +127,18 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 Catapult c = new Catapult();
                 c.spawn(selectedRow);
             }
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            rowThing++;
+            selectedRow = (rowThing % 3) + 1;
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
+            if (rowThing < 0)
+                rowThing = 3;
+            rowThing--;
+            selectedRow = (rowThing % 3) + 1;
         }
 
 
