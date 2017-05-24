@@ -50,6 +50,9 @@ public class GameMenu extends JPanel{
         //Wave Information
         g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-300, 50);
 
+        //Remaining Lives
+        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-300, 75);
+
         //Avaliable Units
         g.setColor(getCorrectColor("militia"));
         g.drawString("[1] Spawn Militia - $50",0, 50);

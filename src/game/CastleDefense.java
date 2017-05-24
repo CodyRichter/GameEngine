@@ -35,6 +35,9 @@ public class CastleDefense {
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
     private static int balance = 100;
 
+    //Amount of Lives Player Has: Player Will Lose a Life If a Unit Gets To The Other Side Of The Board
+    private static int lives = 3;
+
     private static Timer t = new Timer();
 
     private static ArrayList<Class> availableEnemies = new ArrayList<>();
@@ -202,17 +205,21 @@ public class CastleDefense {
                 //if(Main.VERBOSE) System.out.println(u + " moving");
             }
         }
-        else if (u.getX() <= 0)
+        else if (u.getX() <= 0 && !u.isDead())
         {
             if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
             endGame();
+            u.kill();
 
         }
     }
 
     public static void endGame()
     {
+        lives--;
+        if (lives <= 0)
         gameOver = true;
+        Main.menu.repaint();
     }
 
     //
@@ -246,4 +253,6 @@ public class CastleDefense {
     }
 
     public static int getWave() {return wave;}
+
+    public static int getLives() {return lives;}
 }

@@ -77,7 +77,7 @@ public class Board extends JPanel
                 //Displays Name Above Unit
                 g2d.drawString(u.toString(), (int)u.getX(), (int)u.getY()-12);
                 //Displays Health Bar Above Unit
-                g2d.drawString("" + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
+                g2d.drawString("HP: " + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
                 //Displays Unit
                 g2d.drawImage(u.getSprite(), (int) u.getX(), (int) u.getY(), null);
             }
