@@ -12,7 +12,7 @@ public class Peasant extends Enemy
 {
     public Peasant()
     {
-        super(3, 1, 1, 1,20, null);
+        super(3, 1, 1, 1,40, null);
         delayBetweenAttacks = 0.9;
         this.setSprite("peasant");
     }
