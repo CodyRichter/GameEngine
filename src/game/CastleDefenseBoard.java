@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 public class CastleDefenseBoard extends Board implements KeyListener {
 
     public static int selectedRow = 1;
+    private static int rowThing = 0;
 
 
     public CastleDefenseBoard (){
@@ -56,36 +57,12 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         Unit Spawning Row Selected
          */
 
-        //Selects Row 1 With [1] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_1)
-        {
-            if(Main.VERBOSE) System.out.println("SELECTING ROW 1");
-            selectedRow = 1;
-            Main.menu.repaint();
-        }
-
-        //Selects Row 2 With [2] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_2)
-        {
-            if(Main.VERBOSE) System.out.println("SELECTING ROW 2");
-            selectedRow = 2;
-            Main.menu.repaint();
-        }
-
-        //Selects Row 3 With [3] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_3)
-        {
-            if(Main.VERBOSE) System.out.println("SELECTING ROW 3");
-            selectedRow = 3;
-            Main.menu.repaint();
-        }
-
         /*
         Unit Spawning Cooldown
          */
 
-        //Spawns In Friendly Unit "Militia" When [M] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_M)
+        //Spawns In Friendly Unit "Militia" When [1] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_1)
         {
             if (Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.COST) {
                 Militia.startCooldown();
@@ -95,8 +72,8 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        //Spawns In Friendly Unit "Infantry" When [I] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_I)
+        //Spawns In Friendly Unit "Infantry" When [2] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_2)
         {
             if (Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.COST) {
                 Infantry.startCooldown();
@@ -106,8 +83,8 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        //Spawns In Friendly Unit "Knight" When [K] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_K)
+        //Spawns In Friendly Unit "Knight" When [3] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_3)
         {
             if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.COST) {
                 Knight.startCooldown();
@@ -117,8 +94,8 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        //Spawns In Catapult When [C] Is Pressed
-        if (e.getKeyCode() == KeyEvent.VK_C){
+        //Spawns In Catapult When [4] Is Pressed
+        if (e.getKeyCode() == KeyEvent.VK_4){
 
             if (Catapult.isReadyToSpawn() && CastleDefense.getBalance() >= Catapult.COST) {
                 Catapult.startCooldown();
@@ -126,6 +103,20 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 Catapult c = new Catapult();
                 c.spawn(selectedRow);
             }
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            rowThing++;
+            selectedRow = (rowThing % 3) + 1;
+            Main.menu.repaint();
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
+            if (rowThing < 0)
+                rowThing = 3;
+            rowThing--;
+            selectedRow = (rowThing % 3) + 1;
+            Main.menu.repaint();
         }
 
 
