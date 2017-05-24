@@ -24,14 +24,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
     @Override
     public void addUnit(Unit u) {
         super.addUnit(u);
-        if(u instanceof Enemy){
-            // check if it is an enemy and then add it to a random place off the board
-
-        } else if (u instanceof Friendly){
-            //check if it isnt an enemy and add it to the user's side of the board
-        }
     }
-
 
     //
     //
@@ -51,13 +44,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Stops Input If Game Is Over
         if (CastleDefense.gameOver) return;
 
-        /*
-        Unit Spawning Row Selected
-         */
-
-        /*
-        Unit Spawning Cooldown
-         */
 
         //Spawns In Friendly Unit "Militia" When [1] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_1)
@@ -103,6 +89,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
+        //Will Move Selected Row Down 1 When [Down Arrow] Is Pressed
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             if (selectedRow == 3)
                 selectedRow = 1;
@@ -111,6 +98,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             Main.menu.repaint();
         }
 
+        //Will Move Selected Row Up 1 When [Up Arrow] Is Pressed
         if(e.getKeyCode() == KeyEvent.VK_UP) {
             if (selectedRow == 1)
                 selectedRow = 3;
@@ -119,11 +107,8 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             Main.menu.repaint();
         }
 
-
-        //Moves On To Next Wave
-
-        if(e.getKeyCode() == KeyEvent.VK_N){
-            //CastleDefense.nextWave();
+        //ADMIN FEATURE - Adds Money To Player Account
+        if(e.getKeyCode() == KeyEvent.VK_N && Main.ADMINMODE){
             CastleDefense.addMoney(1000);
         }
 
