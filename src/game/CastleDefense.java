@@ -137,7 +137,7 @@ public class CastleDefense {
             {
 
                 for(Enemy e : enemies) {
-                    if (!e.isDead() && e.getX() == i && e.getY() == u.getY()) {
+                    if (!e.isDead() && e.getX() == i && e.getY() == u.getY() && !e.isProjectile()) {
                         u.attack(e);
                         if(Main.VERBOSE) System.out.println(u + " ATTACKING " + e);
                         u.currentlyAttacking = true;
@@ -190,7 +190,7 @@ public class CastleDefense {
             {
 
                 for(Friendly f : friendlies) {
-                    if (!f.isDead() && f.getX() + 50 == i && u.getY() == f.getY()) {
+                    if (!f.isDead() && f.getX() + 50 == i && u.getY() == f.getY()  && !f.isProjectile()) {
                         u.attack(f);
                         u.currentlyAttacking = true;
                         if(Main.VERBOSE) System.out.println(u + " ATTACKING " + f);

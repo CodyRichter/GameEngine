@@ -1,12 +1,12 @@
 package game.friendly;
 
+import base.Unit;
 import game.CastleDefense;
 import game.Friendly;
 import game.Main;
 
 import javax.imageio.ImageIO;
 import java.io.InputStream;
-import java.security.spec.ECField;
 
 /**
  * Created by Cody on 5/23/2017.
@@ -15,6 +15,7 @@ public class CatapultProjectile extends Friendly {
     public CatapultProjectile(){
         super(3,10,1,5);
         areaAttack = true;
+        isProjectile = true;
         delayBetweenAttacks = 0;
 
         InputStream in = getClass().getResourceAsStream("/game/images/cProjectile.png");
@@ -37,6 +38,12 @@ public class CatapultProjectile extends Friendly {
         int y = (int) c.getY();
 
         pos.setLocation(x, y);
+    }
+
+    @Override
+    public void attack(Unit u) {
+        u.damage(damage);
+        this.damage(1);
     }
 
     public String toString(){return "";}

@@ -1,11 +1,7 @@
 package game.enemies;
 
 import base.Unit;
-import game.CastleDefense;
 import game.Enemy;
-import game.Main;
-import game.friendly.Catapult;
-import game.friendly.CatapultProjectile;
 
 import java.util.Timer;
 import java.util.TimerTask;

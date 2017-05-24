@@ -1,5 +1,6 @@
 package game.enemies;
 
+import base.Unit;
 import game.CastleDefense;
 import game.Enemy;
 import game.Main;
@@ -12,8 +13,9 @@ import java.io.InputStream;
  */
 public class ArcherProjectile extends Enemy {
     public ArcherProjectile() {
-        super(3,10,1,5,0,null);
+        super(1,1,1,5,0,null);
         areaAttack = false;
+        isProjectile = true;
         delayBetweenAttacks = 0;
 
         InputStream in = getClass().getResourceAsStream("/game/images/aProjectile.png");
@@ -36,6 +38,13 @@ public class ArcherProjectile extends Enemy {
 
         pos.setLocation(x, y);
     }
+
+    @Override
+    public void attack(Unit u) {
+        u.damage(damage);
+        this.damage(1);
+    }
+
 
     @Override
     public String toString() {

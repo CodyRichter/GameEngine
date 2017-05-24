@@ -31,6 +31,8 @@ public abstract class Unit
     public boolean currentlyAttacking = false;
     protected boolean isDead = false;
     protected boolean areaAttack = false;
+    protected boolean isProjectile = false;
+
 
     //Location Information For Each Unit
     //protected Rectangle2D bounds;
@@ -210,5 +212,7 @@ public abstract class Unit
      * Spawns Unit In a Given Row
      */
     public abstract void spawn(int row);
+
+    public boolean isProjectile(){return isProjectile;}
 
 }
