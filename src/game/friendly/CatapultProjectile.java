@@ -4,6 +4,10 @@ import game.CastleDefense;
 import game.Friendly;
 import game.Main;
 
+import javax.imageio.ImageIO;
+import java.io.InputStream;
+import java.security.spec.ECField;
+
 /**
  * Created by Cody on 5/23/2017.
  */
@@ -12,7 +16,14 @@ public class CatapultProjectile extends Friendly {
         super(3,10,1,5);
         areaAttack = true;
         delayBetweenAttacks = 0;
-        this.setSprite("catapultProjectile");
+
+        InputStream in = getClass().getResourceAsStream("/game/images/cProjectile.png");
+        try {
+            this.setSprite(ImageIO.read(in));
+        } catch (Exception e){
+            System.out.println("Exception when setting cProjectile " + e.getMessage());
+        }
+
     }
 
     public void spawn(Catapult c){
