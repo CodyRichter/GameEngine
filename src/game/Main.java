@@ -25,7 +25,7 @@ public class Main
     public static Thread update;
     //Debug variables
     public static final boolean DEBUG = false;
-    public static final boolean VERBOSE = true;
+    public static final boolean VERBOSE = false;
 
     public static void main(String[] args)
     {

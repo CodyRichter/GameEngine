@@ -1,6 +1,14 @@
 package game.enemies;
 
+import base.Unit;
+import game.CastleDefense;
 import game.Enemy;
+import game.Main;
+import game.friendly.Catapult;
+import game.friendly.CatapultProjectile;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * game.Enemy base.Unit: game.enemies.Peasant
@@ -16,6 +24,24 @@ public class Archer extends Enemy
         this.setSprite("archer");
         this.delayBetweenAttacks = 2;
     }
+    @Override
+    public void attack(Unit u) {
+        ArcherProjectile p = new ArcherProjectile();
+        p.spawn(this);
+        doingAction = true;
+
+        //Sets Timer For Cooldown
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                doingAction = false;
+                currentlyAttacking = false;
+            }
+        }, (int)(delayBetweenAttacks*1000));
+    }
+
+
 
     public String toString(){return "Archer";}
 
