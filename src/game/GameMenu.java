@@ -38,11 +38,11 @@ public class GameMenu extends JPanel{
         //Game Title Information
         g.setFont(titleFont);
         g.setColor(getCorrectColor(""));
-        g.drawString("Castle Defense", this.getWidth()/2 , 2*(this.getHeight()/3));
+        g.drawString("Castle Defense", (this.getWidth()/2)+25 , 2*(this.getHeight()/3));
 
         //Row Selection Control
         g.setFont(normalFont);
-        g.drawString("[1-3] Select Current Row | Current Row: " + CastleDefenseBoard.selectedRow, 0, 25);
+        g.drawString("[Arrow Keys] Select Current Row | Current Row: " + CastleDefenseBoard.selectedRow, 0, 25);
 
         //Economy Information
         g.drawString("Balance: " + CastleDefense.getBalance(), this.getWidth()-300, 25);
@@ -52,16 +52,16 @@ public class GameMenu extends JPanel{
 
         //Avaliable Units
         g.setColor(getCorrectColor("militia"));
-        g.drawString("[M] Spawn Militia - $50",0, 50);
+        g.drawString("[1] Spawn Militia - $50",0, 50);
 
         g.setColor(getCorrectColor("infantry"));
-        g.drawString("[I] Spawn Infantry - $200",0, 75);
+        g.drawString("[2] Spawn Infantry - $200",0, 75);
 
         g.setColor(getCorrectColor("knight"));
-        g.drawString("[K] Spawn Knight - $350",0, 100);
+        g.drawString("[3] Spawn Knight - $350",0, 100);
 
         g.setColor(getCorrectColor("catapult"));
-        g.drawString("[C] Spawn Catapult - $1000",360, 50);
+        g.drawString("[4] Spawn Catapult - $1000",360, 50);
 
     }
 
