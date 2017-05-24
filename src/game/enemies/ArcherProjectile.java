@@ -41,6 +41,7 @@ public class ArcherProjectile extends Enemy {
 
     @Override
     public void attack(Unit u) {
+        if ((!this.hasAreaAttack() && doingAction)) return;
         u.damage(damage);
         this.damage(1);
     }
