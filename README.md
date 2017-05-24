@@ -1,6 +1,5 @@
 # GameEngine
------AP Computer Science Final Project-----
-              Castle Defense
+AP Computer Science Final Project
 -------------------------------------------
 
 Castle Defense is a wave based game that involves both
