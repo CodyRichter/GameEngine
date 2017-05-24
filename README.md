@@ -1,13 +1,23 @@
 # GameEngine
-AP Comp Sci Final Project
+-----AP Computer Science Final Project-----
+              Castle Defense
+-------------------------------------------
 
-This project is a game that involves units battling to reach either side of the screen. You will lose if an enemy unit reaches the far
-left side of the screen. Controls are shown when the game is loaded, and a variety of both friendly and enemy units are implemented.
+Castle Defense is a wave based game that involves both
+friendly and enemy units battling to cross the screen.
+In order to progress to the next wave, all the enemies
+must be killed, and all friendlies must reach the right
+side. However, when enemies reach the far side, its
+game over.
 
-The game is locked at a framerate of 40 FPS
+To start game, run:
+Main.main()
 
-Run Main.main to start playing the game, and use [ESC] to exit when you are done playing.
+Controls:
+Select Row: Arrow Up/Arrow Down
+Spawn Units: Number Keys [1-9]
+Exit Game: [Esc]
 
-Have fun!
-
-- Cody and Frank
+Authors:
+Cody R.
+Frank W.
