@@ -23,10 +23,11 @@ public class CastleDefense {
 
     //Current Wave Player Is On
     private static int wave = 0;
-    private static int waveControlVariable = 0;
+    private static int enemyAmount = 0;
     public static boolean gameOver = false;
     public static boolean nextWave = false;
     public static boolean waitingForWave = false;
+    public static boolean addMoney = true;
 
     //Lists Holding All Units Spawned In On Board
     public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
@@ -102,13 +103,13 @@ public class CastleDefense {
             availableEnemies.add(Cavalry.class);
         }
 
-        waveControlVariable = 3 * wave;
+        enemyAmount = 3 * wave;
 //        for(Friendly f : friendlies){
 //            f.kill();
 //            addMoney(50);
 //        }
         System.out.println("Wave " + wave + " Started \n");
-        main(waveControlVariable);
+        main(enemyAmount);
         Main.menu.repaint();
 
     }

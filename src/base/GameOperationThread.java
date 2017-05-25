@@ -3,7 +3,6 @@ package base;
 import game.CastleDefense;
 import game.Enemy;
 import game.Friendly;
-import game.Main;
 
 import javax.swing.*;
 import java.util.concurrent.Executors;
@@ -22,9 +21,9 @@ public class GameOperationThread implements Runnable
     private JPanel gameMenu;
 
     //Economy Support
-    private int fraction = 1;
+    //private int fraction = 1;
     //Set This Amount To Control Speed That Player Earns Money
-    private int fractionIncrement = 1;
+    //private int fractionIncrement = 1;
     //Set This Amount To Control How Much Money Is Given Each Cycle
     private int amountPerCycle = 5;
 
@@ -54,11 +53,12 @@ public class GameOperationThread implements Runnable
         }
 
         //Adds Money To Player Over Time
-        fraction += fractionIncrement;
-        if (fraction >= 100) {
-            CastleDefense.addMoney(amountPerCycle);
-            fraction = 0;
-            Main.menu.repaint();
-        }
+//        if (CastleDefense.addMoney)
+//        fraction += fractionIncrement;
+//        if (fraction >= 100) {
+//            CastleDefense.addMoney(amountPerCycle);
+//            fraction = 0;
+//            Main.menu.repaint();
+//        }
     }
 }
