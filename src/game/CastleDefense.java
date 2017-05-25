@@ -85,6 +85,7 @@ public class CastleDefense {
     public static void nextWave(){
         if (waitingForWave) return;
         wave++;
+        addMoney(50 * wave);
         if(Main.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
             if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
@@ -237,6 +238,7 @@ public class CastleDefense {
         if (amount < 0) {}
         if (amount > balance) balance = 0;
         else balance -= amount;
+        Main.b.repaint();
     }
 
     /**
@@ -246,6 +248,7 @@ public class CastleDefense {
     {
         if (amount < 0) {}
         else balance += amount;
+        Main.b.repaint();
     }
 
     public static int getBalance()
