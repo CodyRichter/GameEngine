@@ -16,6 +16,9 @@ import java.awt.event.KeyListener;
 public class CastleDefenseBoard extends Board implements KeyListener {
 
     public static int selectedRow = 1;
+    public static boolean showUnitMenu = false;
+    public static boolean showInfoMenu = false;
+
 
     public CastleDefenseBoard (){
         addKeyListener(this); //Registers New Key Listener To Board
@@ -104,6 +107,25 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 selectedRow = 3;
             else
                 selectedRow--;
+            Main.menu.repaint();
+        }
+
+        //Will Toggle Visibility Of Unit Info Menu
+        if(e.getKeyCode() == KeyEvent.VK_U) {
+            showInfoMenu = false;
+            if (showUnitMenu)
+                showUnitMenu = false;
+            else
+                showUnitMenu = true;
+            Main.menu.repaint();
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_I) {
+            showUnitMenu = false;
+            if (showInfoMenu)
+                showInfoMenu = false;
+            else
+                showInfoMenu = true;
             Main.menu.repaint();
         }
 

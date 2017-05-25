@@ -54,6 +54,12 @@ public class Militia extends Friendly {
 
     public String toString(){return "Militia";}
 
+    public static int getUnitCost()
+    {
+        if (COST <= 0) return -1;
+        else return COST;
+    }
+
     //
     // Economy
     //
