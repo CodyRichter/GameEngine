@@ -13,7 +13,7 @@ import java.io.InputStream;
  */
 public class CatapultProjectile extends Friendly {
     public CatapultProjectile(){
-        super(3,10,1,5);
+        super(1,7,1,5);
         areaAttack = true;
         isProjectile = true;
         delayBetweenAttacks = 0;
