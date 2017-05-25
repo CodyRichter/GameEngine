@@ -86,6 +86,9 @@ public class CastleDefense {
         if (waitingForWave) return;
         wave++;
         addMoney(50 * wave);
+        enemies.clear();
+        friendlies.clear();
+        Main.b.unitList.clear();
         if(Main.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
             if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
