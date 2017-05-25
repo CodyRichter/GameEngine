@@ -7,6 +7,8 @@ import base.GameOperationThread;
 import javax.swing.*;
 import java.awt.*;
 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
 /**
  * Runner Class
  *
@@ -48,6 +50,7 @@ public class Main
         frame = new JFrame("Castle Defense");
         frame.setSize((int)width, (int)height);
         frame.setFocusable(false);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setResizable(false);
         if(VERBOSE) System.out.println("JFrame Complete \n");
 
@@ -73,13 +76,13 @@ public class Main
         if(VERBOSE) System.out.println("Menu Complete \n");
 
         //JPanel In JFrame That Hold JPanels - Prevents Screen From Flashing On Update
-        if(VERBOSE) System.out.println("JPanel that does stuff");
+        if(VERBOSE) System.out.println("JPanel BoxLayout Setup - Initializing");
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(menu);
         panel.add(b);
         frame.add(panel);
-        if(VERBOSE) System.out.println("Stuff? Complete\n");
+        if(VERBOSE) System.out.println("JPanel BoxLayout Setup - Complete!\n");
 
 
         //Starts Runnable Thread
