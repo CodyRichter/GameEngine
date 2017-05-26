@@ -5,8 +5,10 @@ import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by frank2williams on 2/5/41.
@@ -23,13 +25,14 @@ public class GameMusicThread implements Runnable {
         ContinuousAudioDataStream loop = null;
 
         try {
-            background = new AudioStream(getClass().getResourceAsStream("/game/sounds/BackgroundDraft.wav"));
-            musicData = background.getData();
-            loop = new ContinuousAudioDataStream(musicData);
-        } catch(IOException error)  {
-            System.out.println("Error Playing Music");
+            InputStream is = getClass().getResourceAsStream("/game/sounds/BackgroundDraft.wav");
+            background = new AudioStream(is);
+            //musicData = background.getData();
+            //loop = new ContinuousAudioDataStream(musicData);
+        } catch(IOException ioe)  {
+            System.out.println(ioe.toString()+ " Error Playing Music " + ioe.getMessage());
 
         }
-        player.start(loop);
+        //player.start(loop);
     }
 }
