@@ -138,7 +138,7 @@ public class CastleDefense {
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
-            for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getAttackRange())*20; i++)
+            for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getRange())*20; i++)
             {
 
                 for(Enemy e : enemies) {
@@ -191,7 +191,7 @@ public class CastleDefense {
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
-            for (int i = (int)u.getX() - ((int)u.getAttackRange())*20; i < (int)u.getX(); i++)
+            for (int i = (int)u.getX() - ((int)u.getRange())*20; i < (int)u.getX(); i++)
             {
 
                 for(Friendly f : friendlies) {

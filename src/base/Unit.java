@@ -12,13 +12,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Contains All Methods for Enemies
+ * Abstract Class: Unit
  *
  * @author Cody Richter
  * @version 1.0
  */
-public abstract class Unit
-{
+public abstract class Unit {
     //Attributes For Each base.Unit
     protected double maxHealth = 1; //Maximum Health base.Unit can have
     protected double currentHealth = 1; //Current Health level of unit
@@ -44,16 +43,25 @@ public abstract class Unit
 
     protected boolean isEnemy; //Defines Unit Allegiance
 
-    protected Unit()
-    {
+    protected Unit() {
 
     }
 
+
     /**
-     * Creates Unit base.Unit With Given Attributes
+     * This Will Create A New Unit (Friendly or Enemy).
+     * This Is The Constructor To Use In The Friendly and Enemy Sub-Classes.
+     * Remember, The Variables Are Protected, So They CAN Be Modified From Any
+     * Sub-Class.
+     *
+     * @param healthLevel
+     * @param damageLevel
+     * @param range
+     * @param speed
+     * @param spriteToLoad
+     * @param currentPosition
      */
-    protected Unit(int healthLevel, int damageLevel, int range, int speed, BufferedImage spriteToLoad, Rectangle2D currentPosition)
-    {
+    protected Unit(int healthLevel, int damageLevel, int range, int speed, BufferedImage spriteToLoad, Rectangle2D currentPosition) {
         maxHealth = healthLevel;
         currentHealth = healthLevel;
         damage = damageLevel;
@@ -61,22 +69,21 @@ public abstract class Unit
         moveSpeed = speed;
         pos = new Point2D.Double();
 
-        if(Main.VERBOSE) System.out.println(this + " CONSTRUCTED");
-        if (spriteToLoad != null && currentPosition != null){
+        if (Main.VERBOSE) System.out.println(this + " CONSTRUCTED");
+        if (spriteToLoad != null && currentPosition != null) {
             sprite = spriteToLoad;
             //bounds = currentPosition;
         }
     }
 
-    //
-    // Abstract Per-base.Unit Methods
-    //
-
     /**
-     * Attacks Target 
+     * Attacks Target "u" - Causes Damage Relative To Area Attack And
+     * The Attack Power Of Attacking Unit. Takes Into Account If The
+     * Attacking Unit Is Currently In Action.
+     *
+     * @param u
      */
-    public void attack(Unit u)
-    {
+    public void attack(Unit u) {
         if ((!this.hasAreaAttack() && doingAction)) return;
         u.damage(damage);
         doingAction = true;
@@ -89,12 +96,15 @@ public abstract class Unit
                 doingAction = false;
                 currentlyAttacking = false;
             }
-        }, (int)(delayBetweenAttacks*1000));
+        }, (int) (delayBetweenAttacks * 1000));
 
     }
 
+
     /**
-     * When base.Unit Dies
+     * Abstract Method That Will Be Run Whenever a Unit
+     * Is Killed. This Must Remove The Unit From All
+     * Updating Lists It Is In, and set isDead = true.
      */
     public abstract void kill();
 
@@ -103,116 +113,224 @@ public abstract class Unit
     //
 
     /**
-     * Sets base.Unit's Health To A Specific Amount
+     * Sets The Unit's Health Directly To A New Value
+     * Will Safely Set Value To Account For Max/Min
+     * Health Values.
+     *
+     * @param newHealth
      */
-    public void setHealth(double newHealth)
-    {
+    public void setHealth(double newHealth) {
         if (newHealth > maxHealth) //Prevents base.Unit From Getting More Health Than Max Amount
         {
             currentHealth = maxHealth;
-        }
-        else if (newHealth <= 0) //Automatically Kills base.Unit If Health Is Set To 0 Or Below
+        } else if (newHealth <= 0) //Automatically Kills base.Unit If Health Is Set To 0 Or Below
         {
 
-        }
-        else //If Parameters Are Valid, Set base.Unit Health To Desired Value
+        } else //If Parameters Are Valid, Set base.Unit Health To Desired Value
         {
             currentHealth = newHealth;
         }
     }
 
     /**
-     * Damages base.Unit By a Given Amount
+     * Will Damage The Unit By A Given Amount.
+     * This Will "Safely Damage" The Unit And Take
+     * Into Account Minimum Health
+     *
+     * @param amount
      */
-    public void damage(double amount)
-    {
+    public void damage(double amount) {
         currentHealth -= amount;
-        if(currentHealth <= 0){
+        if (currentHealth <= 0) {
             kill();
         }
 
     }
 
-    public void heal(double amount)
-    {
+    /**
+     * Will Heal The Unit By A Given Amount.
+     * This Will Safely Heal The Unit And Take
+     * Into Account Maximum Health
+     *
+     * @param amount
+     */
+    public void heal(double amount) {
         currentHealth += amount;
         if (currentHealth > maxHealth) //If base.Unit Is Healed By More Than Max Health, Heal Fully
             currentHealth = maxHealth;
     }
 
 
-    /*
-    Will Move Unit's Point2D That Represents The Position On The Unit - Different Implementation For Friendly and Enemy
+    /**
+     * Moves The Unit Relative To Movement Speed
+     * And In The Correct Direction Based on
+     * Allegiance. This is Called In The Runnable,
+     * So It Must Be Efficient!
+     * Remember, Unit Positions Are Based On The Top
+     * Left Coordinate Of The Sprite.
      */
     public abstract void move();
+
+    /**
+     * Sets The Unit's Sprite From a Currently Loaded BufferedImage
+     *
+     * @param spriteToLoad
+     */
+    public void setSprite(BufferedImage spriteToLoad) {
+        sprite = spriteToLoad;
+    }
+
+    /**
+     * Sets The Unit's Sprite From a Given
+     * File Path. Will Load Image File as a
+     * BufferedImage.
+     *
+     * @param fileName
+     */
+    public void setSprite(String fileName) {
+        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName + ".bmp");
+        try {
+            sprite = ImageIO.read(in);
+        } catch (IOException ioe) {
+            System.out.println("IO Exception when setting sprite: " + ioe.getMessage());
+        } catch (IllegalArgumentException iae) {
+            System.out.println("IllegalArgumentException when setting sprite: " + iae.getMessage());
+        }
+    }
+
+
+    /**
+     * Will Spawn In Unit In A Given Row. When
+     * Implemented, This Should Add The Unit To
+     * The Correct ArrayLists Based on Allegiance.
+     *
+     * @param row
+     */
+    public abstract void spawn(int row);
 
     //
     // Getters
     //
 
-    public double getMaxHealth() //Returns Maximum Health of base.Unit
-    {
+    /**
+     * Returns Max Health of a Unit
+     *
+     * @return
+     */
+    public double getMaxHealth() {
         return maxHealth;
     }
 
-    public double getCurrentHealth() //Returns Current Health of base.Unit
-    {
+    /**
+     * Returns Current Health of a Unit
+     *
+     * @return
+     */
+    public double getCurrentHealth() {
         return currentHealth;
     }
 
-    public double getDamage() //Returns Attack Damage of base.Unit
-    {
+    /**
+     * Returns The Amount of Damage a Unit
+     * Causes Per Attack.
+     *
+     * @return
+     */
+    public double getDamage() {
         return damage;
     }
 
-    public double getRange() //Returns Attack Range of base.Unit
-    {
+    /**
+     * Returns The Attack Range of a Unit
+     *
+     * @return
+     */
+    public double getRange() {
         return attackRange;
     }
 
     /**
-     * Gets Sprite
+     * Returns The Unit's Sprite as a BufferedImage
+     *
+     * @return
      */
-    public BufferedImage getSprite()
-    {
+    public BufferedImage getSprite() {
         return sprite;
     }
 
-    public void setSprite(BufferedImage spriteToLoad) {
-        sprite = spriteToLoad;
+    /**
+     * Returns Unit's X-Coordinate. This Corresponds To The
+     * X In the Position Object Of The Unit.
+     *
+     * @return
+     */
+    public double getX() {
+        return pos.getX();
     }
 
-    public void setSprite(String fileName){
-        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName + ".bmp");
-        try {
-            sprite = ImageIO.read(in);
-        } catch (IOException ioe){
-            System.out.println("IO Exception when setting sprite: " + ioe.getMessage());
-        } catch (IllegalArgumentException iae){
-                        System.out.println("IllegalArgumentException when setting sprite: " + iae.getMessage());
-                    }
-        //bounds.setRect(0,0, 50, 100);
+    /**
+     * Returns Unit's Y-Coordinate. This Corresponds To The
+     * Y In the Position Object Of The Unit.
+     *
+     * @return
+     */
+    public double getY() {
+        return pos.getY();
     }
 
-    public double getX(){return pos.getX();}
+    /**
+     * Returns If Unit Is Currently Doing An Action
+     * With The Runnable Task. If This Is True, It
+     * Is Usually Wise To Cancel Any Other Potential
+     * Moves.
+     *
+     * @return
+     */
+    public boolean isInAction() {
+        return doingAction;
+    }
 
-    public double getY(){return pos.getY();}
+    /**
+     * Returns If The Unit Is Currently Dead. If The
+     * Unit Is Dead, Cancel All Moves The Unit Makes,
+     * and Delete All References To The Unit ASAP.
+     *
+     * @return
+     */
+    public boolean isDead() {
+        return isDead;
+    }
 
-    public double getAttackRange(){return attackRange;}
+    /**
+     * Returns If The Unit Has an Area Attack.
+     * An Area Attack Will Allow One Attack
+     * Animation To Damage All Enemies In Front Of
+     * The Unit, Instead of Just One.
+     *
+     * @return
+     */
+    public boolean hasAreaAttack() {
+        return areaAttack;
+    }
 
-    public boolean isInAction(){return doingAction;}
-
-    public boolean isDead() {return isDead;}
-
-    public boolean hasAreaAttack(){return areaAttack;}
-
+    /**
+     * Returns The Unit's Name To Display Above
+     * The Sprite. Return "" To Not Display A
+     * Name Above The Unit's Sprite.
+     *
+     * @return
+     */
     public abstract String toString();
 
     /**
-     * Spawns Unit In a Given Row
+     * Returns Whether The Unit Is a Projectile.
+     * Projectiles Are Spawned From Other Units,
+     * and Have a Limited Range of Actions.
+     *
+     * @return
      */
-    public abstract void spawn(int row);
-
-    public boolean isProjectile(){return isProjectile;}
+    public boolean isProjectile() {
+        return isProjectile;
+    }
 
 }
