@@ -9,7 +9,10 @@ import javax.imageio.ImageIO;
 import java.io.InputStream;
 
 /**
- * Created by Cody on 5/23/2017.
+ * Friendly Unit: Catapult Projectile (90kg Rock Lobbed Over a Distance Of 300m)
+ *
+ * @author Cody Richter
+ * @version 1.0
  */
 public class CatapultProjectile extends Friendly {
     public CatapultProjectile(){

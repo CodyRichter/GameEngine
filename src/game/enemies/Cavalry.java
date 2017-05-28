@@ -3,7 +3,10 @@ package game.enemies;
 import game.Enemy;
 
 /**
- * Created by frank2williams on 5/22/17.
+ * Enemy Unit: Cavalry
+ *
+ * @author Cody Richter
+ * @version 1.0
  */
 public class Cavalry extends Enemy {
     public Cavalry() {

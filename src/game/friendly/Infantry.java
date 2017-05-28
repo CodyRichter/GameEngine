@@ -7,7 +7,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by Cody on 5/11/2017.
+ * Friendly Unit: Infantry
+ *
+ * @author Cody Richter
+ * @version 1.0
  */
 public class Infantry extends Friendly {
 

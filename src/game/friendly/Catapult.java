@@ -8,7 +8,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by frank2williams on 5/23/17.
+ * Friendly Unit: Catapult
+ *
+ * @author Cody Richter
+ * @version 1.0
  */
 public class Catapult extends Friendly {
     //Spawning Cooldown Variables

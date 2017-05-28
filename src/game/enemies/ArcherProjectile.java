@@ -9,7 +9,10 @@ import javax.imageio.ImageIO;
 import java.io.InputStream;
 
 /**
- * Created by frank2williams on 5/24/17.
+ * Enemy Projectile: Archer Projectile (Arrow)
+ *
+ * @author Cody Richter
+ * @version 1.0
  */
 public class ArcherProjectile extends Enemy {
     public ArcherProjectile() {

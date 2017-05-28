@@ -3,8 +3,8 @@ package game.enemies;
 import game.Enemy;
 
 /**
- * game.Enemy base.Unit: game.enemies.Peasant
- * 
+ * Enemy Unit: Peasant
+ *
  * @author Cody Richter 
  * @version 1.0
  */

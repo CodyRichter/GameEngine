@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * game.Enemy base.Unit: game.enemies.Peasant
+ * Enemy Unit: Archer
  * 
  * @author Cody Richter 
  * @version 1.0
