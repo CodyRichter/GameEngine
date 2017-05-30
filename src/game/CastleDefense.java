@@ -17,9 +17,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CastleDefense {
 
     //X-Values Of Board JPanel That Rows Are At And That Units Are Spawned At
-    public static final int ROW1X = 100;
-    public static final int ROW2X = 300;
-    public static final int ROW3X = 500;
+    public static final int ROW1Y = 100;
+    public static final int ROW2Y = 300;
+    public static final int ROW3Y = 500;
 
     //Current Wave Player Is On
     private static int wave = 0;

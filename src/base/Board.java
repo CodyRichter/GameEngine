@@ -19,6 +19,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Board extends JPanel
 {
     public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
+    private String message = "";
 
     Image background;
     public Board()
@@ -45,15 +46,19 @@ public class Board extends JPanel
         //Paints Row 1 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW1X, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW1Y, 3000, 100);
         //Paints Row 2 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW2X, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW2Y, 3000, 100);
         //Paints Row 3 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW3X, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW3Y, 3000, 100);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("SansSerif", Font.BOLD, 100));
+        g.drawString(message,0,CastleDefense.ROW1Y);
 
         //
         // Game Over Code
@@ -71,6 +76,8 @@ public class Board extends JPanel
 
         g.setColor(Color.BLACK);
 
+        g.setFont(new Font("SansSerif", Font.PLAIN, 10));
+
         for(Unit u : unitList) {
             if (!u.isDead){
 
@@ -86,6 +93,11 @@ public class Board extends JPanel
 
 
     }
+
+    public void setMessage(String msg){
+        message = msg;
+    }
+
 
 
     /*

@@ -56,11 +56,11 @@ public abstract class Friendly extends Unit
         int x = 0;
         int y;
         if (row == 1)
-            y = CastleDefense.ROW1X;
+            y = CastleDefense.ROW1Y;
         else if (row == 2)
-            y = CastleDefense.ROW2X;
+            y = CastleDefense.ROW2Y;
         else
-            y = CastleDefense.ROW3X;
+            y = CastleDefense.ROW3Y;
         //bounds.add(x, y);
         pos.setLocation(x, y);
     }

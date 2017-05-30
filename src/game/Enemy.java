@@ -53,11 +53,11 @@ public abstract class Enemy extends Unit
         int x = Main.b.getWidth();
         int y;
         if (row == 1)
-            y = CastleDefense.ROW1X;
+            y = CastleDefense.ROW1Y;
         else if (row == 2)
-            y = CastleDefense.ROW2X;
+            y = CastleDefense.ROW2Y;
         else
-            y = CastleDefense.ROW3X;
+            y = CastleDefense.ROW3Y;
         //bounds.add(x, y);
         pos.setLocation(x, y);
     }
