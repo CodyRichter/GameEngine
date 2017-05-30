@@ -74,6 +74,7 @@ public abstract class Friendly extends Unit
         //Main.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         isDead = true;
         pos.setLocation(5,5);
+        Main.menu.repaint();
     }
 
     public static int getUnitCost(Friendly f)
