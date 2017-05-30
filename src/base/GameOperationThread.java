@@ -5,6 +5,7 @@ import game.Enemy;
 import game.Friendly;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -29,10 +30,17 @@ public class GameOperationThread implements Runnable
 
     public GameOperationThread(JPanel board, JPanel menu)
     {
+
+        //will set the update speed proportional to screen size so it isn't annoyingly slow on really big screens(my laptop) or impossible on smaller screens(School Computers)
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        int period = (int) (10 *(1920/width));
+
+
         gameBoard = board;
         gameMenu = menu;
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(this, 0, 10 , TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(this, 0, period , TimeUnit.MILLISECONDS);
     }
 
     public void run()

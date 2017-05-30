@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.GameGraphicsThread;
+import base.GameMusicThread;
 import base.GameOperationThread;
 
 import javax.swing.*;
@@ -25,6 +26,7 @@ public class Main
     public static JPanel menu;
     public static Thread graphics;
     public static Thread update;
+    public static Thread music;
     //Debug variables
     public static final boolean DEBUG = false;
     public static final boolean VERBOSE = false;
@@ -89,8 +91,11 @@ public class Main
         if(VERBOSE) System.out.println("STARTING RUNNABLE THREADS\n");
         graphics = new Thread(new GameGraphicsThread(b, menu));
         update = new Thread(new GameOperationThread(b,menu));
+        music = new Thread(new GameMusicThread());
         graphics.start();
         update.start();
+        //music.start();
+
         if(VERBOSE) System.out.println("THREADS STARTED\n");
 
         //Sets The Frames Visible In Panel [ORDER MATTERS]
