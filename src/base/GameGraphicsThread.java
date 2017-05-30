@@ -23,7 +23,7 @@ public class GameGraphicsThread implements Runnable
         gameBoard = board;
         gameMenu = menu;
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(this, 0, 10 , TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(this, 0, 15 , TimeUnit.MILLISECONDS);
     }
 
     public void run()

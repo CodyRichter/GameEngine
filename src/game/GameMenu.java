@@ -99,7 +99,7 @@ public class GameMenu extends JPanel {
         g.fillRect(this.getWidth()-325,0,20, this.getHeight());
 
         //Economy Information
-        g.drawString("Balance: " + CastleDefense.getBalance(), this.getWidth() - 300, 25);
+        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth() - 300, 25);
 
         //Wave Information
         g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth() - 300, 50);
