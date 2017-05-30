@@ -27,7 +27,7 @@ public abstract class Enemy extends Unit
     /**
      * Makes new enemy unit with given attributes
      */
-    public Enemy(int healthLevel, int damageLevel, int range, int speed, int money, BufferedImage sprite)
+    public Enemy(int healthLevel, int damageLevel, int range, double speed, int money, BufferedImage sprite)
     {
         super(healthLevel, damageLevel, range, (speed * -1),sprite,null);
         rewardMoney = money;

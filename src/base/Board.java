@@ -57,8 +57,8 @@ public class Board extends JPanel
         g.fillRect(0, CastleDefense.ROW3Y, 3000, 100);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("SansSerif", Font.BOLD, 100));
-        g.drawString(message,0,CastleDefense.ROW1Y);
+        g.setFont(new Font("SansSerif", Font.PLAIN, 100));
+        g.drawString(message,0,CastleDefense.ROW2Y);
 
         //
         // Game Over Code
@@ -76,7 +76,7 @@ public class Board extends JPanel
 
         g.setColor(Color.BLACK);
 
-        g.setFont(new Font("SansSerif", Font.PLAIN, 10));
+        g.setFont(new Font("SansSerif", Font.ITALIC, 15));
 
         for(Unit u : unitList) {
             if (!u.isDead){

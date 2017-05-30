@@ -61,7 +61,7 @@ public abstract class Unit {
      * @param spriteToLoad
      * @param currentPosition
      */
-    protected Unit(int healthLevel, int damageLevel, int range, int speed, BufferedImage spriteToLoad, Rectangle2D currentPosition) {
+    protected Unit(int healthLevel, int damageLevel, int range, double speed, BufferedImage spriteToLoad, Rectangle2D currentPosition) {
         maxHealth = healthLevel;
         currentHealth = healthLevel;
         damage = damageLevel;
