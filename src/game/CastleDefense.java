@@ -210,12 +210,15 @@ public class CastleDefense {
                 //if(Main.VERBOSE) System.out.println(u + " moving");
             }
         }
-        else if (u.getX() <= 0 && !u.isDead())
+        else if (u.getX() <= 0 && !u.isDead() && !u.isProjectile())
         {
             if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
             endGame();
             u.kill();
-
+        }
+        else if (u.getX() <= 0 && !u.isDead() && u.isProjectile())
+        {
+            if (Main.VERBOSE) System.out.println(u + " (PROJECTILE) HAS REACHED THE END OF BOARD. KILLING...");
         }
     }
 
