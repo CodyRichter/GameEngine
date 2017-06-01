@@ -19,7 +19,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Board extends JPanel
 {
     public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
-    private String message = "";
+    protected String message = "";
 
     Image background;
     public Board()
