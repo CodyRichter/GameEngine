@@ -15,7 +15,7 @@ public class CastleDefenseTutorial {
 
     private static class TutorialEnemy extends Enemy {
         public TutorialEnemy(){
-            super(3, 1, 1, 0.5,60, null);
+            super(3, 0, 1, 0.5,40, null);
             this.setSprite("peasant");
         }
 
