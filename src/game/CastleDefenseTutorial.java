@@ -45,19 +45,33 @@ public class CastleDefenseTutorial {
             @Override
             public void run() {
                 Main.b.setMessage("Press Arrow Keys to change the Row.");
+                Enemy e = new TutorialEnemy();
+                e.spawn(3);
             }
         },20000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("Good Luck Commander!");
+                Main.b.setMessage("Press [I] for controls.");
             }
         },25000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("");
+                Main.b.setMessage("After all friendly units cross the screen, the next wave will begin");
             }
         },30000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setMessage("Good Luck Commander!");
+            }
+        },35000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setMessage("");
+            }
+        },40000);
     }
 }
