@@ -74,6 +74,7 @@ public class GameMenu extends JPanel {
             g.drawString("[1-9]: Spawn Units", 500, 50);
             g.drawString("[Arrow Keys]: Select Row", 500, 75);
             g.drawString("[Esc]: Exit Game", 500, 100);
+            g.drawString("[Space]: Pause Game", 500, 125);
         }
 
         //This Is Displayed Regardless of Selected Menu
