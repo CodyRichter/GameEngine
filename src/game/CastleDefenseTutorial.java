@@ -1,9 +1,5 @@
 package game;
 
-import base.Board;
-import base.GameOperationThread;
-import game.enemies.Peasant;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,7 +11,7 @@ public class CastleDefenseTutorial {
 
     private static class TutorialEnemy extends Enemy {
         public TutorialEnemy(){
-            super(3, 0, 1, 0.5,40, null);
+            super(3, 0, 1, 1,40, null);
             this.setSprite("peasant");
         }
 
