@@ -26,23 +26,23 @@ public class CastleDefenseTutorial {
     }
 
     public static void main(){
-        Main.b.setMessage("Hello! Welcome to castle defense!");
+        Main.b.setMessage("Hello! Welcome to Castle Defense!");
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Enemy e = new TutorialEnemy();
                 e.spawn(1);
-                Main.b.setMessage("This is an enemy fighter from the Kingdom of Addison Wesley.");
+                Main.b.setMessage("This is an Enemy Soldier");
             }
         },5000);
         t.schedule(new TimerTask() {
             @Override
-            public void run() {Main.b.setMessage("You're trying to protect your castle from the enemy horde.");
+            public void run() {Main.b.setMessage("You Must Defend Our Land!");
             }
         },10000);
         t.schedule(new TimerTask() {
             @Override
-            public void run() {Main.b.setMessage("Press [1] to spawn a militia to defeat the enemy.");
+            public void run() {Main.b.setMessage("Press [1] to Spawn Militia!");
             }
         },15000);
         t.schedule(new TimerTask() {
@@ -54,7 +54,7 @@ public class CastleDefenseTutorial {
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("Good luck");
+                Main.b.setMessage("Good Luck Commander!");
             }
         },25000);
         t.schedule(new TimerTask() {
