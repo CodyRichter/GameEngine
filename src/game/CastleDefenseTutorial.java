@@ -58,9 +58,15 @@ public class CastleDefenseTutorial {
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("After all friendly units cross the screen, the next wave will begin");
+                Main.b.setMessage("After all friendly units cross the screen");
             }
         },30000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setMessage("The next wave will begin.");
+            }
+        },32500);
         t.schedule(new TimerTask() {
             @Override
             public void run() {

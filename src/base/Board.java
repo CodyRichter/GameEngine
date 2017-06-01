@@ -4,8 +4,12 @@ import game.CastleDefense;
 import game.CastleDefenseBoard;
 import game.GameMenu;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -20,10 +24,17 @@ public class Board extends JPanel
 {
     public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
     protected String message = "";
+    BufferedImage damage1;
+    BufferedImage damage2;
+    BufferedImage damage3;
+
 
     Image background;
     public Board()
     {
+        damage1 = makeBufferedImage("damage1.png");
+        damage2 = makeBufferedImage("damage2.png");
+        damage3 = makeBufferedImage("damage3.png");
         setBackgroundColor("42f448");
         //repaint();
     }
@@ -88,6 +99,15 @@ public class Board extends JPanel
                 g2d.drawString("HP: " + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
                 //Displays Unit
                 g2d.drawImage(u.getSprite(), (int) u.getX(), (int) u.getY(), null);
+
+
+                //Displays Damage To Unit Relative To Health
+                if (u.getCurrentHealth() < 3*u.getMaxHealth()/4 && u.getCurrentHealth() > 2*u.getMaxHealth()/4)
+                    g2d.drawImage(damage1, (int) u.getX(), (int) u.getY(), null);
+                else if (u.getCurrentHealth() < 2*u.getMaxHealth()/4 && u.getCurrentHealth() > u.getMaxHealth()/4)
+                    g2d.drawImage(damage2, (int) u.getX(), (int) u.getY(), null);
+                else if (u.getCurrentHealth() < u.getMaxHealth()/4)
+                    g2d.drawImage(damage3, (int) u.getX(), (int) u.getY(), null);
             }
         }
 
@@ -109,6 +129,22 @@ public class Board extends JPanel
         this.setBackground(Color.decode(color));
     }
 
+
+
+    /*
+    Creates A Buffered Image From Input Location. Include File Type.
+     */
+    public BufferedImage makeBufferedImage(String fileName) {
+        InputStream in = getClass().getResourceAsStream("/game/images/" + fileName);
+        try {
+            return ImageIO.read(in);
+        } catch (IOException ioe) {
+            System.out.println("IO Exception when setting sprite: " + ioe.getMessage());
+        } catch (IllegalArgumentException iae) {
+            System.out.println("IllegalArgumentException when setting sprite: " + iae.getMessage());
+        }
+        return null; //Error If File Is Invalid
+    }
 
 
     /**
