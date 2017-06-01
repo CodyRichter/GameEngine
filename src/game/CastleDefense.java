@@ -25,6 +25,7 @@ public class CastleDefense {
     private static int wave = 0;
     private static int enemyAmount = 0;
     public static boolean gameOver = false;
+    public static boolean paused = false;
     public static boolean nextWave = false;
     public static boolean waitingForWave = false;
     public static boolean addMoney = true;

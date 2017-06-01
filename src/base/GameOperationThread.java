@@ -46,7 +46,7 @@ public class GameOperationThread implements Runnable
     public void run()
     {
         if (CastleDefense.gameOver) return;
-
+        if (CastleDefense.paused) return;
         //Updates Unit's Positions On Board And Checks Their Actions
         for(Enemy e : CastleDefense.enemies){
             if (!e.isDead)
