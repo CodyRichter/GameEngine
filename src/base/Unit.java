@@ -31,6 +31,7 @@ public abstract class Unit {
     protected boolean isDead = false;
     protected boolean areaAttack = false;
     protected boolean isProjectile = false;
+    protected boolean isSiegeWeapon = false;
 
 
     //Location Information For Each Unit
@@ -334,5 +335,7 @@ public abstract class Unit {
     public boolean isProjectile() {
         return isProjectile;
     }
+
+    public boolean isSiegeWeapon() {return isSiegeWeapon;}
 
 }

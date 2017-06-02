@@ -148,16 +148,11 @@ public class CastleDefense {
                         u.attack(e);
                         if(Main.VERBOSE) System.out.println(u + " ATTACKING " + e);
                         u.currentlyAttacking = true;
-                    } else {
-
-                    }
-
-
+                    } else {}
                 }
             }
 
-
-            if (!u.currentlyAttacking) {
+            if (!u.currentlyAttacking && (!u.isSiegeWeapon() || nextWave)) {
                 u.move();
                // if(Main.VERBOSE) System.out.println(u + " moving");
             }
