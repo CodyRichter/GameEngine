@@ -23,6 +23,7 @@ public class Knight extends Friendly {
     public Knight()
     {
         super(12, 4, 1, 3);
+        delayBetweenAttacks = 3;
         this.setSprite("knight");
     }
 
