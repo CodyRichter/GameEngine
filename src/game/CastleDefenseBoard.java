@@ -134,6 +134,10 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             CastleDefense.addMoney(1000);
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_V && Main.ADMINMODE){
+            Main.VERBOSE  = !Main.VERBOSE;
+        }
+
         if(e.getKeyCode() == KeyEvent.VK_SPACE && CastleDefense.getWave() >= 1){
             CastleDefense.paused = !CastleDefense.paused;
             message = (CastleDefense.paused ? "[Game Paused]" : "");
