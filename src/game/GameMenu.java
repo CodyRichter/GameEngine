@@ -46,20 +46,20 @@ public class GameMenu extends JPanel {
             g.setColor(getCorrectColor(""));
             g.drawString("Avaliable", 0, ((int)((Main.screenHeight/1080)*50)));
             g.drawString("Units", 0, ((int)((Main.screenHeight/1080)*80)));
-            g.fillRect(130,0,20, this.getHeight());
+            g.fillRect((((int)((Main.screenWidth/1920)*130))),0,20, this.getHeight());
 
             //Avaliable Units
             g.setColor(getCorrectColor("militia"));
-            g.drawString("[1] Militia - $" + Militia.getUnitCost(), 150, ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int)((Main.screenWidth/1920)*150)))), ((int)((Main.screenHeight/1080)*25)));
 
             g.setColor(getCorrectColor("infantry"));
-            g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), 150, 2* ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((((int)((Main.screenWidth/1920)*150)))), 2* ((int)((Main.screenHeight/1080)*25)));
 
             g.setColor(getCorrectColor("knight"));
-            g.drawString("[3] Knight - $" + Knight.getUnitCost(), 150, 3 * ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int)((Main.screenWidth/1920)*150)))), 3 * ((int)((Main.screenHeight/1080)*25)));
 
             g.setColor(getCorrectColor("catapult"));
-            g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), 150, 4 * ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int)((Main.screenWidth/1920)*150)))), 4 * ((int)((Main.screenHeight/1080)*25)));
 
         }
         else if (CastleDefenseBoard.showInfoMenu)
@@ -72,11 +72,11 @@ public class GameMenu extends JPanel {
             g.drawString("Frank W.", 0, 3 * ((int)((Main.screenHeight/1080)*25)));
 
             //Controls
-            g.drawString("Game Controls:", 500, ((int)((Main.screenHeight/1080)*25)));
-            g.drawString("[1-9]: Spawn Units", 500, 2 * ((int)(((Main.screenHeight/1080)*25))));
-            g.drawString("[Arrow Keys]: Select Row", 500, 3 * ((int)((Main.screenHeight/1080)*25)));
-            g.drawString("[Esc]: Exit Game", 500, 4 * ((int)((Main.screenHeight/1080)*25)));
-            g.drawString("[Space]: Pause Game", 500, 5 * ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("Game Controls:", ((((int)((Main.screenWidth/1920)*500)))), ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[1-9]: Spawn Units", ((((int)((Main.screenWidth/1920)*500)))), 2 * ((int)(((Main.screenHeight/1080)*25))));
+            g.drawString("[Arrow Keys]: Select Row", ((((int)((Main.screenWidth/1920)*500)))), 3 * ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[Esc]: Exit Game", ((((int)((Main.screenWidth/1920)*500)))), 4 * ((int)((Main.screenHeight/1080)*25)));
+            g.drawString("[Space]: Pause Game", ((((int)((Main.screenWidth/1920)*500)))), 5 * ((int)((Main.screenHeight/1080)*25)));
         }
 
         //This Is Displayed Regardless of Selected Menu
@@ -85,30 +85,30 @@ public class GameMenu extends JPanel {
 
         //Unit Quick Info Items
         g.setColor(getCorrectColor("militia"));
-        g.drawString("[1]", this.getWidth()-425, ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("[1]", this.getWidth()-((int)((Main.screenWidth/1920)*425)), ((int)((Main.screenHeight/1080)*25)));
 
         g.setColor(getCorrectColor("infantry"));
-        g.drawString("[2]", this.getWidth()-425, 2 * ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("[2]", this.getWidth()-((int)((Main.screenWidth/1920)*425)), 2 * ((int)((Main.screenHeight/1080)*25)));
 
         g.setColor(getCorrectColor("knight"));
-        g.drawString("[3]", this.getWidth()-425, 3 * ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("[3]", this.getWidth()-((int)((Main.screenWidth/1920)*425)), 3 * ((int)((Main.screenHeight/1080)*25)));
 
         g.setColor(getCorrectColor("catapult"));
-        g.drawString("[4]", this.getWidth()-425, 4 * ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("[4]", this.getWidth()-((int)((Main.screenWidth/1920)*425)), 4 * ((int)((Main.screenHeight/1080)*25)));
 
         //Divider Between Unit Info And Other Info
         g.setColor(getCorrectColor(""));
         g.setFont(normalFont);
-        g.fillRect(this.getWidth()-325,0,20, this.getHeight());
+        g.fillRect(this.getWidth()-((int)((Main.screenWidth/1920)*325)),0,((int)((Main.screenWidth/1920)*20)), this.getHeight());
 
         //Economy Information
-        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth() - 300, ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth()-((int)((Main.screenWidth/1920)*300)), ((int)((Main.screenHeight/1080)*25)));
 
         //Wave Information
-        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth() - 300, 2 * ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-((int)((Main.screenWidth/1920)*300)), 2 * ((int)((Main.screenHeight/1080)*25)));
 
         //Remaining Lives
-        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth() - 300,  3 * ((int)((Main.screenHeight/1080)*25)));
+        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)((Main.screenWidth/1920)*300)),  3 * ((int)((Main.screenHeight/1080)*25)));
 
     }
 
