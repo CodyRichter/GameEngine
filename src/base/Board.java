@@ -110,11 +110,11 @@ public class Board extends JPanel
 
 
                 //Displays Damage To Unit Relative To Health
-                if (u.getCurrentHealth() < 3*u.getMaxHealth()/4 && u.getCurrentHealth() > 2*u.getMaxHealth()/4)
+                if (u.getCurrentHealth() <= 3*u.getMaxHealth()/4 && u.getCurrentHealth() >= 2*u.getMaxHealth()/4)
                     g2d.drawImage(damage1, (int) u.getX(), (int) u.getY(), null);
-                else if (u.getCurrentHealth() < 2*u.getMaxHealth()/4 && u.getCurrentHealth() > u.getMaxHealth()/4)
+                else if (u.getCurrentHealth() <= 2*u.getMaxHealth()/4 && u.getCurrentHealth() >= u.getMaxHealth()/4)
                     g2d.drawImage(damage2, (int) u.getX(), (int) u.getY(), null);
-                else if (u.getCurrentHealth() < u.getMaxHealth()/4)
+                else if (u.getCurrentHealth() <= u.getMaxHealth()/4)
                     g2d.drawImage(damage3, (int) u.getX(), (int) u.getY(), null);
             }
         }
