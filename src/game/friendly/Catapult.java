@@ -23,6 +23,7 @@ public class Catapult extends Friendly {
     public Catapult() {
         super(10,0,100,1);
         this.setSprite("catapult");
+        isSiegeWeapon = true;
         delayBetweenAttacks = 20;
     }
 
