@@ -10,7 +10,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -23,7 +25,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Board extends JPanel
 {
     public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
-    protected String message = "";
+    protected String titleMessage = "";
+    protected String notification = "";
     BufferedImage damage1;
     BufferedImage damage2;
     BufferedImage damage3;
@@ -69,7 +72,12 @@ public class Board extends JPanel
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("SansSerif", Font.PLAIN, 100));
-        g.drawString(message,0,CastleDefense.ROW2Y);
+        g.drawString(titleMessage,0,CastleDefense.ROW2Y);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("SansSerif", Font.PLAIN, 40));
+        g.drawString(notification,this.getWidth()/2,this.getHeight()/2);
+
 
         //
         // Game Over Code
@@ -114,8 +122,8 @@ public class Board extends JPanel
 
     }
 
-    public void setMessage(String msg){
-        message = msg;
+    public void setTitleMessage(String msg){
+        titleMessage = msg;
     }
 
 
@@ -168,6 +176,35 @@ public class Board extends JPanel
     public List<Unit> getUnits()
     {
         return unitList;
+    }
+
+    private boolean readyToSend = true;
+    private List<String> messages = new ArrayList<>(); //Holds Messages To Send
+
+    public void sendNotification(String message)
+    {
+        if (!messages.contains(message)) messages.add(message);
+
+        if (readyToSend && messages.size() > 0)
+        {
+            readyToSend = false;
+            notification = messages.get(0);
+            java.util.Timer t = new java.util.Timer();
+
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                notification = "";
+                readyToSend = true;
+                messages.remove(message);
+                if (messages.size() > 0)
+                {
+                    sendNotification(messages.get(0));
+                }
+
+                }
+            }, 1000);
+        }
     }
 
 

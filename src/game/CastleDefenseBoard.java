@@ -140,7 +140,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE && CastleDefense.getWave() >= 1){
             CastleDefense.paused = !CastleDefense.paused;
-            message = (CastleDefense.paused ? "[Game Paused]" : "");
+            titleMessage = (CastleDefense.paused ? "[Game Paused]" : "");
 
         }
 
