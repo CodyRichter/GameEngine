@@ -30,7 +30,10 @@ public class Main
     //Debug variables
     public static final boolean DEBUG = false;
     public static boolean VERBOSE = true;
-    public static final boolean ADMINMODE = true;
+    public static final boolean ADMINMODE = false;
+    //Screen scaling stuff
+    public static double screenWidth;
+    public static double screenHeight;
 
     public static void main(String[] args)
     {
@@ -43,14 +46,15 @@ public class Main
 
         //Initial Screen Size Information
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth();
-        double height = screenSize.getHeight();
+        screenWidth = screenSize.getWidth();
+        screenHeight = screenSize.getHeight();
+        System.out.println(screenHeight);
 
-        int menuSize = (int)(height/8);
+        int menuSize = (int)(screenHeight/8);
         //Main JFrame Setup
         if(VERBOSE) System.out.println("INITIAL JFrame SETUP");
         frame = new JFrame("Castle Defense");
-        frame.setSize((int)width, (int)height);
+        frame.setSize((int)screenWidth, (int)screenHeight);
         frame.setFocusable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -59,9 +63,9 @@ public class Main
         //Game JPanel Setup
         if(VERBOSE) System.out.println("GAME BOARD SETUP");
         b = new CastleDefenseBoard();
-        b.setBounds(0,menuSize+5,(int)width, (int)height-menuSize);
+        b.setBounds(0,menuSize+5,(int)screenWidth, (int)screenHeight-menuSize);
         //b.setSize((int) width, (int)height-menuSize);
-        b.setPreferredSize(new Dimension((int)width,(int)height-menuSize));
+        b.setPreferredSize(new Dimension((int)screenWidth,(int)screenHeight-menuSize));
         b.setLayout(null);
         b.setOpaque(true);
         b.setFocusable(true);
@@ -72,9 +76,9 @@ public class Main
         if(VERBOSE) System.out.println("MENU SETUP");
         menu = new GameMenu();
         menu.setLayout(null);
-        menu.setBounds(0,0,(int)width, menuSize);
+        menu.setBounds(0,0,(int)screenWidth, menuSize);
         menu.setOpaque(true);
-        menu.setPreferredSize(new Dimension((int)width,menuSize));
+        menu.setPreferredSize(new Dimension((int)screenWidth,menuSize));
         if(VERBOSE) System.out.println("Menu Complete \n");
 
         //JPanel In JFrame That Hold JPanels - Prevents Screen From Flashing On Update
