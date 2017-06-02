@@ -220,6 +220,8 @@ public class CastleDefense {
         else if (u.getX() <= 0 && !u.isDead() && u.isProjectile())
         {
             if (Main.VERBOSE) System.out.println(u + " (PROJECTILE) HAS REACHED THE END OF BOARD. KILLING...");
+            u.kill();
+
         }
     }
 
