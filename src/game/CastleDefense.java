@@ -114,6 +114,7 @@ public class CastleDefense {
 //            addMoney(50);
 //        }
         System.out.println("Wave " + wave + " Started \n");
+        Main.b.sendNotification("Wave " + wave + " Started!");
         main(enemyAmount);
         Main.menu.repaint();
 
@@ -165,8 +166,14 @@ public class CastleDefense {
         else if (u.getX() >= Main.b.getWidth()-51)
         {
             double multiplier = u.getCurrentHealth()/u.getMaxHealth();
-            addMoney((int)(u.getUnitCost(u)*multiplier));
+            int amount = (int)(u.getUnitCost(u)*multiplier);
+            addMoney(amount);
             if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. KILLING...");
+            if (!u.toString().equals(""))
+            {
+                Main.b.sendNotification("Recieved $" + amount + " For " + u.toString());
+            }
+
             u.kill();
         }
         nextWave = true;

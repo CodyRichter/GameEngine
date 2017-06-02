@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Enemy extends Unit
 {
-    private int rewardMoney;
+    protected int rewardMoney;
 
     /**
      * Makes new enemy unit
@@ -63,6 +63,14 @@ public abstract class Enemy extends Unit
     }
 
     /*
+    Returns Amount Of Money You Get For Killing a Unit
+     */
+    public int getRewardMoney()
+    {
+        return rewardMoney;
+    }
+
+    /*
     Kills An Enemy and Removes It From The Board
     */
     public void kill()
@@ -70,6 +78,9 @@ public abstract class Enemy extends Unit
         if(Main.VERBOSE) System.out.println(this + " DYING");
         //Main.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         CastleDefense.addMoney(rewardMoney);
+        if (getRewardMoney() > 0)
+            Main.b.sendNotification("Recieved $" + getRewardMoney() + "!");
+
         isDead = true;
         pos.setLocation(5,5);
         Main.menu.repaint();

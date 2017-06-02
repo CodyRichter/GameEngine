@@ -22,29 +22,29 @@ public class CastleDefenseTutorial {
     }
 
     public static void main(){
-        Main.b.setMessage("Hello! Welcome to Castle Defense!");
+        Main.b.setTitleMessage("Hello! Welcome to Castle Defense!");
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Enemy e = new TutorialEnemy();
                 e.spawn(1);
-                Main.b.setMessage("This is an Enemy Soldier");
+                Main.b.setTitleMessage("This is an Enemy Soldier");
             }
         },5000);
         t.schedule(new TimerTask() {
             @Override
-            public void run() {Main.b.setMessage("You Must Defend Our Land!");
+            public void run() {Main.b.setTitleMessage("You Must Defend Our Land!");
             }
         },10000);
         t.schedule(new TimerTask() {
             @Override
-            public void run() {Main.b.setMessage("Press [1] to Spawn Militia!");
+            public void run() {Main.b.setTitleMessage("Press [1] to Spawn Militia!");
             }
         },15000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("Press Arrow Keys to change the Row.");
+                Main.b.setTitleMessage("Press Arrow Keys to change the Row.");
                 Enemy e = new TutorialEnemy();
                 e.spawn(3);
             }
@@ -52,31 +52,31 @@ public class CastleDefenseTutorial {
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("Press [I] for controls.");
+                Main.b.setTitleMessage("Press [I] for controls.");
             }
         },25000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("After all friendly units cross the screen");
+                Main.b.setTitleMessage("After all friendly units cross the screen");
             }
         },30000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("The next wave will begin.");
+                Main.b.setTitleMessage("The next wave will begin.");
             }
         },32500);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("Good Luck Commander!");
+                Main.b.setTitleMessage("Good Luck Commander!");
             }
         },35000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setMessage("");
+                Main.b.setTitleMessage("");
             }
         },40000);
     }
