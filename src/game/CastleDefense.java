@@ -158,7 +158,7 @@ public class CastleDefense {
             }
 
         }
-        else if (u.getX() >= Main.b.getWidth()-(((int)(Main.widthFactor * 50))- 1))
+        else if (u.getX() >= Main.b.getWidth()-(((int)(Main.widthFactor * 50))))
         {
             double multiplier = u.getCurrentHealth()/u.getMaxHealth();
             int amount = (int)(u.getUnitCost(u)*multiplier);
@@ -259,7 +259,7 @@ public class CastleDefense {
     {
         if (amount < 0) {}
         else balance += amount;
-        Main.b.repaint();
+        Main.menu.repaint();
     }
 
     public static int getBalance()
