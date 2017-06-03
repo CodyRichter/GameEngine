@@ -3,6 +3,7 @@ package base;
 import game.CastleDefense;
 import game.CastleDefenseBoard;
 import game.GameMenu;
+import game.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -71,11 +72,11 @@ public class Board extends JPanel
         g.fillRect(0, CastleDefense.ROW3Y, 3000, 100);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("SansSerif", Font.PLAIN, 100));
+        g.setFont(new Font("SansSerif", Font.PLAIN, (int)(Main.widthFactor * 100)));
         g.drawString(titleMessage,0,CastleDefense.ROW2Y);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("SansSerif", Font.PLAIN, 40));
+        g.setFont(new Font("SansSerif", Font.PLAIN, (int)(Main.heightFactor * 40)));
         g.drawString(notification,this.getWidth()/2,this.getHeight()/2);
 
 
@@ -95,13 +96,13 @@ public class Board extends JPanel
 
         g.setColor(Color.BLACK);
 
-        g.setFont(new Font("SansSerif", Font.ITALIC, 15));
+        g.setFont(new Font("SansSerif", Font.ITALIC, (int)(Main.heightFactor * 15)));
 
         for(Unit u : unitList) {
             if (!u.isDead){
 
                 //Displays Name Above Unit
-                g2d.drawString(u.toString(), (int)u.getX(), (int)u.getY()-12);
+                g2d.drawString(u.toString(), (int)u.getX(), (int)u.getY()-((int)(Main.heightFactor * 12)));
                 //Displays Health Bar Above Unit
                 if (!u.isProjectile())
                 g2d.drawString("HP: " + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());

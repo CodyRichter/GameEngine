@@ -34,7 +34,8 @@ public class Main
     //Screen scaling stuff
     public static double screenWidth;
     public static double screenHeight;
-
+    public static double widthFactor;
+    public static double heightFactor;
     public static void main(String[] args)
     {
         /*
@@ -48,6 +49,11 @@ public class Main
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = screenSize.getWidth();
         screenHeight = screenSize.getHeight();
+
+        widthFactor = (screenWidth/1920.0);
+        heightFactor = (screenHeight/1080.0);
+
+
         System.out.println(screenHeight);
 
         int menuSize = (int)(screenHeight/8);

@@ -3,6 +3,7 @@ package base;
 import game.CastleDefense;
 import game.Enemy;
 import game.Friendly;
+import game.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,9 +33,7 @@ public class GameOperationThread implements Runnable
     {
 
         //will set the update speed proportional to screen size so it isn't annoyingly slow on really big screens(my laptop) or impossible on smaller screens(School Computers)
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth();
-        int period = (int) (10 *(1920/width));
+        int period = (int) (10 *(1/Main.widthFactor));
 
 
         gameBoard = board;
