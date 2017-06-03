@@ -133,14 +133,14 @@ public class CastleDefense {
     public static void doAction(Friendly u)
     {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
-        if (u.getX() < Main.b.getWidth()-50)
+        if (u.getX() < Main.b.getWidth()-((int)(Main.widthFactor * 50)))
         {
             nextWave = false;
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
-            for (int i = (int)u.getX()+50; i < (50+(int)u.getX())+(u.getRange())*20; i++)
+            for (int i = (int)u.getX()+((int)(Main.widthFactor * 50)); i < (((int)(Main.widthFactor * 50))+(int)u.getX())+(u.getRange())*((int)(Main.widthFactor * 20)); i++)
             {
 
                 for(Enemy e : enemies) {
@@ -158,7 +158,7 @@ public class CastleDefense {
             }
 
         }
-        else if (u.getX() >= Main.b.getWidth()-51)
+        else if (u.getX() >= Main.b.getWidth()-(((int)(Main.widthFactor * 50))- 1))
         {
             double multiplier = u.getCurrentHealth()/u.getMaxHealth();
             int amount = (int)(u.getUnitCost(u)*multiplier);
@@ -194,11 +194,11 @@ public class CastleDefense {
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
-            for (int i = (int)u.getX() - ((int)u.getRange())*20; i < (int)u.getX(); i++)
+            for (int i = (int)u.getX() - ((int)u.getRange())*((int)(Main.widthFactor * 20)); i < (int)u.getX(); i++)
             {
 
                 for(Friendly f : friendlies) {
-                    if (!f.isDead() && f.getX() + 50 == i && u.getY() == f.getY()  && !f.isProjectile()) {
+                    if (!f.isDead() && f.getX() + ((int)(Main.widthFactor * 50)) == i && u.getY() == f.getY()  && !f.isProjectile()) {
                         u.attack(f);
                         u.currentlyAttacking = true;
                         if(Main.VERBOSE) System.out.println(u + " ATTACKING " + f);

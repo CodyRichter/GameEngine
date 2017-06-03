@@ -8,7 +8,10 @@ import game.Main;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -61,15 +64,15 @@ public class Board extends JPanel
         //Paints Row 1 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW1Y, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW1Y, 3000, (int)(Main.heightFactor * 100));
         //Paints Row 2 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW2Y, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW2Y, 3000, (int)(Main.heightFactor * 100));
         //Paints Row 3 With Correct Color (Highlighted If Selected)
         if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
         else {g.setColor(GameMenu.getColor("ffffff"));}
-        g.fillRect(0, CastleDefense.ROW3Y, 3000, 100);
+        g.fillRect(0, CastleDefense.ROW3Y, 3000, (int)(Main.heightFactor * 100));
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("SansSerif", Font.PLAIN, (int)(Main.widthFactor * 100)));
@@ -100,6 +103,7 @@ public class Board extends JPanel
 
         for(Unit u : unitList) {
             if (!u.isDead){
+                AffineTransformOp at = new AffineTransformOp(AffineTransform.getScaleInstance(Main.widthFactor,Main.heightFactor),null);
 
                 //Displays Name Above Unit
                 g2d.drawString(u.toString(), (int)u.getX(), (int)u.getY()-((int)(Main.heightFactor * 12)));
@@ -107,16 +111,16 @@ public class Board extends JPanel
                 if (!u.isProjectile())
                 g2d.drawString("HP: " + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
                 //Displays Unit
-                g2d.drawImage(u.getSprite(), (int) u.getX(), (int) u.getY(), null);
+                g2d.drawImage(u.getSprite(), at,(int) u.getX(), (int) u.getY());
 
 
                 //Displays Damage To Unit Relative To Health
                 if (u.getCurrentHealth() <= 3*u.getMaxHealth()/4 && u.getCurrentHealth() >= 2*u.getMaxHealth()/4)
-                    g2d.drawImage(damage1, (int) u.getX(), (int) u.getY(), null);
+                    g2d.drawImage(damage1, at, (int) u.getX(), (int) u.getY());
                 else if (u.getCurrentHealth() <= 2*u.getMaxHealth()/4 && u.getCurrentHealth() >= u.getMaxHealth()/4)
-                    g2d.drawImage(damage2, (int) u.getX(), (int) u.getY(), null);
+                    g2d.drawImage(damage2, at, (int) u.getX(), (int) u.getY());
                 else if (u.getCurrentHealth() <= u.getMaxHealth()/4)
-                    g2d.drawImage(damage3, (int) u.getX(), (int) u.getY(), null);
+                    g2d.drawImage(damage3, at, (int) u.getX(), (int) u.getY());
             }
         }
 

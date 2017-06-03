@@ -3,6 +3,7 @@ package base;
 import game.Main;
 
 import javax.imageio.ImageIO;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -257,9 +258,7 @@ public abstract class Unit {
      *
      * @return
      */
-    public BufferedImage getSprite() {
-        return sprite;
-    }
+    public BufferedImage getSprite() {return sprite;}
 
     /**
      * Returns Unit's X-Coordinate. This Corresponds To The
