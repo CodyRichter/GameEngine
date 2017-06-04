@@ -28,7 +28,7 @@ public class CastleDefense {
     public static boolean paused = false;
     public static boolean nextWave = false;
     public static boolean waitingForWave = false;
-    public static boolean addMoney = true;
+    public static boolean tutorial = true;
 
     //Lists Holding All Units Spawned In On Board
     public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
@@ -85,6 +85,22 @@ public class CastleDefense {
 
     public static void nextWave(){
         if (waitingForWave) return;
+        if (tutorial) return;
+        for (Friendly f : friendlies){
+            if (!f.isDead() && f.isSiegeWeapon()){
+                double multiplier = f.getCurrentHealth()/f.getMaxHealth();
+                int amount = (int)(f.getUnitCost(f)*multiplier);
+                addMoney(amount);
+                if(Main.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
+                if (!f.toString().equals(""))
+                {
+                    Main.b.sendNotification("Recieved $" + amount + " For " + f.toString());
+                }
+
+                f.kill();
+
+            }
+        }
         wave++;
         addMoney(50 * wave);
         enemies.clear();
@@ -109,10 +125,6 @@ public class CastleDefense {
         }
 
         enemyAmount = 3 * wave;
-//        for(Friendly f : friendlies){
-//            f.kill();
-//            addMoney(50);
-//        }
         System.out.println("Wave " + wave + " Started \n");
         Main.b.sendNotification("Wave " + wave + " Started!");
         main(enemyAmount);
@@ -155,6 +167,8 @@ public class CastleDefense {
             if (!u.currentlyAttacking && (!u.isSiegeWeapon() || nextWave)) {
                 u.move();
                // if(Main.VERBOSE) System.out.println(u + " moving");
+            } else if (u.isSiegeWeapon() && (nextWave || waitingForWave)){
+                u.move();
             }
 
         }
@@ -173,7 +187,7 @@ public class CastleDefense {
         }
         nextWave = true;
         for (Friendly f : friendlies){
-            if (!f.isDead()){
+            if (!f.isDead() && !f.isSiegeWeapon()){
                 nextWave = false;
             }
         }

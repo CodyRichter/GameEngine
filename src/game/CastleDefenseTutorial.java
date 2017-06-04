@@ -77,6 +77,7 @@ public class CastleDefenseTutorial {
             @Override
             public void run() {
                 Main.b.setTitleMessage("");
+                CastleDefense.tutorial = false;
             }
         },40000);
     }
