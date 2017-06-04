@@ -7,6 +7,7 @@ import base.GameOperationThread;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -36,6 +37,9 @@ public class Main
     public static double screenHeight;
     public static double widthFactor;
     public static double heightFactor;
+    //why did I name everything factor
+    public static final double[][] FACTORS = {{1440.0,900.0},{1920.0,1080.0},{2048.0,1152.0},{2880.0,1800.0},{3840.0,2400.0}};
+    public static int factor = 1;
     public static void main(String[] args)
     {
         /*
@@ -50,8 +54,8 @@ public class Main
         screenWidth = screenSize.getWidth();
         screenHeight = screenSize.getHeight();
 
-        widthFactor = (screenWidth/1920.0);
-        heightFactor = (screenHeight/1080.0);
+        widthFactor = (screenWidth/FACTORS[factor][0]);
+        heightFactor = (screenHeight/FACTORS[factor][1]);
 
 
         System.out.println(screenHeight);

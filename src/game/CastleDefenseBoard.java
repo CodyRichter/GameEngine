@@ -129,6 +129,30 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             Main.menu.repaint();
         }
 
+        //Change scale
+        if(e.getKeyCode() == KeyEvent.VK_EQUALS){
+            if (Main.factor == 0)
+                Main.factor = Main.FACTORS.length;
+            else
+                Main.factor--;
+
+            Main.widthFactor = (Main.screenWidth/Main.FACTORS[Main.factor][0]);
+            Main.heightFactor = (Main.screenHeight/Main.FACTORS[Main.factor][1]);
+            Main.menu.repaint();
+            Main.b.repaint();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_MINUS){
+            if (Main.factor == Main.FACTORS.length)
+                Main.factor = 0;
+            else
+                Main.factor++;
+
+            Main.widthFactor = (Main.screenWidth/Main.FACTORS[Main.factor][0]);
+            Main.heightFactor = (Main.screenHeight/Main.FACTORS[Main.factor][1]);
+            Main.menu.repaint();
+            Main.b.repaint();
+        }
+
         //ADMIN FEATURE - Adds Money To Player Account
         if(e.getKeyCode() == KeyEvent.VK_N && Main.ADMINMODE){
             CastleDefense.addMoney(1000);

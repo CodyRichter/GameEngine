@@ -39,7 +39,7 @@ public class GameOperationThread implements Runnable
         gameBoard = board;
         gameMenu = menu;
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(this, 0, period , TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(this, 0, period, TimeUnit.MILLISECONDS);
     }
 
     public void run()

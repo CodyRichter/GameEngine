@@ -22,9 +22,9 @@ public class GameMenu extends JPanel {
         //this.setBackground(Color.decode("#42f448"));
         //Sets Font For Text In Menu
 
-        int fontSize = (int)(24 * Main.heightFactor);
-        normalFont = new Font("Verdana", Font.BOLD, fontSize);
-        titleFont = new Font("SansSerif", Font.ITALIC, 50);
+
+        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Main.heightFactor));
+        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Main.heightFactor));
 
     }
 
@@ -34,6 +34,8 @@ public class GameMenu extends JPanel {
     }
 
     private void displayBoard(Graphics g) {
+        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Main.heightFactor));
+        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Main.heightFactor));
         if (!CastleDefenseBoard.showUnitMenu && !CastleDefenseBoard.showInfoMenu) {
 
             //Shows Information On Each Unit Type
@@ -77,6 +79,8 @@ public class GameMenu extends JPanel {
             g.drawString("[Arrow Keys]: Select Row", ((((int)(Main.widthFactor *500)))), 3 * ((int)(Main.heightFactor *25)));
             g.drawString("[Esc]: Exit Game", ((((int)(Main.widthFactor *500)))), 4 * ((int)(Main.heightFactor *25)));
             g.drawString("[Space]: Pause Game", ((((int)(Main.widthFactor *500)))), 5 * ((int)(Main.heightFactor *25)));
+            g.drawString("[Equals]: Zoom In", ((((int)(Main.widthFactor *1000)))), 1 * ((int)(Main.heightFactor *25)));
+            g.drawString("[Minus]: Zoom Out", ((((int)(Main.widthFactor *1000)))), 2 * ((int)(Main.heightFactor *25)));
         }
 
         //This Is Displayed Regardless of Selected Menu
