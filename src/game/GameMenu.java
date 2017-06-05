@@ -114,6 +114,9 @@ public class GameMenu extends JPanel {
         //Remaining Lives
         g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)(Main.widthFactor *300)),  3 * ((int)(Main.heightFactor *25)));
 
+        //High score
+        g.drawString("High Score: " + CastleDefense.highestWave, this.getWidth()-((int)(Main.widthFactor *300)),  4 * ((int)(Main.heightFactor *25)));
+
     }
 
     private Color getCorrectColor(String unitType) {

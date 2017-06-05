@@ -15,7 +15,7 @@ import java.util.TimerTask;
  */
 public class Catapult extends Friendly {
     //Spawning Cooldown Variables
-    protected static int cooldown = 10;
+    protected static int cooldown = 30;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
     public static final int COST = 1000;
@@ -47,6 +47,7 @@ public class Catapult extends Friendly {
 
     public static void startCooldown()
     {
+        if (Main.ADMINMODE && Main.NOCOOLDOWN) return;
         isComplete = false;
         Main.menu.repaint();
 

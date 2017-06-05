@@ -55,7 +55,6 @@ public class CastleDefense {
             return;
         } else if (control > 0) {
             waitingForWave = true;
-            enemyAmount = control; //to keep track while paused
             t.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -72,6 +71,7 @@ public class CastleDefense {
                             System.out.println(e.toString() + " Spawned in row " + row);
                         }
                         icontrol--;
+                        enemyAmount = control; //to keep track while paused
                         waitingForWave = false;
                     } catch (InstantiationException ie) {
                         System.out.println("InstantiationException when spawning enemy: " + ie.getMessage());
@@ -81,7 +81,7 @@ public class CastleDefense {
                     main(icontrol);
                     System.out.println();
                 }
-            }, 5000);
+            }, ((Main.ADMINMODE && Main.ACTIONMODE) ? 1500 : 5000));
 
         }
     }
@@ -269,7 +269,7 @@ public class CastleDefense {
         gameOver = true;
         Main.saveData[0] = "T";
         Main.saveData[1] = "" + wave;
-
+        Main.b.repaint();
         SaveEditor.writeToFile(Main.saveFile,Main.saveData);
     }
 

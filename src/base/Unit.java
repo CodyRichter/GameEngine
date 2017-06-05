@@ -68,7 +68,7 @@ public abstract class Unit {
         currentHealth = healthLevel;
         damage = damageLevel;
         attackRange = range;
-        moveSpeed = speed;
+        moveSpeed = (((Main.ADMINMODE && Main.ACTIONMODE && !(this.getClass().getName().contains("Projectile"))) ? 10 : 1) *speed);
         pos = new Point2D.Double();
 
         if (Main.VERBOSE) System.out.println(this + " CONSTRUCTED");

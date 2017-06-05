@@ -36,6 +36,7 @@ public class Militia extends Friendly {
 
     public static void startCooldown()
     {
+        if (Main.ADMINMODE && Main.NOCOOLDOWN) return;
         isComplete = false;
         Main.menu.repaint();
 

@@ -79,7 +79,7 @@ public abstract class Enemy extends Unit
         //Main.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         CastleDefense.addMoney(rewardMoney);
         if (getRewardMoney() > 0)
-            Main.b.sendNotification("Recieved $" + getRewardMoney() + "!");
+            Main.b.sendNotification("Recieved $" + getRewardMoney() + " for killing " + this.toString());
 
         isDead = true;
         pos.setLocation(5,5);
