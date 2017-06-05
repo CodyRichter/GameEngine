@@ -30,6 +30,8 @@ public class CastleDefense {
     public static boolean waitingForWave = false;
     public static boolean tutorial = true;
 
+    public static int highestWave = 0;
+
     //Lists Holding All Units Spawned In On Board
     public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
     public static List<Friendly> friendlies = new CopyOnWriteArrayList<Friendly>();
@@ -244,8 +246,13 @@ public class CastleDefense {
     public static void endGame()
     {
         lives--;
-        if (lives <= 0)
-        gameOver = true;
+        if (lives <= 0) {
+            gameOver = true;
+            Main.saveData[0] = "T";
+            Main.saveData[1] = "" + wave;
+
+            SaveEditor.writeToFile(Main.saveFile,Main.saveData);
+        }
         Main.menu.repaint();
     }
 

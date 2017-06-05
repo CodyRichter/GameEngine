@@ -4,10 +4,12 @@ import base.Board;
 import base.GameGraphicsThread;
 import base.GameMusicThread;
 import base.GameOperationThread;
+import com.sun.corba.se.impl.orbutil.CacheTable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
+import java.io.File;
+import java.io.IOException;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -40,6 +42,10 @@ public class Main
     //why did I name everything factor
     public static final double[][] FACTORS = {{1440.0,900.0},{1920.0,1080.0},{2048.0,1152.0},{2880.0,1800.0},{3840.0,2400.0}};
     public static int factor = 1;
+
+    public static File saveFile;
+    public static String[] saveData;
+
     public static void main(String[] args)
     {
         /*
@@ -59,8 +65,8 @@ public class Main
 
 
         System.out.println(screenHeight);
-
         int menuSize = (int)(screenHeight/8);
+
         //Main JFrame Setup
         if(VERBOSE) System.out.println("INITIAL JFrame SETUP");
         frame = new JFrame("Castle Defense");
@@ -116,14 +122,31 @@ public class Main
         frame.setVisible(true);
         menu.setVisible(true);
 
-        //
-        // Add Wave Behaviour Here!!!
-        // V V V V V V V V V V V V
-        CastleDefenseTutorial.main();
+        //Setting up save
+        try{
+            saveFile = SaveEditor.createFile();
+            saveData = SaveEditor.readFile(saveFile);
+
+            //
+            // Add Wave Behaviour Here!!!
+            // V V V V V V V V V V V V
+            CastleDefense.highestWave = Integer.parseInt(saveData[1]);
+            if(!saveData[0].equals("T")) {
+                CastleDefense.tutorial = false;
+                CastleDefenseTutorial.main();
+            } else {
+                CastleDefense.nextWave();
+            }
+        } catch (Exception e){
+            System.out.println("Save data failed, going to default " + e.getMessage());
+            CastleDefenseTutorial.main();
+        }
         if(VERBOSE) System.out.println("STARTING GAME\n\n");
-        //CastleDefense.nextWave();
 
     }
+
+
+
 
 }
 
