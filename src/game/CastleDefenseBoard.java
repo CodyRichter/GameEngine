@@ -39,7 +39,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
     {
         //Closes Game When [Esc] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-
             CastleDefense.endGame();
             System.exit(0);
         }

@@ -233,7 +233,7 @@ public class CastleDefense {
         else if (u.getX() <= 0 && !u.isDead() && !u.isProjectile())
         {
             if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
-            endGame();
+            loseLife();
             u.kill();
         }
         else if (u.getX() <= 0 && !u.isDead() && u.isProjectile())
@@ -255,17 +255,22 @@ public class CastleDefense {
         main(enemyAmount);
     }
 
-    public static void endGame()
+    public static void loseLife()
     {
         lives--;
         if (lives <= 0) {
-            gameOver = true;
-            Main.saveData[0] = "T";
-            Main.saveData[1] = "" + wave;
-
-            SaveEditor.writeToFile(Main.saveFile,Main.saveData);
+            endGame();
         }
         Main.menu.repaint();
+    }
+
+
+    public static void endGame() {
+        gameOver = true;
+        Main.saveData[0] = "T";
+        Main.saveData[1] = "" + wave;
+
+        SaveEditor.writeToFile(Main.saveFile,Main.saveData);
     }
 
     //

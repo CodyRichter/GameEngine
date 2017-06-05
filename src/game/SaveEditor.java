@@ -50,10 +50,11 @@ public class SaveEditor {
     }
 
     public static void writeToFile(File file, String toWrite){
-        Charset charset = Charset.forName("US-ASCII");
-        String s = toWrite;
-        try (BufferedWriter writer = Files.newBufferedWriter(file.toPath(), charset)) {
-            writer.write(s, 0, s.length());
+        try{
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(toWrite);
+            bw.close();
         } catch (IOException x) {
             System.out.println("IOException when writing to file: " + x.toString());
         }
