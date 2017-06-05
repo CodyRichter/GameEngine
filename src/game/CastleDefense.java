@@ -55,6 +55,7 @@ public class CastleDefense {
             return;
         } else if (control > 0) {
             waitingForWave = true;
+            enemyAmount = control; //to keep track while paused
             t.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -241,6 +242,17 @@ public class CastleDefense {
             u.kill();
 
         }
+    }
+
+    public static void pause(){
+        paused = true;
+        if (Main.VERBOSE) System.out.println("Paused with " + enemyAmount + " left");
+        t.cancel();
+    }
+    public static void resume(){
+        paused = false;
+        t = new Timer();
+        main(enemyAmount);
     }
 
     public static void endGame()

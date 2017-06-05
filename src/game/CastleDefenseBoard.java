@@ -132,8 +132,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
         //Change scale
         if(e.getKeyCode() == KeyEvent.VK_EQUALS){
-            if (Main.factor == 0)
-                Main.factor = Main.FACTORS.length;
+            if (Main.factor == 0) return;
             else
                 Main.factor--;
 
@@ -143,8 +142,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             Main.b.repaint();
         }
         if(e.getKeyCode() == KeyEvent.VK_MINUS){
-            if (Main.factor == Main.FACTORS.length)
-                Main.factor = 0;
+            if (Main.factor == Main.FACTORS.length - 1) return;
             else
                 Main.factor++;
 
@@ -164,8 +162,16 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_SPACE && CastleDefense.getWave() >= 1){
-            CastleDefense.paused = !CastleDefense.paused;
-            titleMessage = (CastleDefense.paused ? "[Game Paused]" : "");
+            if(!CastleDefense.paused) {
+                titleMessage = (!CastleDefense.paused ? "[Game Paused]" : "");
+                CastleDefense.pause();
+            }else {
+                titleMessage = (!CastleDefense.paused ? "[Game Paused]" : "");
+                CastleDefense.resume();
+            }
+
+
+            Main.b.repaint();
 
         }
 

@@ -132,9 +132,9 @@ public class Main
             // V V V V V V V V V V V V
             CastleDefense.highestWave = Integer.parseInt(saveData[1]);
             if(!saveData[0].equals("T")) {
-                CastleDefense.tutorial = false;
                 CastleDefenseTutorial.main();
             } else {
+                CastleDefense.tutorial = false;
                 CastleDefense.nextWave();
             }
         } catch (Exception e){
