@@ -116,44 +116,40 @@ public class GameMenu extends JPanel {
 
     }
 
-
-    public static Color getColor(String hexadecimal) {
-        return Color.decode("#" + hexadecimal);
-    }
-
     private Color getCorrectColor(String unitType) {
-        String notReadyColor = "f45f42";
-        String readyColor = "21d164";
+        //String notReadyColor = "f45f42";
+        Color notReadyColor = new Color(0xF45F42);
+        Color readyColor = new Color(0x21D164);
 
         if (unitType.equalsIgnoreCase("militia")) {
             if (Militia.isReadyToSpawn() && Militia.COST <= CastleDefense.getBalance())
-                return getColor(readyColor);
+                return readyColor;
             else
-                return getColor(notReadyColor);
+                return notReadyColor;
 
         }
         if (unitType.equalsIgnoreCase("infantry")) {
             if (Infantry.isReadyToSpawn() && Infantry.COST <= CastleDefense.getBalance())
-                return getColor(readyColor);
+                return readyColor;
             else
-                return getColor(notReadyColor);
+                return notReadyColor;
 
         }
         if (unitType.equalsIgnoreCase("knight")) {
             if (Knight.isReadyToSpawn() && Knight.COST <= CastleDefense.getBalance())
-                return getColor(readyColor);
+                return readyColor;
             else
-                return getColor(notReadyColor);
+                return notReadyColor;
 
         }
         if (unitType.equalsIgnoreCase("catapult")) {
             if (Catapult.isReadyToSpawn() && Catapult.COST <= CastleDefense.getBalance())
-                return getColor(readyColor);
+                return readyColor;
             else
-                return getColor(notReadyColor);
+                return notReadyColor;
         }
 
-        return getColor("000000");
+        return Color.black;
     }
 
 }

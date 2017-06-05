@@ -31,6 +31,8 @@ public class Board extends JPanel
     public List<Unit> unitList = new CopyOnWriteArrayList<Unit>();
     protected String titleMessage = "";
     protected String notification = "";
+    Color rowColor = new Color(0x75CE00);
+    Color selectedColor = new Color(0x86E900);
     BufferedImage damage1;
     BufferedImage damage2;
     BufferedImage damage3;
@@ -42,7 +44,7 @@ public class Board extends JPanel
         damage1 = makeBufferedImage("damage1.png");
         damage2 = makeBufferedImage("damage2.png");
         damage3 = makeBufferedImage("damage3.png");
-        setBackgroundColor("42f448");
+        this.setBackground(new Color(0x42A000)); //Changed to color object so I could test IntelliJ's preview thing
         //repaint();
     }
 
@@ -59,22 +61,22 @@ public class Board extends JPanel
         // Displays The Rows That Units Will Move Down
         //
 
-        g.setColor(GameMenu.getColor("ffffff"));
+        g.setColor(rowColor);
 
         //Paints Row 1 With Correct Color (Highlighted If Selected)
-        if (CastleDefenseBoard.selectedRow == 1) {g.setColor(GameMenu.getColor("abb9d1"));}
-        else {g.setColor(GameMenu.getColor("ffffff"));}
+        if (CastleDefenseBoard.selectedRow == 1) {g.setColor(selectedColor);}
+        else {g.setColor(rowColor);}
         g.fillRect(0, CastleDefense.ROW1Y, 3000, (int)(Main.heightFactor * 100));
         //Paints Row 2 With Correct Color (Highlighted If Selected)
-        if (CastleDefenseBoard.selectedRow == 2) {g.setColor(GameMenu.getColor("abb9d1"));}
-        else {g.setColor(GameMenu.getColor("ffffff"));}
+        if (CastleDefenseBoard.selectedRow == 2) {g.setColor(selectedColor);}
+        else {g.setColor(rowColor);}
         g.fillRect(0, CastleDefense.ROW2Y, 3000, (int)(Main.heightFactor * 100));
         //Paints Row 3 With Correct Color (Highlighted If Selected)
-        if (CastleDefenseBoard.selectedRow == 3) {g.setColor(GameMenu.getColor("abb9d1"));}
-        else {g.setColor(GameMenu.getColor("ffffff"));}
+        if (CastleDefenseBoard.selectedRow == 3) {g.setColor(selectedColor);}
+        else {g.setColor(rowColor);}
         g.fillRect(0, CastleDefense.ROW3Y, 3000, (int)(Main.heightFactor * 100));
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.black);
         g.setFont(new Font("SansSerif", Font.PLAIN, (int)(Main.widthFactor * 100)));
         g.drawString(titleMessage,0,CastleDefense.ROW2Y);
 
@@ -133,14 +135,6 @@ public class Board extends JPanel
 
 
 
-    /*
-    Sets Background Color
-     */
-    public void setBackgroundColor(String colorCode)
-    {
-        String color = "#" + colorCode;
-        this.setBackground(Color.decode(color));
-    }
 
 
 

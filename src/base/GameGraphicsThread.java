@@ -29,6 +29,7 @@ public class GameGraphicsThread implements Runnable
     public void run()
     {
         if (CastleDefense.gameOver) return;
+        if (CastleDefense.paused) return;
         gameBoard.repaint(); //Updates Graphics On Main Game Board
     }
 }
