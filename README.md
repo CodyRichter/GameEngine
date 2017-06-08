@@ -10,8 +10,8 @@ side. However, when enemies reach the far side, its
 game over. 
 
 
-To start game, run: 
-Main.main()
+To start game, Go To:
+bit.ly/CastleDefenseGame
 
 
 Controls:
