@@ -52,16 +52,16 @@ public class GameMenu extends JPanel {
 
             //Avaliable Units
             g.setColor(getCorrectColor("militia"));
-            g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int)(Main.widthFactor *150)))), ((int)(Main.heightFactor *25)));
+            g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int)(Main.widthFactor * 150)))), ((int)(Main.heightFactor *25)));
 
             g.setColor(getCorrectColor("infantry"));
-            g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((((int)(Main.widthFactor *150)))), 2* ((int)(Main.heightFactor *25)));
+            g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 2* ((int)(Main.heightFactor *25)));
 
             g.setColor(getCorrectColor("knight"));
-            g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int)(Main.widthFactor *150)))), 3 * ((int)(Main.heightFactor *25)));
+            g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 3 * ((int)(Main.heightFactor *25)));
 
             g.setColor(getCorrectColor("catapult"));
-            g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int)(Main.widthFactor *150)))), 4 * ((int)(Main.heightFactor *25)));
+            g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 4 * ((int)(Main.heightFactor *25)));
 
         }
         else if (CastleDefenseBoard.showInfoMenu)

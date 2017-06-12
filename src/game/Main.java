@@ -114,7 +114,7 @@ public class Main
         music = new Thread(new GameMusicThread());
         graphics.start();
         update.start();
-        //music.start();
+        music.start();
 
         if(VERBOSE) System.out.println("THREADS STARTED\n");
 
