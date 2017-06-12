@@ -2,8 +2,11 @@ package game;
 
 import base.Board;
 import base.GameGraphicsThread;
-import base.GameMusicThread;
 import base.GameOperationThread;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,9 +34,9 @@ public class Main
     //Debug variables
     public static final boolean DEBUG = false;
     public static boolean VERBOSE = true;
-    public static final boolean ADMINMODE = false;
-    public static final boolean NOCOOLDOWN = false;
-    public static final boolean ACTIONMODE = false;
+    public static final boolean ADMINMODE = true;
+    public static final boolean NOCOOLDOWN = true;
+    public static final boolean ACTIONMODE = true;
     //Screen scaling stuff
     public static double screenWidth;
     public static double screenHeight;
@@ -45,6 +48,10 @@ public class Main
 
     public static File saveFile;
     public static String[] saveData;
+
+    final static JFXPanel jfxPanel = new JFXPanel(); //to setup music stuff
+    static MediaPlayer mediaPlayer;
+
 
     public static void main(String[] args)
     {
@@ -111,10 +118,8 @@ public class Main
         if(VERBOSE) System.out.println("STARTING RUNNABLE THREADS\n");
         graphics = new Thread(new GameGraphicsThread(b, menu));
         update = new Thread(new GameOperationThread(b,menu));
-        music = new Thread(new GameMusicThread());
         graphics.start();
         update.start();
-        music.start();
 
         if(VERBOSE) System.out.println("THREADS STARTED\n");
 
@@ -142,6 +147,13 @@ public class Main
             CastleDefenseTutorial.main();
         }
         if(VERBOSE) System.out.println("STARTING GAME\n\n");
+
+        Media music = new Media(Main.class.getClass().getResource((ACTIONMODE ? "/game/sounds/ActionMode.mp3": "/game/sounds/Fake.mp3")).toString());
+        mediaPlayer = new MediaPlayer(music);
+        mediaPlayer.setStartTime(Duration.seconds(0));
+        mediaPlayer.setStopTime(Duration.seconds(117));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
 
     }
 
