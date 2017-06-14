@@ -32,7 +32,7 @@ public class Board extends JPanel
     protected String titleMessage = "";
     protected String notification = "";
     Color rowColor = new Color(0x75CE00);
-    Color selectedColor = new Color(0x86E900);
+    Color selectedColor = new Color(4,68,17);
     BufferedImage damage1;
     BufferedImage damage2;
     BufferedImage damage3;
