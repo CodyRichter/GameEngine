@@ -120,7 +120,7 @@ public class Board extends JPanel {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Main.heightFactor * 40)));
-        g.drawString(notification, this.getWidth() / 2, this.getHeight() / 2);
+        g.drawString(notification, (this.getWidth()/2 - 150 * (int) (Main.widthFactor)), (this.getHeight()/2 + (int) (Main.heightFactor * 100)));
 
 
         //
