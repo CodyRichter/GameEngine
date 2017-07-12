@@ -2,7 +2,6 @@ package base;
 
 import game.CastleDefense;
 import game.CastleDefenseBoard;
-import game.GameMenu;
 import game.Main;
 
 import javax.imageio.ImageIO;
@@ -11,7 +10,6 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -33,9 +31,9 @@ public class Board extends JPanel
     protected String notification = "";
     Color rowColor = new Color(0x75CE00);
     Color selectedColor = new Color(4,68,17);
-    BufferedImage damage1;
-    BufferedImage damage2;
-    BufferedImage damage3;
+    BufferedImage damage1; //Slightly Damaged Overlay
+    BufferedImage damage2; //Moderately Damaged Overlay
+    BufferedImage damage3; //Heavily Damaged Overlay
 
 
     Image background;

@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 public class CastleDefenseBoard extends Board implements KeyListener {
 
     public static int selectedRow = 1;
+    public static int selectedColCoordinate = 0;
     public static boolean showUnitMenu = false;
     public static boolean showInfoMenu = false;
 

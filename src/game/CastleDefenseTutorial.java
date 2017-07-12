@@ -1,5 +1,7 @@
 package game;
 
+import game.enemies.Enemy;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

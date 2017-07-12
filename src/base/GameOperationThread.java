@@ -1,12 +1,11 @@
 package base;
 
 import game.CastleDefense;
-import game.Enemy;
-import game.Friendly;
+import game.enemies.Enemy;
+import game.friendly.Friendly;
 import game.Main;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

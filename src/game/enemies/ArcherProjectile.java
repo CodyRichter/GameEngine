@@ -2,7 +2,6 @@ package game.enemies;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Enemy;
 import game.Main;
 
 import javax.imageio.ImageIO;

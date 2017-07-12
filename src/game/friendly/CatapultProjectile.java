@@ -2,7 +2,6 @@ package game.friendly;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Friendly;
 import game.Main;
 
 import javax.imageio.ImageIO;

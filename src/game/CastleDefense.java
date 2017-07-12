@@ -1,9 +1,7 @@
 package game;
 
-import game.enemies.Archer;
-import game.enemies.Barbarian;
-import game.enemies.Cavalry;
-import game.enemies.Peasant;
+import game.enemies.*;
+import game.friendly.Friendly;
 
 import java.util.ArrayList;
 import java.util.List;

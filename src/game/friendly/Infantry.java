@@ -1,6 +1,5 @@
 package game.friendly;
 
-import game.Friendly;
 import game.Main;
 
 import java.util.Timer;

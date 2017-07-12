@@ -1,7 +1,5 @@
 package game.enemies;
 
-import game.Enemy;
-
 /**
  * Enemy Unit: Barbarian
  * 

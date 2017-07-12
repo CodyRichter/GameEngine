@@ -1,10 +1,8 @@
-package game;
+package game.friendly;
 
 import base.Unit;
-import game.friendly.Catapult;
-import game.friendly.Infantry;
-import game.friendly.Knight;
-import game.friendly.Militia;
+import game.CastleDefense;
+import game.Main;
 
 /**
  * Methods For Friendly Units

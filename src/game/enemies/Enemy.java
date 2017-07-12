@@ -1,11 +1,13 @@
-package game;
+package game.enemies;
 
 import base.Unit;
+import game.CastleDefense;
+import game.Main;
 
 import java.awt.image.BufferedImage;
 
 /**
- * Methods For game.Enemy Units
+ * Methods For game.enemies.Enemy Units
  *
  * @author Cody Richter
  * @version 1.0
