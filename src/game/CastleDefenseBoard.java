@@ -113,19 +113,19 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Will Toggle Visibility Of Unit Info Menu
         if(e.getKeyCode() == KeyEvent.VK_U) {
             showInfoMenu = false;
-            if (showUnitMenu)
-                showUnitMenu = false;
-            else
-                showUnitMenu = true;
+            showUnitMenu = !showUnitMenu;
             Main.menu.repaint();
         }
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             showUnitMenu = false;
-            if (showInfoMenu)
-                showInfoMenu = false;
-            else
-                showInfoMenu = true;
+            showInfoMenu = !showInfoMenu;
+            Main.menu.repaint();
+        }
+
+        //Toggles Static Defense Placement Mode
+        if(e.getKeyCode() == KeyEvent.VK_D) {
+            CastleDefense.defensePlacementMode = !CastleDefense.defensePlacementMode;
             Main.menu.repaint();
         }
 

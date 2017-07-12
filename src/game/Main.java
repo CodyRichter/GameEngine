@@ -52,7 +52,6 @@ public class Main
     final static JFXPanel jfxPanel = new JFXPanel(); //to setup music stuff
     static MediaPlayer mediaPlayer;
 
-
     public static void main(String[] args)
     {
         /*

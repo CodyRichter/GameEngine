@@ -42,6 +42,9 @@ public class CastleDefense {
     //Amount of Lives Player Has: Player Will Lose a Life If a Unit Gets To The Other Side Of The Board
     private static int lives = 3;
 
+    //Toggles Placement of Static Defenses
+    public static boolean defensePlacementMode = false;
+
     private static Timer t = new Timer();
 
     private static ArrayList<Class> availableEnemies = new ArrayList<>();
