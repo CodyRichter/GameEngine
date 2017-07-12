@@ -69,7 +69,6 @@ public class Board extends JPanel {
             else row = CastleDefense.ROW3Y;
             //Painting Normal Row
             g.setColor(rowColor);
-            //g.fillRect(CastleDefenseBoard.selectedColCoordinate, 0, (int) (Main.widthFactor * 100), 3000);
             g.fillRect(0, CastleDefense.ROW1Y, 3000, (int) (Main.heightFactor * 100));
             g.fillRect(0, CastleDefense.ROW2Y, 3000, (int) (Main.heightFactor * 100));
             g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Main.heightFactor * 100));
