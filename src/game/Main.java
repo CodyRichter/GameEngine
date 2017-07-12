@@ -34,8 +34,8 @@ public class Main
     //Debug variables
     public static final boolean DEBUG = false;
     public static boolean VERBOSE = true;
-    public static final boolean ADMINMODE = false;
-    public static final boolean NOCOOLDOWN = false;
+    public static final boolean ADMINMODE = true;
+    public static final boolean NOCOOLDOWN = true;
     public static final boolean ACTIONMODE = false;
     //Screen scaling stuff
     public static double screenWidth;

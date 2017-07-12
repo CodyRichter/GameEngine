@@ -37,7 +37,7 @@ public class CastleDefense {
     //Lists Holding All Units Spawned In On Board
     public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
     public static List<Friendly> friendlies = new CopyOnWriteArrayList<Friendly>();
-    public static List<Friendly> turrets = new CopyOnWriteArrayList<Friendly>();
+    public static List<Turret> turrets = new CopyOnWriteArrayList<Turret>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
     private static int balance = 100;
@@ -323,4 +323,19 @@ public class CastleDefense {
     public static int getWave() {return wave;}
 
     public static int getLives() {return lives;}
+
+    public static boolean checkTurretSpawn(double x, int row)
+    {
+        boolean result = true;
+        for (Turret existingTurret: turrets)
+        {
+            if ((x > (existingTurret.getX() + 110) || x < (existingTurret.getX() - 110)) || existingTurret.getY() != CastleDefenseBoard.getCoordinateFromRow(row))
+            {
+                result = true;
+            }
+            else return false;
+        }
+        return true;
+    }
+
 }

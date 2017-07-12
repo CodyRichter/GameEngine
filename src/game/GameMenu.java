@@ -4,6 +4,7 @@ import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
+import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
 
 import javax.swing.*;
@@ -86,9 +87,16 @@ public class GameMenu extends JPanel {
                 g.setColor(getCorrectColor("cannon"));
                 g.drawString("[1] Cannon - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
 
+                g.setColor(getCorrectColor("barricade"));
+                g.drawString("[2] Barricade - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))),2 * ((int) (Main.heightFactor * 25)));
+
+
                 //Unit Quick Info Items
                 g.setColor(getCorrectColor("cannon"));
                 g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
+
+                g.setColor(getCorrectColor("barricade"));
+                g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
             }
         }
         else if (CastleDefenseBoard.showInfoMenu)
@@ -167,6 +175,12 @@ public class GameMenu extends JPanel {
         }
         if (unitType.equalsIgnoreCase("cannon")) {
             if (Cannon.isReadyToSpawn() && Cannon.COST <= CastleDefense.getBalance())
+                return readyColor;
+            else
+                return notReadyColor;
+        }
+        if (unitType.equalsIgnoreCase("barricade")) {
+            if (Barricade.isReadyToSpawn() && Barricade.COST <= CastleDefense.getBalance())
                 return readyColor;
             else
                 return notReadyColor;

@@ -3,6 +3,7 @@ package game.friendly;
 import base.Unit;
 import game.CastleDefense;
 import game.Main;
+import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
 import game.friendly.turrets.Turret;
 
@@ -108,6 +109,8 @@ public abstract class Friendly extends Unit
             return Catapult.COST;
         if (f instanceof Cannon)
             return Cannon.COST;
+        if (f instanceof Barricade)
+            return Barricade.COST;
         return -1;
     }
 

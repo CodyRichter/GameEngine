@@ -2,7 +2,6 @@ package game.friendly.turrets;
 
 import base.Unit;
 import game.Main;
-import game.friendly.Projectile;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,37 +12,23 @@ import java.util.TimerTask;
  * @author Cannon
  * @version 1.0
  */
-public class Cannon extends Turret {
+public class Barricade extends Turret {
 
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    public static final int COST = 300;
-    protected static int cooldown = 45;
-    protected static int damageAmount = 3;
+    public static final int COST = 500;
+    protected static int cooldown = 60;
+    protected static int damageAmount = 0;
 
-    public Cannon() {
-        super(15, damageAmount, 30, 5);
-        this.setSprite("cannon");
+    public Barricade() {
+        super(30, damageAmount, 0, 0);
+        this.setSprite("barricade");
     }
 
     @Override
-    public void attack(Unit u) {
-        Projectile p = new Projectile(damageAmount, false);
-        p.spawn(this);
-        doingAction = true;
+    public void attack(Unit u) {}
 
-        //Sets Timer For Cooldown
-        Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                doingAction = false;
-                currentlyAttacking = false;
-            }
-        }, (int)(delayBetweenAttacks*1000));
-    }
-
-    public String toString(){return "Cannon";}
+    public String toString(){return "Barricade";}
 
     public static void startCooldown()
     {
