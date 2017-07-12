@@ -74,9 +74,9 @@ public class Projectile extends Friendly {
 
     @Override
     public void attack(Unit u) {
-        if ((!this.hasAreaAttack() && doingAction)) return;
-        u.damage(damage);
+        if ((!this.hasAreaAttack() && doingAction && currentHealth > 0)) return;
         this.damage(1);
+        u.damage(damage);
     }
 
     public String toString(){return "";}
