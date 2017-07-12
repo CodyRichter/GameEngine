@@ -3,6 +3,7 @@ package base;
 import game.CastleDefense;
 import game.CastleDefenseBoard;
 import game.Main;
+import game.friendly.turrets.Turret;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -33,6 +34,10 @@ public class Board extends JPanel {
     BufferedImage damage1; //Slightly Damaged Overlay
     BufferedImage damage2; //Moderately Damaged Overlay
     BufferedImage damage3; //Heavily Damaged Overlay
+    BufferedImage damageTurret1; //Slightly Damaged Turret Overlay
+    BufferedImage damageTurret2; //Moderatley Damaged Turret Overlay
+    BufferedImage damageTurret3; //Heavily Damaged Turret Overlay
+
 
 
     Image background;
@@ -41,6 +46,9 @@ public class Board extends JPanel {
         damage1 = makeBufferedImage("damage1.png");
         damage2 = makeBufferedImage("damage2.png");
         damage3 = makeBufferedImage("damage3.png");
+        damageTurret1 = makeBufferedImage("damageturret1.png");
+        damageTurret2 = makeBufferedImage("damageturret2.png");
+        damageTurret3 = makeBufferedImage("damageturret3.png");
         this.setBackground(new Color(0x42A000)); //Changed to color object so I could test IntelliJ's preview thing
         //repaint();
     }
@@ -146,12 +154,23 @@ public class Board extends JPanel {
 
 
                 //Displays Damage To Unit Relative To Health
-                if (u.getCurrentHealth() <= 3 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= 2 * u.getMaxHealth() / 4)
-                    g2d.drawImage(damage1, at, (int) u.getX(), (int) u.getY());
-                else if (u.getCurrentHealth() <= 2 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= u.getMaxHealth() / 4)
-                    g2d.drawImage(damage2, at, (int) u.getX(), (int) u.getY());
-                else if (u.getCurrentHealth() <= u.getMaxHealth() / 4)
-                    g2d.drawImage(damage3, at, (int) u.getX(), (int) u.getY());
+                if (u instanceof Turret)
+                {
+                    if (u.getCurrentHealth() <= 3 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= 2 * u.getMaxHealth() / 4)
+                        g2d.drawImage(damageTurret1, at, (int) u.getX(), (int) u.getY());
+                    else if (u.getCurrentHealth() <= 2 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= u.getMaxHealth() / 4)
+                        g2d.drawImage(damageTurret2, at, (int) u.getX(), (int) u.getY());
+                    else if (u.getCurrentHealth() <= u.getMaxHealth() / 4)
+                        g2d.drawImage(damageTurret3, at, (int) u.getX(), (int) u.getY());
+                }
+                else {
+                    if (u.getCurrentHealth() <= 3 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= 2 * u.getMaxHealth() / 4)
+                        g2d.drawImage(damage1, at, (int) u.getX(), (int) u.getY());
+                    else if (u.getCurrentHealth() <= 2 * u.getMaxHealth() / 4 && u.getCurrentHealth() >= u.getMaxHealth() / 4)
+                        g2d.drawImage(damage2, at, (int) u.getX(), (int) u.getY());
+                    else if (u.getCurrentHealth() <= u.getMaxHealth() / 4)
+                        g2d.drawImage(damage3, at, (int) u.getX(), (int) u.getY());
+                }
             }
         }
 
