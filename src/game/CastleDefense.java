@@ -19,6 +19,8 @@ public class CastleDefense {
     public static final int ROW2Y = (int)(300*(Main.screenHeight/900));
     public static final int ROW3Y = (int)(500*(Main.screenHeight/900));
 
+    public static final int TURRET_PLACEMENT_LIMIT = (int)(Main.screenWidth/3)*2;
+
     //Current Wave Player Is On
     private static int wave = 0;
     private static int enemyAmount = 0;
@@ -39,9 +41,6 @@ public class CastleDefense {
 
     //Amount of Lives Player Has: Player Will Lose a Life If a Unit Gets To The Other Side Of The Board
     private static int lives = 3;
-
-    //Toggles Placement of Static Defenses
-    public static boolean defensePlacementMode = false;
 
     private static Timer t = new Timer();
 

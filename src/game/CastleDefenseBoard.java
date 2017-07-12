@@ -19,7 +19,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
     public static int selectedColCoordinate = 0;
     public static boolean showUnitMenu = false;
     public static boolean showInfoMenu = false;
-
+    public static boolean defensePlacementMode = false; //Toggles Placement of Static Defenses
 
     public CastleDefenseBoard (){
         addKeyListener(this); //Registers New Key Listener To Board
@@ -110,6 +110,21 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 selectedRow--;
             Main.menu.repaint();
         }
+        //Will Move Turret Column Right
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if (selectedColCoordinate >= CastleDefense.TURRET_PLACEMENT_LIMIT-(int) (Main.heightFactor * 100))
+                return;
+            selectedColCoordinate+= 15;
+        }
+
+        //Will Move Turret Column Left
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            if (selectedColCoordinate <= 0)
+                return;
+            selectedColCoordinate-= 15;
+        }
+
+
 
         //Will Toggle Visibility Of Unit Info Menu
         if(e.getKeyCode() == KeyEvent.VK_U) {
@@ -126,7 +141,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
 
         //Toggles Static Defense Placement Mode
         if(e.getKeyCode() == KeyEvent.VK_D) {
-            CastleDefense.defensePlacementMode = !CastleDefense.defensePlacementMode;
+            defensePlacementMode = !defensePlacementMode;
             Main.menu.repaint();
         }
 
