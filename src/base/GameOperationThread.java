@@ -1,9 +1,10 @@
 package base;
 
 import game.CastleDefense;
+import game.Main;
 import game.enemies.Enemy;
 import game.friendly.Friendly;
-import game.Main;
+import game.friendly.turrets.Turret;
 
 import javax.swing.*;
 import java.util.concurrent.Executors;
@@ -53,6 +54,10 @@ public class GameOperationThread implements Runnable
         for(Friendly f : CastleDefense.friendlies){
             if (!f.isDead)
                 CastleDefense.doAction(f);
+        }
+        for(Turret t : CastleDefense.turrets){
+            if (!t.isDead)
+                CastleDefense.doAction(t);
         }
         if(CastleDefense.nextWave){
             CastleDefense.nextWave();

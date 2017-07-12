@@ -31,6 +31,7 @@ public class CastleDefense {
     public static boolean nextWave = false;
     public static boolean waitingForWave = false;
     public static boolean tutorial = true;
+    public static boolean scoutHasSpawned = false;
 
     public static int highestWave = 0;
 
@@ -53,15 +54,22 @@ public class CastleDefense {
         if (control == 0 && nextWave) {
             nextWave = false;
             waitingForWave = true;
+            scoutHasSpawned = false;
             if (Main.VERBOSE) System.out.println("WAITING FOR WAVE");
             nextWave();
-            return;
         } else if (control > 0) {
             waitingForWave = true;
+            if (!scoutHasSpawned)
+            {
+                spawnScout();
+                scoutHasSpawned = true;
+            }
+
             t.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     int icontrol = control;
+
                     System.out.println("Enemy Spawn Started");
                     int enemyType = (int) (Math.random() * availableEnemies.size());
                     try {
@@ -100,7 +108,7 @@ public class CastleDefense {
                     int amount = (int) (f.getUnitCost(f) * multiplier);
                     addMoney(amount);
                     if (Main.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
-                    if (!f.toString().equals("")) {
+                    if (!f.toString().equals("") && !f.toString().equalsIgnoreCase("scout")) {
                         Main.b.sendNotification("Recieved $" + amount + " For " + f.toString());
                     }
 
@@ -114,10 +122,14 @@ public class CastleDefense {
         friendlies.clear();
         Main.b.unitList.clear();
 
+        for (Turret t:turrets)
+        {
+            if (t.isDead())
+                turrets.remove(t);
+        }
+
         for (Unit u: turrets)
             Main.b.unitList.add(u);
-        for (Friendly f : turrets)
-            friendlies.add(f);
 
         if(Main.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
@@ -145,10 +157,6 @@ public class CastleDefense {
 
     }
 
-    public static void testEnemySpawn(){
-
-    }
-
     public static void addEnemy(Enemy e){
         enemies.add(e);
     }
@@ -164,7 +172,6 @@ public class CastleDefense {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
         if (u.getX() < Main.b.getWidth()-((int)(Main.widthFactor * 50)))
         {
-            nextWave = false;
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
@@ -195,7 +202,7 @@ public class CastleDefense {
             int amount = (int)(u.getUnitCost(u)*multiplier);
             addMoney(amount);
             if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. KILLING...");
-            if (!u.toString().equals(""))
+            if (!u.toString().equals("") && !u.toString().equalsIgnoreCase("scout"))
             {
                 Main.b.sendNotification("Recieved $" + amount + " For " + u.toString());
             }
@@ -204,8 +211,7 @@ public class CastleDefense {
         }
         nextWave = true;
         for (Friendly f : friendlies){
-            if (f instanceof Turret){}
-            else if (!f.isDead() && !f.isSiegeWeapon()){
+            if (!f.isDead() && !f.isProjectile()){
                 nextWave = false;
             }
         }
@@ -214,6 +220,25 @@ public class CastleDefense {
                 nextWave = false;
             }
         }
+    }
+
+    public static void doAction(Turret t)
+    {
+            //Will Exit Method If Unit Is Currently Completing an Action
+            if (t.isInAction()) return;
+
+            t.currentlyAttacking = false;
+            for (int i = (int)t.getX()+((int)(Main.widthFactor * 50)); i < (((int)(Main.widthFactor * 50))+(int)t.getX())+(t.getRange())*((int)(Main.widthFactor * 20)); i++)
+            {
+
+                for(Enemy e : enemies) {
+                    if (!e.isDead() && e.getX() == i && e.getY() == t.getY() && !e.isProjectile()) {
+                        t.attack(e);
+                        if(Main.VERBOSE) System.out.println("[Turret] " + t + " ATTACKING " + e);
+                        t.currentlyAttacking = true;
+                    } else {}
+                }
+            }
     }
 
     public static void doAction(Enemy u)
@@ -336,6 +361,29 @@ public class CastleDefense {
             else return false;
         }
         return true;
+    }
+
+    private static class WaveScout extends Friendly {
+        public WaveScout(){
+            super(1,0,1,2);
+            this.setSprite("knight");
+        }
+
+        public static int getUnitCost()
+        {
+            return 0;
+        }
+
+        @Override
+        public String toString() {
+            return "Scout";
+        }
+    }
+
+    public static void spawnScout()
+    {
+        WaveScout s = new WaveScout();
+        s.spawn(2);
     }
 
 }

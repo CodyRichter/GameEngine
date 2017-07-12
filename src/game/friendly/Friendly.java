@@ -5,7 +5,6 @@ import game.CastleDefense;
 import game.Main;
 import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
-import game.friendly.turrets.Turret;
 
 /**
  * Methods For Friendly Units
@@ -86,8 +85,6 @@ public abstract class Friendly extends Unit
         if(Main.VERBOSE) System.out.println(this + " DYING");
         //Main.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         isDead = true;
-        if (this instanceof Turret)
-            CastleDefense.turrets.remove(this);
         pos.setLocation(5,5);
         Main.menu.repaint();
     }
