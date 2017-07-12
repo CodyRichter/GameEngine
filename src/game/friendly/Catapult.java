@@ -28,7 +28,7 @@ public class Catapult extends Friendly {
 
     @Override
     public void attack(Unit u) {
-        CatapultProjectile p = new CatapultProjectile();
+        Projectile p = new Projectile();
         p.spawn(this);
         doingAction = true;
 

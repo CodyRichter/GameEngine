@@ -6,6 +6,7 @@ import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
+import game.friendly.turrets.Cannon;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -52,18 +53,25 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Militia" When [1] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_1)
         {
-            if (Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.COST) {
+            if (!defensePlacementMode && Militia.isReadyToSpawn() && CastleDefense.getBalance() >= Militia.COST) {
                 Militia.startCooldown();
                 CastleDefense.subtractMoney(Militia.COST);
                 Militia m = new Militia();
                 m.spawn(selectedRow);
+            }
+            else if (defensePlacementMode && Cannon.isReadyToSpawn() && CastleDefense.getBalance() >= Cannon.COST)
+            {
+               Cannon.startCooldown();
+               CastleDefense.subtractMoney(Cannon.COST);
+               Cannon c = new Cannon();
+               c.spawn();
             }
         }
 
         //Spawns In Friendly Unit "Infantry" When [2] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_2)
         {
-            if (Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.COST) {
+            if (!defensePlacementMode && Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.COST) {
                 Infantry.startCooldown();
                 CastleDefense.subtractMoney(Infantry.COST);
                 Infantry i = new Infantry();
@@ -74,7 +82,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Knight" When [3] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_3)
         {
-            if (Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.COST) {
+            if (!defensePlacementMode && Knight.isReadyToSpawn() && CastleDefense.getBalance() >= Knight.COST) {
                 Knight.startCooldown();
                 CastleDefense.subtractMoney(Knight.COST);
                 Knight k = new Knight();
@@ -85,7 +93,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Catapult When [4] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_4){
 
-            if (Catapult.isReadyToSpawn() && CastleDefense.getBalance() >= Catapult.COST) {
+            if (!defensePlacementMode && Catapult.isReadyToSpawn() && CastleDefense.getBalance() >= Catapult.COST) {
                 Catapult.startCooldown();
                 CastleDefense.subtractMoney(Catapult.COST);
                 Catapult c = new Catapult();

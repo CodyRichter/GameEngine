@@ -4,6 +4,7 @@ import game.friendly.Catapult;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
+import game.friendly.turrets.Cannon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +41,8 @@ public class GameMenu extends JPanel {
 
             //Shows Information On Each Unit Type
             g.setFont(normalFont);
-            g.drawString("[U] Unit Information",0,((int)(Main.heightFactor *40)));
+            g.drawString("[U] Unit Information",0,((int)(Main.heightFactor *30)));
+            g.drawString("[D] Toggle Defense Placement",0,((int)(Main.heightFactor *60)));
             g.drawString("[I] Game Information",0,((int)(Main.heightFactor *90)));
 
         } else if (CastleDefenseBoard.showUnitMenu) {
@@ -51,18 +53,43 @@ public class GameMenu extends JPanel {
             g.fillRect((((int)(Main.widthFactor *130))),0,20, this.getHeight());
 
             //Avaliable Units
-            g.setColor(getCorrectColor("militia"));
-            g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int)(Main.widthFactor * 150)))), ((int)(Main.heightFactor *25)));
+            if (!CastleDefenseBoard.defensePlacementMode) {
+                //Information on Units
+                g.setColor(getCorrectColor("militia"));
+                g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
 
-            g.setColor(getCorrectColor("infantry"));
-            g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 2* ((int)(Main.heightFactor *25)));
+                g.setColor(getCorrectColor("infantry"));
+                g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 2 * ((int) (Main.heightFactor * 25)));
 
-            g.setColor(getCorrectColor("knight"));
-            g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 3 * ((int)(Main.heightFactor *25)));
+                g.setColor(getCorrectColor("knight"));
+                g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 3 * ((int) (Main.heightFactor * 25)));
 
-            g.setColor(getCorrectColor("catapult"));
-            g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int)(Main.widthFactor * 150)))), 4 * ((int)(Main.heightFactor *25)));
+                g.setColor(getCorrectColor("catapult"));
+                g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 4 * ((int) (Main.heightFactor * 25)));
 
+                //Unit Quick Info Items
+                g.setColor(getCorrectColor("militia"));
+                g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
+
+                g.setColor(getCorrectColor("infantry"));
+                g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
+
+                g.setColor(getCorrectColor("knight"));
+                g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
+
+                g.setColor(getCorrectColor("catapult"));
+                g.drawString("[4]", this.getWidth()-((int)(Main.widthFactor *425)), 4 * ((int)(Main.heightFactor *25)));
+            }
+            else
+            {
+                //Information on Units
+                g.setColor(getCorrectColor("cannon"));
+                g.drawString("[1] Cannon - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
+
+                //Unit Quick Info Items
+                g.setColor(getCorrectColor("cannon"));
+                g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
+            }
         }
         else if (CastleDefenseBoard.showInfoMenu)
         {
@@ -76,7 +103,7 @@ public class GameMenu extends JPanel {
             //Controls
             g.drawString("Game Controls:", ((((int)(Main.widthFactor *500)))), ((int)(Main.heightFactor *25)));
             g.drawString("[1-9]: Spawn Units", ((((int)(Main.widthFactor *500)))), 2 * ((int)((Main.heightFactor *25))));
-            g.drawString("[Arrow Keys]: Select Row", ((((int)(Main.widthFactor *500)))), 3 * ((int)(Main.heightFactor *25)));
+            g.drawString("[Arrow Keys]: Select Row/Column", ((((int)(Main.widthFactor *500)))), 3 * ((int)(Main.heightFactor *25)));
             g.drawString("[Esc]: Exit Game", ((((int)(Main.widthFactor *500)))), 4 * ((int)(Main.heightFactor *25)));
             g.drawString("[Space]: Pause Game", ((((int)(Main.widthFactor *500)))), 5 * ((int)(Main.heightFactor *25)));
             g.drawString("[Equals]: Zoom In", ((((int)(Main.widthFactor *1000)))), 1 * ((int)(Main.heightFactor *25)));
@@ -86,19 +113,6 @@ public class GameMenu extends JPanel {
         //This Is Displayed Regardless of Selected Menu
         g.setFont(normalFont);
         g.setColor(getCorrectColor(""));
-
-        //Unit Quick Info Items
-        g.setColor(getCorrectColor("militia"));
-        g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
-
-        g.setColor(getCorrectColor("infantry"));
-        g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
-
-        g.setColor(getCorrectColor("knight"));
-        g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
-
-        g.setColor(getCorrectColor("catapult"));
-        g.drawString("[4]", this.getWidth()-((int)(Main.widthFactor *425)), 4 * ((int)(Main.heightFactor *25)));
 
         //Divider Between Unit Info And Other Info
         g.setColor(getCorrectColor(""));
@@ -147,6 +161,12 @@ public class GameMenu extends JPanel {
         }
         if (unitType.equalsIgnoreCase("catapult")) {
             if (Catapult.isReadyToSpawn() && Catapult.COST <= CastleDefense.getBalance())
+                return readyColor;
+            else
+                return notReadyColor;
+        }
+        if (unitType.equalsIgnoreCase("cannon")) {
+            if (Cannon.isReadyToSpawn() && Cannon.COST <= CastleDefense.getBalance())
                 return readyColor;
             else
                 return notReadyColor;

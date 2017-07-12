@@ -1,7 +1,9 @@
 package game;
 
+import base.Unit;
 import game.enemies.*;
 import game.friendly.Friendly;
+import game.friendly.turrets.Turret;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ public class CastleDefense {
     //Lists Holding All Units Spawned In On Board
     public static List<Enemy> enemies = new CopyOnWriteArrayList<Enemy>();
     public static List<Friendly> friendlies = new CopyOnWriteArrayList<Friendly>();
+    public static List<Friendly> turrets = new CopyOnWriteArrayList<Friendly>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
     private static int balance = 100;
@@ -91,17 +94,18 @@ public class CastleDefense {
         if (tutorial) return;
         for (Friendly f : friendlies){
             if (!f.isDead() && f.isSiegeWeapon()){
-                double multiplier = f.getCurrentHealth()/f.getMaxHealth();
-                int amount = (int)(f.getUnitCost(f)*multiplier);
-                addMoney(amount);
-                if(Main.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
-                if (!f.toString().equals(""))
-                {
-                    Main.b.sendNotification("Recieved $" + amount + " For " + f.toString());
+                if (f instanceof Turret){}
+                else {
+                    double multiplier = f.getCurrentHealth() / f.getMaxHealth();
+                    int amount = (int) (f.getUnitCost(f) * multiplier);
+                    addMoney(amount);
+                    if (Main.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
+                    if (!f.toString().equals("")) {
+                        Main.b.sendNotification("Recieved $" + amount + " For " + f.toString());
+                    }
+
+                    f.kill();
                 }
-
-                f.kill();
-
             }
         }
         wave++;
@@ -109,6 +113,12 @@ public class CastleDefense {
         enemies.clear();
         friendlies.clear();
         Main.b.unitList.clear();
+
+        for (Unit u: turrets)
+            Main.b.unitList.add(u);
+        for (Friendly f : turrets)
+            friendlies.add(f);
+
         if(Main.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
             if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
@@ -144,6 +154,10 @@ public class CastleDefense {
     }
 
     public static void addFriendly(Friendly f){friendlies.add(f);}
+
+    public static void addTurret(Turret t){turrets.add(t);}
+
+
 
     public static void doAction(Friendly u)
     {
@@ -190,7 +204,8 @@ public class CastleDefense {
         }
         nextWave = true;
         for (Friendly f : friendlies){
-            if (!f.isDead() && !f.isSiegeWeapon()){
+            if (f instanceof Turret){}
+            else if (!f.isDead() && !f.isSiegeWeapon()){
                 nextWave = false;
             }
         }
