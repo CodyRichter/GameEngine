@@ -6,6 +6,7 @@ import game.friendly.Knight;
 import game.friendly.Militia;
 import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
+import game.friendly.turrets.XBow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,7 +89,10 @@ public class GameMenu extends JPanel {
                 g.drawString("[1] Cannon - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("barricade"));
-                g.drawString("[2] Barricade - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))),2 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[2] Barricade - $" + Barricade.getUnitCost(), ((((int) (Main.widthFactor * 150)))),2 * ((int) (Main.heightFactor * 25)));
+
+                g.setColor(getCorrectColor("xbow"));
+                g.drawString("[3] X-Bow - $" + XBow.getUnitCost(), ((((int) (Main.widthFactor * 150)))),3 * ((int) (Main.heightFactor * 25)));
 
 
                 //Unit Quick Info Items
@@ -97,6 +101,10 @@ public class GameMenu extends JPanel {
 
                 g.setColor(getCorrectColor("barricade"));
                 g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
+
+                g.setColor(getCorrectColor("xbow"));
+                g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
+
             }
         }
         else if (CastleDefenseBoard.showInfoMenu)
@@ -181,6 +189,12 @@ public class GameMenu extends JPanel {
         }
         if (unitType.equalsIgnoreCase("barricade")) {
             if (Barricade.isReadyToSpawn() && Barricade.COST <= CastleDefense.getBalance())
+                return readyColor;
+            else
+                return notReadyColor;
+        }
+        if (unitType.equalsIgnoreCase("xbow")) {
+            if (XBow.isReadyToSpawn() && XBow.COST <= CastleDefense.getBalance())
                 return readyColor;
             else
                 return notReadyColor;

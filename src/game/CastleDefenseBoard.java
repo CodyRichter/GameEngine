@@ -8,6 +8,7 @@ import game.friendly.Knight;
 import game.friendly.Militia;
 import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
+import game.friendly.turrets.XBow;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -98,7 +99,14 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 CastleDefense.subtractMoney(Knight.COST);
                 Knight k = new Knight();
                 k.spawn(selectedRow);
+            } else if (defensePlacementMode && XBow.isReadyToSpawn() && CastleDefense.getBalance() >= XBow.COST) {
+                if (!CastleDefense.checkTurretSpawn(selectedColCoordinate, selectedRow)) return;
+                XBow.startCooldown();
+                CastleDefense.subtractMoney(XBow.COST);
+                XBow x = new XBow();
+                x.spawn();
             }
+
         }
 
         //Spawns In Crossbowman When [4] Is Pressed
