@@ -20,7 +20,7 @@ public class Crossbowman extends Friendly {
     public static final int COST = 250;
 
     public Crossbowman() {
-        super(6,0,25,1);
+        super(6,0,20,1);
         this.setSprite("crossbowman");
         delayBetweenAttacks = 3;
     }

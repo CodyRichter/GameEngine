@@ -16,7 +16,7 @@ import java.io.InputStream;
  */
 public class Projectile extends Friendly {
     public Projectile(){
-        super(1,3,1,6);
+        super(1,2,1,6);
         areaAttack = true;
         isProjectile = true;
         delayBetweenAttacks = 0;
