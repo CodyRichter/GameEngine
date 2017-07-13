@@ -37,11 +37,11 @@ public class Projectile extends Friendly {
         isProjectile = true;
         delayBetweenAttacks = 0;
 
-        InputStream in = getClass().getResourceAsStream("/game/images/cProjectile.png");
+        InputStream in = getClass().getResourceAsStream("/game/images/turretProjectile.png");
         try {
             this.setSprite(ImageIO.read(in));
         } catch (Exception e){
-            System.out.println("Exception when setting cProjectile " + e.getMessage());
+            System.out.println("Exception when setting turretProjectile " + e.getMessage());
         }
 
     }

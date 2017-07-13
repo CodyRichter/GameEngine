@@ -17,12 +17,12 @@ public class Cannon extends Turret {
 
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    public static final int COST = 300;
+    public static final int COST = 350;
     protected static int cooldown = 45;
-    protected static int damageAmount = 3;
+    protected static int damageAmount = 1;
 
     public Cannon() {
-        super(15, damageAmount, 30, 5);
+        super(10, damageAmount, 30, 2);
         this.setSprite("cannon");
     }
 
