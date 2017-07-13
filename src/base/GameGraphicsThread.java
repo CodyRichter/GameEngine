@@ -1,7 +1,6 @@
 package base;
 
 import game.CastleDefense;
-import game.friendly.Catapult;
 
 import javax.swing.*;
 import java.util.concurrent.Executors;

@@ -102,8 +102,8 @@ public abstract class Friendly extends Unit
             return Infantry.COST;
         if (f instanceof Knight)
             return Knight.COST;
-        if (f instanceof Catapult)
-            return Catapult.COST;
+        if (f instanceof Crossbowman)
+            return Crossbowman.COST;
         if (f instanceof Cannon)
             return Cannon.COST;
         if (f instanceof Barricade)

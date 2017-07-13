@@ -2,7 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
-import game.friendly.Catapult;
+import game.friendly.Crossbowman;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
@@ -101,13 +101,13 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        //Spawns In Catapult When [4] Is Pressed
+        //Spawns In Crossbowman When [4] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_4) {
 
-            if (!defensePlacementMode && Catapult.isReadyToSpawn() && CastleDefense.getBalance() >= Catapult.COST) {
-                Catapult.startCooldown();
-                CastleDefense.subtractMoney(Catapult.COST);
-                Catapult c = new Catapult();
+            if (!defensePlacementMode && Crossbowman.isReadyToSpawn() && CastleDefense.getBalance() >= Crossbowman.COST) {
+                Crossbowman.startCooldown();
+                CastleDefense.subtractMoney(Crossbowman.COST);
+                Crossbowman c = new Crossbowman();
                 c.spawn(selectedRow);
             }
         }

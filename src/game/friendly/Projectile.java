@@ -9,14 +9,14 @@ import javax.imageio.ImageIO;
 import java.io.InputStream;
 
 /**
- * Friendly Unit: Catapult Projectile (90kg Rock Lobbed Over a Distance Of 300m)
+ * Friendly Unit: Crossbowman Projectile (90kg Rock Lobbed Over a Distance Of 300m)
  *
  * @author Cody Richter
  * @version 1.0
  */
 public class Projectile extends Friendly {
     public Projectile(){
-        super(1,7,1,5);
+        super(1,3,1,6);
         areaAttack = true;
         isProjectile = true;
         delayBetweenAttacks = 0;
@@ -46,7 +46,7 @@ public class Projectile extends Friendly {
 
     }
 
-    public void spawn(Catapult c){
+    public void spawn(Crossbowman c){
 
         //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);

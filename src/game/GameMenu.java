@@ -1,6 +1,6 @@
 package game;
 
-import game.friendly.Catapult;
+import game.friendly.Crossbowman;
 import game.friendly.Infantry;
 import game.friendly.Knight;
 import game.friendly.Militia;
@@ -65,8 +65,8 @@ public class GameMenu extends JPanel {
                 g.setColor(getCorrectColor("knight"));
                 g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 3 * ((int) (Main.heightFactor * 25)));
 
-                g.setColor(getCorrectColor("catapult"));
-                g.drawString("[4] Catapult - $" + Catapult.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 4 * ((int) (Main.heightFactor * 25)));
+                g.setColor(getCorrectColor("crossbowman"));
+                g.drawString("[4] Crossbowman - $" + Crossbowman.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 4 * ((int) (Main.heightFactor * 25)));
 
                 //Unit Quick Info Items
                 g.setColor(getCorrectColor("militia"));
@@ -78,7 +78,7 @@ public class GameMenu extends JPanel {
                 g.setColor(getCorrectColor("knight"));
                 g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
 
-                g.setColor(getCorrectColor("catapult"));
+                g.setColor(getCorrectColor("crossbowman"));
                 g.drawString("[4]", this.getWidth()-((int)(Main.widthFactor *425)), 4 * ((int)(Main.heightFactor *25)));
             }
             else
@@ -167,8 +167,8 @@ public class GameMenu extends JPanel {
                 return notReadyColor;
 
         }
-        if (unitType.equalsIgnoreCase("catapult")) {
-            if (Catapult.isReadyToSpawn() && Catapult.COST <= CastleDefense.getBalance())
+        if (unitType.equalsIgnoreCase("crossbowman")) {
+            if (Crossbowman.isReadyToSpawn() && Crossbowman.COST <= CastleDefense.getBalance())
                 return readyColor;
             else
                 return notReadyColor;

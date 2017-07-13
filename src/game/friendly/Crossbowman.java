@@ -7,23 +7,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Friendly Unit: Catapult
+ * Friendly Unit: Crossbowman
  *
  * @author Cody Richter
  * @version 1.0
  */
-public class Catapult extends Friendly {
+public class Crossbowman extends Friendly {
     //Spawning Cooldown Variables
-    protected static int cooldown = 30;
+    protected static int cooldown = 10;
     private static Timer timer = new Timer();
     private static boolean isComplete = true;
-    public static final int COST = 1000;
+    public static final int COST = 250;
 
-    public Catapult() {
-        super(10,0,100,1);
-        this.setSprite("catapult");
-        isSiegeWeapon = true;
-        delayBetweenAttacks = 20;
+    public Crossbowman() {
+        super(6,0,25,1);
+        this.setSprite("crossbowman");
+        delayBetweenAttacks = 3;
     }
 
     @Override
@@ -76,6 +75,6 @@ public class Catapult extends Friendly {
         else return COST;
     }
 
-    public String toString(){return "Catapult";}
+    public String toString(){return "Crossbowman";}
 
 }
