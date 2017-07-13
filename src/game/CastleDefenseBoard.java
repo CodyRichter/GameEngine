@@ -78,7 +78,6 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         //Spawns In Friendly Unit "Infantry" When [2] Is Pressed
         if (e.getKeyCode() == KeyEvent.VK_2) {
             if (!defensePlacementMode && Infantry.isReadyToSpawn() && CastleDefense.getBalance() >= Infantry.COST) {
-                if (!CastleDefense.checkTurretSpawn(selectedColCoordinate, selectedRow)) return;
                 Infantry.startCooldown();
                 CastleDefense.subtractMoney(Infantry.COST);
                 Infantry i = new Infantry();
