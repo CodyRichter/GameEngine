@@ -115,7 +115,7 @@ public class Board extends JPanel {
             g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Main.heightFactor * 100));
         }
         g.setColor(Color.black);
-        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Main.widthFactor * 100)));
+        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Main.widthFactor * 90)));
         g.drawString(titleMessage, 0, CastleDefense.ROW2Y);
 
         g.setColor(Color.BLACK);

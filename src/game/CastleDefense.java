@@ -41,7 +41,8 @@ public class CastleDefense {
     public static List<Turret> turrets = new CopyOnWriteArrayList<Turret>();
 
     //Money Player Has In Game - Set This Value To Be The Amount of Starting Money Player Has
-    private static int balance = 100;
+    public static final int STARTING_BALANCE = 100;
+    private static int balance = STARTING_BALANCE;
 
     //Amount of Lives Player Has: Player Will Lose a Life If a Unit Gets To The Other Side Of The Board
     private static int lives = 3;
@@ -263,6 +264,16 @@ public class CastleDefense {
 
                     }
                 }
+
+                for(Turret t : turrets) {
+                    if (!t.isDead() && t.getX() + ((int)(Main.widthFactor * 50)) == i && u.getY() == t.getY()  && !t.isProjectile()) {
+                        u.attack(t);
+                        u.currentlyAttacking = true;
+                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + t);
+                    } else {
+
+                    }
+                }
             }
 
             if (!u.currentlyAttacking) {
@@ -337,6 +348,16 @@ public class CastleDefense {
     {
         if (amount < 0) {}
         else balance += amount;
+        Main.menu.repaint();
+    }
+
+    /*
+     * Sets Player's Money To a Value
+     */
+    public static void setMoney(int amount)
+    {
+        if (amount < 0) return;
+        balance = amount;
         Main.menu.repaint();
     }
 

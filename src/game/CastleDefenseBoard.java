@@ -130,17 +130,17 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             Main.menu.repaint();
         }
         //Will Move Turret Column Right
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT && defensePlacementMode) {
             if (selectedColCoordinate >= CastleDefense.TURRET_PLACEMENT_LIMIT - (int) (Main.heightFactor * 100))
                 return;
-            selectedColCoordinate += 15;
+            selectedColCoordinate += 10;
         }
 
         //Will Move Turret Column Left
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT && defensePlacementMode) {
             if (selectedColCoordinate <= 0)
                 return;
-            selectedColCoordinate -= 15;
+            selectedColCoordinate -= 10;
         }
 
 

@@ -1,6 +1,9 @@
 package game;
 
 import game.enemies.Enemy;
+import game.friendly.Friendly;
+import game.friendly.turrets.Cannon;
+import game.friendly.turrets.Turret;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,8 +15,8 @@ public class CastleDefenseTutorial {
     private static Timer t = new Timer();
 
     private static class TutorialEnemy extends Enemy {
-        public TutorialEnemy(){
-            super(3, 0, 1, 1,40, null);
+        public TutorialEnemy() {
+            super(3, 0, 1, 1, 40, null);
             this.setSprite("peasant");
         }
 
@@ -23,7 +26,7 @@ public class CastleDefenseTutorial {
         }
     }
 
-    public static void main(){
+    public static void main() {
         Main.b.setTitleMessage("Hello! Welcome to Castle Defense!");
         t.schedule(new TimerTask() {
             @Override
@@ -32,55 +35,91 @@ public class CastleDefenseTutorial {
                 e.spawn(1);
                 Main.b.setTitleMessage("This is an Enemy Soldier");
             }
-        },5000);
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {Main.b.setTitleMessage("You Must Defend Our Land!");
-            }
-        },10000);
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {Main.b.setTitleMessage("Press [1] to Spawn Militia!");
-            }
-        },15000);
+        }, 5000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setTitleMessage("Press Arrow Keys to change the Row.");
+                Main.b.setTitleMessage("You Must Defend Our Land!");
+            }
+        }, 10000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Press [1] to Spawn Militia!");
+            }
+        }, 15000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Press Arrow Keys to Change the Row.");
                 Enemy e = new TutorialEnemy();
                 e.spawn(3);
             }
-        },20000);
+        }, 20000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.b.setTitleMessage("Press [I] for controls.");
+                Main.b.setTitleMessage("Press [I] for Controls.");
             }
-        },25000);
+        }, 25000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Press [U] to see Available Units.");
+            }
+        }, 30000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Press [D] to Toggle Placing Defenses");
+            }
+        }, 35000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Use All 4 Arrow Keys To Set Turret Location");
+            }
+        }, 40000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.b.setTitleMessage("Place a Cannon to Stop this Enemy!");
+                Main.b.sendNotification("[Hint]: Press [1] To Spawn The Cannon");
+                CastleDefense.addMoney(Cannon.COST);
+                Enemy e = new TutorialEnemy();
+                e.spawn(2);
+            }
+        }, 45000);
+
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Main.b.setTitleMessage("After all friendly units cross the screen");
             }
-        },30000);
+        }, 50000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Main.b.setTitleMessage("The next wave will begin.");
             }
-        },32500);
+        }, 52500);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Main.b.setTitleMessage("Good Luck Commander!");
             }
-        },35000);
+        }, 55000);
         t.schedule(new TimerTask() {
             @Override
             public void run() {
                 Main.b.setTitleMessage("");
+                for (Friendly f:CastleDefense.friendlies)
+                    f.kill();
+                for (Turret t:CastleDefense.turrets)
+                    t.kill();
+                CastleDefense.setMoney(CastleDefense.STARTING_BALANCE);
                 CastleDefense.tutorial = false;
             }
-        },40000);
+        }, 60000);
     }
 }

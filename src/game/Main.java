@@ -35,7 +35,7 @@ public class Main
     public static final boolean DEBUG = false;
     public static boolean VERBOSE = true;
     public static final boolean ADMINMODE = true;
-    public static final boolean NOCOOLDOWN = true;
+    public static final boolean NOCOOLDOWN = false;
     public static final boolean ACTIONMODE = false;
     //Screen scaling stuff
     public static double screenWidth;
@@ -125,6 +125,9 @@ public class Main
         //Sets The Frames Visible In Panel [ORDER MATTERS]
         frame.setVisible(true);
         menu.setVisible(true);
+
+        //Sets Player's Starting Money
+        CastleDefense.setMoney(CastleDefense.STARTING_BALANCE);
 
         //Setting up save
         try{
