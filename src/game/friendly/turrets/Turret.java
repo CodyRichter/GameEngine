@@ -30,6 +30,7 @@ public abstract class Turret extends Friendly {
         //Adds Unit To List Of Units On Gameboard
         Main.b.addUnit(this);
         CastleDefense.addTurret(this);
+        CastleDefense.turretsPlaced++;
 
         //Sets X and Y Coordinates Of Spawned Unit
         int x = col;
@@ -48,6 +49,7 @@ public abstract class Turret extends Friendly {
         if(Main.VERBOSE) System.out.println(this + " DYING");
         //Main.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         isDead = true;
+        CastleDefense.turretsPlaced--;
         pos.setLocation(5,5);
         Main.menu.repaint();
     }

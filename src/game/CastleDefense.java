@@ -32,6 +32,9 @@ public class CastleDefense {
     public static boolean waitingForWave = false;
     public static boolean tutorial = true;
     public static boolean scoutHasSpawned = false;
+    public static int turretsPlaced = 0;
+    public static int turretPlacementLimit = 0;
+
 
     public static int highestWave = 0;
 
@@ -158,6 +161,7 @@ public class CastleDefense {
         System.out.println("Wave " + wave + " Started \n");
         Main.b.sendNotification("Wave " + wave + " Started!");
         main(enemyAmount);
+        turretPlacementLimit = wave/2;
         Main.menu.repaint();
 
     }
@@ -394,6 +398,7 @@ public class CastleDefense {
     public static boolean checkTurretSpawn(double x, int row)
     {
         boolean result = true;
+        if (turretsPlaced >= turretPlacementLimit) return false;
         for (Turret existingTurret: turrets)
         {
             if ((x > (existingTurret.getX() + 110) || x < (existingTurret.getX() - 110)) || existingTurret.getY() != CastleDefenseBoard.getCoordinateFromRow(row))

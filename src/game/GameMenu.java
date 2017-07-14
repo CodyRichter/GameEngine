@@ -136,16 +136,19 @@ public class GameMenu extends JPanel {
         g.fillRect(this.getWidth()-((int)(Main.widthFactor *325)),0,((int)(Main.widthFactor *20)), this.getHeight());
 
         //Economy Information
-        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth()-((int)(Main.widthFactor *300)), ((int)(Main.heightFactor *25)));
+        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth()-((int)(Main.widthFactor *300)), ((int)(Main.heightFactor *20)));
 
         //Wave Information
-        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-((int)(Main.widthFactor *300)), 2 * ((int)(Main.heightFactor *25)));
+        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-((int)(Main.widthFactor *300)), 2 * ((int)(Main.heightFactor *20)));
+
+        //Turret Information
+        g.drawString("Turrets Placed: " + CastleDefense.turretsPlaced + "/" + CastleDefense.turretPlacementLimit, this.getWidth()-((int)(Main.widthFactor *300)), 3 * ((int)(Main.heightFactor *20)));
 
         //Remaining Lives
-        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)(Main.widthFactor *300)),  3 * ((int)(Main.heightFactor *25)));
+        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)(Main.widthFactor *300)),  4 * ((int)(Main.heightFactor *20)));
 
         //High score
-        g.drawString("High Score: " + CastleDefense.highestWave, this.getWidth()-((int)(Main.widthFactor *300)),  4 * ((int)(Main.heightFactor *25)));
+        g.drawString("High Score: " + CastleDefense.highestWave, this.getWidth()-((int)(Main.widthFactor *300)),  5 * ((int)(Main.heightFactor *20)));
 
     }
 
