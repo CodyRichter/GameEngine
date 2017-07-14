@@ -2,6 +2,7 @@ package game;
 
 import base.Board;
 import base.Unit;
+import game.enemies.Assassin;
 import game.friendly.Crossbowman;
 import game.friendly.Infantry;
 import game.friendly.Knight;
@@ -117,6 +118,11 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 Crossbowman c = new Crossbowman();
                 c.spawn(selectedRow);
             }
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_5 && Main.ADMINMODE) {
+            Assassin a = new Assassin();
+            a.spawn(2);
         }
 
         //Will Move Selected Row Down 1 When [Down Arrow] Is Pressed

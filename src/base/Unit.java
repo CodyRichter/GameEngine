@@ -1,9 +1,9 @@
 package base;
 
+import game.CastleDefense;
 import game.Main;
 
 import javax.imageio.ImageIO;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -336,5 +336,13 @@ public abstract class Unit {
     }
 
     public boolean isSiegeWeapon() {return isSiegeWeapon;}
+
+    public void setRow(int row)
+    {
+        if (row < 1 || row > 3) return;
+        if (row == 1) pos.setLocation(getX(), CastleDefense.ROW1Y);
+        if (row == 2) pos.setLocation(getX(), CastleDefense.ROW2Y);
+        if (row == 3) pos.setLocation(getX(), CastleDefense.ROW3Y);
+    }
 
 }

@@ -133,7 +133,7 @@ public class CastleDefense {
             Main.b.unitList.add(u);
 
         if(Main.VERBOSE) System.out.println("WAVE SETUP");
-        if (wave >= 0 && !availableEnemies.contains(Peasant.class)){
+        if (wave >= 0 && wave < 10 && !availableEnemies.contains(Peasant.class)){
             if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
             availableEnemies.add(Peasant.class);
         }
@@ -148,6 +148,10 @@ public class CastleDefense {
         if (wave >= 7 && !availableEnemies.contains(Cavalry.class)){
             if(Main.VERBOSE) System.out.println("CAVALRY AVAILABLE");
             availableEnemies.add(Cavalry.class);
+        }
+        if (wave >= 9 && !availableEnemies.contains(Assassin.class)){
+            if(Main.VERBOSE) System.out.println("ASSASSIN AVAILABLE");
+            availableEnemies.add(Assassin.class);
         }
 
         enemyAmount = 3 * wave;
@@ -252,6 +256,23 @@ public class CastleDefense {
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
+            if (u instanceof Assassin)
+            {
+                Assassin a = (Assassin) u;
+                if (!a.hasJumped) {
+                    for (int i = (int) a.getX() - 30 * ((int) (Main.widthFactor * 20)); i < (int) a.getX(); i++) {
+                        for (Friendly f : friendlies) {
+                            if (!a.hasJumped && !f.isDead() && f.getX() + ((int) (Main.widthFactor * 50)) == i && a.getY() == f.getY() && !f.isProjectile()) {
+                                a.changeRow();
+                                if (Main.VERBOSE) System.out.println(a + " MOVING ROWS " + f);
+                            } else {
+
+                            }
+                        }
+                    }
+                }
+
+            }
             for (int i = (int)u.getX() - ((int)u.getRange())*((int)(Main.widthFactor * 20)); i < (int)u.getX(); i++)
             {
 
