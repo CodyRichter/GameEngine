@@ -83,6 +83,7 @@ public class CastleDefenseTutorial {
         t.schedule(new TimerTask() {
             @Override
             public void run() {
+                CastleDefense.turretPlacementLimit = 1;
                 Main.b.setTitleMessage("Place a Cannon to Stop this Enemy!");
                 Main.b.sendNotification("[Hint]: Press [1] To Spawn The Cannon");
                 CastleDefense.addMoney(Cannon.COST);

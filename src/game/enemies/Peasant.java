@@ -15,6 +15,18 @@ public class Peasant extends Enemy
         this.setSprite("peasant");
     }
 
+    public Peasant(boolean enraged)
+    {
+        super(3, 1, 1, 1,60, null);
+        if (enraged)
+        {
+            delayBetweenAttacks = 0.8;
+            this.setSprite("peasant");
+            rewardMoney = 70;
+            attackRange = 1;
+        }
+    }
+
     public String toString(){return "Peasant";}
 
 }

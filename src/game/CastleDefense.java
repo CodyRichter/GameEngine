@@ -155,6 +155,10 @@ public class CastleDefense {
         if (wave >= 9 && !availableEnemies.contains(Assassin.class)){
             if(Main.VERBOSE) System.out.println("ASSASSIN AVAILABLE");
             availableEnemies.add(Assassin.class);
+            if(Main.VERBOSE) System.out.println("PEASANT -NOT- AVAILABLE");
+            availableEnemies.remove(Peasant.class);
+            if(Main.VERBOSE) System.out.println("ENRAGED PEASANTS AVAILABLE");
+            availableEnemies.add(EnragedPeasant.class);
         }
 
         enemyAmount = 3 * wave;
