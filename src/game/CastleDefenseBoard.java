@@ -120,7 +120,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_5 && Main.ADMINMODE) {
+        if (e.getKeyCode() == KeyEvent.VK_5 && Startup.ADMINMODE) {
             Assassin a = new Assassin();
             a.spawn(2);
         }
@@ -131,7 +131,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 selectedRow = 1;
             else
                 selectedRow++;
-            Main.menu.repaint();
+            Startup.menu.repaint();
         }
 
         //Will Move Selected Row Up 1 When [Up Arrow] Is Pressed
@@ -140,11 +140,11 @@ public class CastleDefenseBoard extends Board implements KeyListener {
                 selectedRow = 3;
             else
                 selectedRow--;
-            Main.menu.repaint();
+            Startup.menu.repaint();
         }
         //Will Move Turret Column Right
         if (e.getKeyCode() == KeyEvent.VK_RIGHT && defensePlacementMode) {
-            if (selectedColCoordinate >= CastleDefense.TURRET_PLACEMENT_LIMIT - (int) (Main.heightFactor * 100))
+            if (selectedColCoordinate >= CastleDefense.TURRET_PLACEMENT_LIMIT - (int) (Startup.heightFactor * 100))
                 return;
             selectedColCoordinate += 10;
         }
@@ -161,50 +161,50 @@ public class CastleDefenseBoard extends Board implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_U) {
             showInfoMenu = false;
             showUnitMenu = !showUnitMenu;
-            Main.menu.repaint();
+            Startup.menu.repaint();
         }
 
         if (e.getKeyCode() == KeyEvent.VK_I) {
             showUnitMenu = false;
             showInfoMenu = !showInfoMenu;
-            Main.menu.repaint();
+            Startup.menu.repaint();
         }
 
         //Toggles Static Defense Placement Mode
         if (e.getKeyCode() == KeyEvent.VK_D) {
             defensePlacementMode = !defensePlacementMode;
-            Main.menu.repaint();
+            Startup.menu.repaint();
         }
 
         //Change scale
         if (e.getKeyCode() == KeyEvent.VK_EQUALS) {
-            if (Main.factor == 0) return;
+            if (Startup.factor == 0) return;
             else
-                Main.factor--;
+                Startup.factor--;
 
-            Main.widthFactor = (Main.screenWidth / Main.FACTORS[Main.factor][0]);
-            Main.heightFactor = (Main.screenHeight / Main.FACTORS[Main.factor][1]);
-            Main.menu.repaint();
-            Main.b.repaint();
+            Startup.widthFactor = (Startup.screenWidth / Startup.FACTORS[Startup.factor][0]);
+            Startup.heightFactor = (Startup.screenHeight / Startup.FACTORS[Startup.factor][1]);
+            Startup.menu.repaint();
+            Startup.b.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_MINUS) {
-            if (Main.factor == Main.FACTORS.length - 1) return;
+            if (Startup.factor == Startup.FACTORS.length - 1) return;
             else
-                Main.factor++;
+                Startup.factor++;
 
-            Main.widthFactor = (Main.screenWidth / Main.FACTORS[Main.factor][0]);
-            Main.heightFactor = (Main.screenHeight / Main.FACTORS[Main.factor][1]);
-            Main.menu.repaint();
-            Main.b.repaint();
+            Startup.widthFactor = (Startup.screenWidth / Startup.FACTORS[Startup.factor][0]);
+            Startup.heightFactor = (Startup.screenHeight / Startup.FACTORS[Startup.factor][1]);
+            Startup.menu.repaint();
+            Startup.b.repaint();
         }
 
         //ADMIN FEATURE - Adds Money To Player Account
-        if (e.getKeyCode() == KeyEvent.VK_N && Main.ADMINMODE) {
+        if (e.getKeyCode() == KeyEvent.VK_N && Startup.ADMINMODE) {
             CastleDefense.addMoney(1000);
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_V && Main.ADMINMODE) {
-            Main.VERBOSE = !Main.VERBOSE;
+        if (e.getKeyCode() == KeyEvent.VK_V && Startup.ADMINMODE) {
+            Startup.VERBOSE = !Startup.VERBOSE;
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE && CastleDefense.getWave() >= 1) {
@@ -217,7 +217,7 @@ public class CastleDefenseBoard extends Board implements KeyListener {
             }
 
 
-            Main.b.repaint();
+            Startup.b.repaint();
 
         }
 

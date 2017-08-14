@@ -1,6 +1,6 @@
 package game.friendly;
 
-import game.Main;
+import game.Startup;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,9 +34,9 @@ public class Infantry extends Friendly {
 
     public static void startCooldown()
     {
-        if (Main.ADMINMODE && Main.NOCOOLDOWN) return;
+        if (Startup.ADMINMODE && Startup.NOCOOLDOWN) return;
         isComplete = false;
-        Main.menu.repaint();
+        Startup.menu.repaint();
 
         //Sets Timer For Cooldown
         Timer t = new Timer();
@@ -44,7 +44,7 @@ public class Infantry extends Friendly {
             @Override
             public void run() {
                 isComplete = true;
-                Main.menu.repaint();
+                Startup.menu.repaint();
             }
         }, cooldown*1000);
     }

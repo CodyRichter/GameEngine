@@ -20,9 +20,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * @author Cody Richter 
  * @version 1.0
  */
-public class Main
+public class Startup
 {
-    //Main Game Variables
+    //Startup Game Variables
     public static Board b;
     public static Graphics2D g;
     public static JFrame frame;
@@ -56,7 +56,7 @@ public class Main
     {
         /*
             Pre Game Setup Is Here
-            This Will Configure The Main JFrame and the JPanels In It.
+            This Will Configure The Startup JFrame and the JPanels In It.
             Additionally, All Of The Menu Setup Will Be In Here.
          */
 
@@ -73,7 +73,7 @@ public class Main
         System.out.println(screenHeight);
         int menuSize = (int)(screenHeight/8);
 
-        //Main JFrame Setup
+        //Startup JFrame Setup
         if(VERBOSE) System.out.println("INITIAL JFrame SETUP");
         frame = new JFrame("Castle Defense");
         frame.setSize((int)screenWidth, (int)screenHeight);
@@ -150,7 +150,7 @@ public class Main
         }
         if(VERBOSE) System.out.println("STARTING GAME\n\n");
 
-        Media music = new Media(Main.class.getClass().getResource((ACTIONMODE ? "/game/sounds/ActionMode.mp3": "/game/sounds/Fake.mp3")).toString());
+        Media music = new Media(Startup.class.getClass().getResource((ACTIONMODE ? "/game/sounds/ActionMode.mp3": "/game/sounds/Fake.mp3")).toString());
         mediaPlayer = new MediaPlayer(music);
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(117));

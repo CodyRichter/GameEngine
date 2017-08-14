@@ -2,7 +2,7 @@ package game.friendly;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 import game.friendly.turrets.Barricade;
 import game.friendly.turrets.Cannon;
 
@@ -60,7 +60,7 @@ public abstract class Friendly extends Unit
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addFriendly(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
@@ -82,11 +82,11 @@ public abstract class Friendly extends Unit
      */
     public void kill()
     {
-        if(Main.VERBOSE) System.out.println(this + " DYING");
-        //Main.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
+        if(Startup.VERBOSE) System.out.println(this + " DYING");
+        //Startup.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         isDead = true;
         pos.setLocation(5,5);
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
     /**

@@ -2,7 +2,7 @@ package game.enemies;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 
 import java.awt.image.BufferedImage;
 
@@ -48,11 +48,11 @@ public abstract class Enemy extends Unit
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
         currentRow = row;
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.enemies.add(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
-        int x = Main.b.getWidth();
+        int x = Startup.b.getWidth();
         int y;
         if (row == 1)
             y = CastleDefense.ROW1Y;
@@ -77,15 +77,15 @@ public abstract class Enemy extends Unit
     */
     public void kill()
     {
-        if(Main.VERBOSE) System.out.println(this + " DYING");
-        //Main.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
+        if(Startup.VERBOSE) System.out.println(this + " DYING");
+        //Startup.b.removeUnit(this);//CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         CastleDefense.addMoney(rewardMoney);
         if (getRewardMoney() > 0)
-            Main.b.sendNotification("Recieved $" + getRewardMoney() + " for killing " + this.toString());
+            Startup.b.sendNotification("Recieved $" + getRewardMoney() + " for killing " + this.toString());
 
         isDead = true;
         pos.setLocation(5,5);
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
 }

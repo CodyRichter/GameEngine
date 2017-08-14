@@ -1,8 +1,6 @@
 package game;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.*;
 
 /**
  * Created by Frank Williams on 6/4/2017.
@@ -17,10 +15,10 @@ public class SaveEditor {
                 BufferedWriter bw = new BufferedWriter(fw);
                 file.createNewFile();
                 bw.write("n,0");
-                if(Main.VERBOSE) System.out.println("File Created");
+                if(Startup.VERBOSE) System.out.println("File Created");
                 bw.close();
             }else {
-                if(Main.VERBOSE) System.out.println("File Already Exists");
+                if(Startup.VERBOSE) System.out.println("File Already Exists");
             }
         }catch (IOException e){
             System.out.print("oops " + e.getMessage());

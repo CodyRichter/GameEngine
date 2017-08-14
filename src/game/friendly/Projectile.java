@@ -2,7 +2,7 @@ package game.friendly;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 import game.friendly.turrets.Turret;
 
 import javax.imageio.ImageIO;
@@ -49,7 +49,7 @@ public class Projectile extends Friendly {
     public void spawn(Crossbowman c){
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addFriendly(this);
 
         //Sets X and Y Coordinates Of Spawned Unit
@@ -62,7 +62,7 @@ public class Projectile extends Friendly {
     public void spawn(Turret t){
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addFriendly(this);
 
         //Sets X and Y Coordinates Of Spawned Unit

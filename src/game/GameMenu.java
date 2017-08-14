@@ -26,8 +26,8 @@ public class GameMenu extends JPanel {
         //Sets Font For Text In Menu
 
 
-        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Main.heightFactor));
-        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Main.heightFactor));
+        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Startup.heightFactor));
+        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Startup.heightFactor));
 
     }
 
@@ -37,73 +37,73 @@ public class GameMenu extends JPanel {
     }
 
     private void displayBoard(Graphics g) {
-        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Main.heightFactor));
-        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Main.heightFactor));
+        normalFont = new Font("Verdana", Font.BOLD, (int)(24 * Startup.heightFactor));
+        titleFont = new Font("SansSerif", Font.ITALIC, (int)(50 * Startup.heightFactor));
         if (!CastleDefenseBoard.showUnitMenu && !CastleDefenseBoard.showInfoMenu) {
 
             //Shows Information On Each Unit Type
             g.setFont(normalFont);
-            g.drawString("[U] Unit Information",0,((int)(Main.heightFactor *30)));
-            g.drawString("[D] Toggle Defense Placement",0,((int)(Main.heightFactor *60)));
-            g.drawString("[I] Game Information",0,((int)(Main.heightFactor *90)));
+            g.drawString("[U] Unit Information",0,((int)(Startup.heightFactor *30)));
+            g.drawString("[D] Toggle Defense Placement",0,((int)(Startup.heightFactor *60)));
+            g.drawString("[I] Game Information",0,((int)(Startup.heightFactor *90)));
 
         } else if (CastleDefenseBoard.showUnitMenu) {
             g.setFont(normalFont);
             g.setColor(getCorrectColor(""));
-            g.drawString("Avaliable", 0, ((int)(Main.heightFactor *50)));
-            g.drawString("Units", 0, ((int)(Main.heightFactor *80)));
-            g.fillRect((((int)(Main.widthFactor *130))),0,20, this.getHeight());
+            g.drawString("Avaliable", 0, ((int)(Startup.heightFactor *50)));
+            g.drawString("Units", 0, ((int)(Startup.heightFactor *80)));
+            g.fillRect((((int)(Startup.widthFactor *130))),0,20, this.getHeight());
 
             //Avaliable Units
             if (!CastleDefenseBoard.defensePlacementMode) {
                 //Information on Units
                 g.setColor(getCorrectColor("militia"));
-                g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
+                g.drawString("[1] Militia - $" + Militia.getUnitCost(), ((((int) (Startup.widthFactor * 150)))), ((int) (Startup.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("infantry"));
-                g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((int) (Main.widthFactor * 150)), 2 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[2] Infantry - $" + Infantry.getUnitCost(), ((int) (Startup.widthFactor * 150)), 2 * ((int) (Startup.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("knight"));
-                g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 3 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[3] Knight - $" + Knight.getUnitCost(), ((((int) (Startup.widthFactor * 150)))), 3 * ((int) (Startup.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("crossbowman"));
-                g.drawString("[4] Crossbowman - $" + Crossbowman.getUnitCost(), ((((int) (Main.widthFactor * 150)))), 4 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[4] Crossbowman - $" + Crossbowman.getUnitCost(), ((((int) (Startup.widthFactor * 150)))), 4 * ((int) (Startup.heightFactor * 25)));
 
                 //Unit Quick Info Items
                 g.setColor(getCorrectColor("militia"));
-                g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
+                g.drawString("[1]", this.getWidth()-((int)(Startup.widthFactor *425)), ((int)(Startup.heightFactor *25)));
 
                 g.setColor(getCorrectColor("infantry"));
-                g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
+                g.drawString("[2]", this.getWidth()-((int)(Startup.widthFactor *425)), 2 * ((int)(Startup.heightFactor *25)));
 
                 g.setColor(getCorrectColor("knight"));
-                g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
+                g.drawString("[3]", this.getWidth()-((int)(Startup.widthFactor *425)), 3 * ((int)(Startup.heightFactor *25)));
 
                 g.setColor(getCorrectColor("crossbowman"));
-                g.drawString("[4]", this.getWidth()-((int)(Main.widthFactor *425)), 4 * ((int)(Main.heightFactor *25)));
+                g.drawString("[4]", this.getWidth()-((int)(Startup.widthFactor *425)), 4 * ((int)(Startup.heightFactor *25)));
             }
             else
             {
                 //Information on Units
                 g.setColor(getCorrectColor("cannon"));
-                g.drawString("[1] Cannon - $" + Cannon.getUnitCost(), ((((int) (Main.widthFactor * 150)))), ((int) (Main.heightFactor * 25)));
+                g.drawString("[1] Cannon - $" + Cannon.getUnitCost(), ((((int) (Startup.widthFactor * 150)))), ((int) (Startup.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("barricade"));
-                g.drawString("[2] Barricade - $" + Barricade.getUnitCost(), ((((int) (Main.widthFactor * 150)))),2 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[2] Barricade - $" + Barricade.getUnitCost(), ((((int) (Startup.widthFactor * 150)))),2 * ((int) (Startup.heightFactor * 25)));
 
                 g.setColor(getCorrectColor("xbow"));
-                g.drawString("[3] X-Bow - $" + XBow.getUnitCost(), ((((int) (Main.widthFactor * 150)))),3 * ((int) (Main.heightFactor * 25)));
+                g.drawString("[3] X-Bow - $" + XBow.getUnitCost(), ((((int) (Startup.widthFactor * 150)))),3 * ((int) (Startup.heightFactor * 25)));
 
 
                 //Unit Quick Info Items
                 g.setColor(getCorrectColor("cannon"));
-                g.drawString("[1]", this.getWidth()-((int)(Main.widthFactor *425)), ((int)(Main.heightFactor *25)));
+                g.drawString("[1]", this.getWidth()-((int)(Startup.widthFactor *425)), ((int)(Startup.heightFactor *25)));
 
                 g.setColor(getCorrectColor("barricade"));
-                g.drawString("[2]", this.getWidth()-((int)(Main.widthFactor *425)), 2 * ((int)(Main.heightFactor *25)));
+                g.drawString("[2]", this.getWidth()-((int)(Startup.widthFactor *425)), 2 * ((int)(Startup.heightFactor *25)));
 
                 g.setColor(getCorrectColor("xbow"));
-                g.drawString("[3]", this.getWidth()-((int)(Main.widthFactor *425)), 3 * ((int)(Main.heightFactor *25)));
+                g.drawString("[3]", this.getWidth()-((int)(Startup.widthFactor *425)), 3 * ((int)(Startup.heightFactor *25)));
 
             }
         }
@@ -112,18 +112,18 @@ public class GameMenu extends JPanel {
             //Game Information
             g.setFont(normalFont);
             g.setColor(getCorrectColor(""));
-            g.drawString("Castle Defense Created By:", 0, ((int)(Main.heightFactor *25)));
-            g.drawString("Cody R.", 0, 2 * ((int)(Main.heightFactor *25)));
-            g.drawString("Frank W.", 0, 3 * ((int)(Main.heightFactor *25)));
+            g.drawString("Castle Defense Created By:", 0, ((int)(Startup.heightFactor *25)));
+            g.drawString("Cody R.", 0, 2 * ((int)(Startup.heightFactor *25)));
+            g.drawString("Frank W.", 0, 3 * ((int)(Startup.heightFactor *25)));
 
             //Controls
-            g.drawString("Game Controls:", ((((int)(Main.widthFactor *500)))), ((int)(Main.heightFactor *25)));
-            g.drawString("[1-9]: Spawn Units", ((((int)(Main.widthFactor *500)))), 2 * ((int)((Main.heightFactor *25))));
-            g.drawString("[Arrow Keys]: Select Row/Column", ((((int)(Main.widthFactor *500)))), 3 * ((int)(Main.heightFactor *25)));
-            g.drawString("[Esc]: Exit Game", ((((int)(Main.widthFactor *500)))), 4 * ((int)(Main.heightFactor *25)));
-            g.drawString("[Space]: Pause Game", ((((int)(Main.widthFactor *500)))), 5 * ((int)(Main.heightFactor *25)));
-            g.drawString("[Equals]: Zoom In", ((((int)(Main.widthFactor *1000)))), 1 * ((int)(Main.heightFactor *25)));
-            g.drawString("[Minus]: Zoom Out", ((((int)(Main.widthFactor *1000)))), 2 * ((int)(Main.heightFactor *25)));
+            g.drawString("Game Controls:", ((((int)(Startup.widthFactor *500)))), ((int)(Startup.heightFactor *25)));
+            g.drawString("[1-9]: Spawn Units", ((((int)(Startup.widthFactor *500)))), 2 * ((int)((Startup.heightFactor *25))));
+            g.drawString("[Arrow Keys]: Select Row/Column", ((((int)(Startup.widthFactor *500)))), 3 * ((int)(Startup.heightFactor *25)));
+            g.drawString("[Esc]: Exit Game", ((((int)(Startup.widthFactor *500)))), 4 * ((int)(Startup.heightFactor *25)));
+            g.drawString("[Space]: Pause Game", ((((int)(Startup.widthFactor *500)))), 5 * ((int)(Startup.heightFactor *25)));
+            g.drawString("[Equals]: Zoom In", ((((int)(Startup.widthFactor *1000)))), 1 * ((int)(Startup.heightFactor *25)));
+            g.drawString("[Minus]: Zoom Out", ((((int)(Startup.widthFactor *1000)))), 2 * ((int)(Startup.heightFactor *25)));
         }
 
         //This Is Displayed Regardless of Selected Menu
@@ -133,22 +133,22 @@ public class GameMenu extends JPanel {
         //Divider Between Unit Info And Other Info
         g.setColor(getCorrectColor(""));
         g.setFont(normalFont);
-        g.fillRect(this.getWidth()-((int)(Main.widthFactor *325)),0,((int)(Main.widthFactor *20)), this.getHeight());
+        g.fillRect(this.getWidth()-((int)(Startup.widthFactor *325)),0,((int)(Startup.widthFactor *20)), this.getHeight());
 
         //Economy Information
-        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth()-((int)(Main.widthFactor *300)), ((int)(Main.heightFactor *20)));
+        g.drawString("Balance: $" + CastleDefense.getBalance(), this.getWidth()-((int)(Startup.widthFactor *300)), ((int)(Startup.heightFactor *20)));
 
         //Wave Information
-        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-((int)(Main.widthFactor *300)), 2 * ((int)(Main.heightFactor *20)));
+        g.drawString("Wave: " + CastleDefense.getWave(), this.getWidth()-((int)(Startup.widthFactor *300)), 2 * ((int)(Startup.heightFactor *20)));
 
         //Turret Information
-        g.drawString("Turrets Placed: " + CastleDefense.turretsPlaced + "/" + CastleDefense.turretPlacementLimit, this.getWidth()-((int)(Main.widthFactor *300)), 3 * ((int)(Main.heightFactor *20)));
+        g.drawString("Turrets Placed: " + CastleDefense.turretsPlaced + "/" + CastleDefense.turretPlacementLimit, this.getWidth()-((int)(Startup.widthFactor *300)), 3 * ((int)(Startup.heightFactor *20)));
 
         //Remaining Lives
-        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)(Main.widthFactor *300)),  4 * ((int)(Main.heightFactor *20)));
+        g.drawString("Lives Remaining: " + CastleDefense.getLives(), this.getWidth()-((int)(Startup.widthFactor *300)),  4 * ((int)(Startup.heightFactor *20)));
 
         //High score
-        g.drawString("High Score: " + CastleDefense.highestWave, this.getWidth()-((int)(Main.widthFactor *300)),  5 * ((int)(Main.heightFactor *20)));
+        g.drawString("High Score: " + CastleDefense.highestWave, this.getWidth()-((int)(Startup.widthFactor *300)),  5 * ((int)(Startup.heightFactor *20)));
 
     }
 

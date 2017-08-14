@@ -2,7 +2,7 @@ package game.friendly.turrets;
 
 import game.CastleDefense;
 import game.CastleDefenseBoard;
-import game.Main;
+import game.Startup;
 import game.friendly.Friendly;
 
 /**
@@ -28,7 +28,7 @@ public abstract class Turret extends Friendly {
         if (row > 3 || row < 1) return; //Will Ensure Unit Is Spawned In Correct Row
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addTurret(this);
         CastleDefense.turretsPlaced++;
 
@@ -46,12 +46,12 @@ public abstract class Turret extends Friendly {
 
     public void kill()
     {
-        if(Main.VERBOSE) System.out.println(this + " DYING");
-        //Main.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
+        if(Startup.VERBOSE) System.out.println(this + " DYING");
+        //Startup.b.removeUnit(this); //CAUSES CRASH WHEN ELEMENTS ARE BEING MODIFIED
         isDead = true;
         CastleDefense.turretsPlaced--;
         pos.setLocation(5,5);
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
 }

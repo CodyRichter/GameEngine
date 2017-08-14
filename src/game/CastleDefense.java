@@ -17,11 +17,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CastleDefense {
 
     //X-Values Of Board JPanel That Rows Are At And That Units Are Spawned At
-    public static final int ROW1Y = (int)(100*(Main.screenHeight/900));
-    public static final int ROW2Y = (int)(300*(Main.screenHeight/900));
-    public static final int ROW3Y = (int)(500*(Main.screenHeight/900));
+    public static final int ROW1Y = (int)(100*(Startup.screenHeight/900));
+    public static final int ROW2Y = (int)(300*(Startup.screenHeight/900));
+    public static final int ROW3Y = (int)(500*(Startup.screenHeight/900));
 
-    public static final int TURRET_PLACEMENT_LIMIT = (int)(Main.screenWidth/3)*2;
+    public static final int TURRET_PLACEMENT_LIMIT = (int)(Startup.screenWidth/3)*2;
 
     //Current Wave Player Is On
     private static int wave = 0;
@@ -59,7 +59,7 @@ public class CastleDefense {
             nextWave = false;
             waitingForWave = true;
             scoutHasSpawned = false;
-            if (Main.VERBOSE) System.out.println("WAITING FOR WAVE");
+            if (Startup.VERBOSE) System.out.println("WAITING FOR WAVE");
             nextWave();
         } else if (control > 0) {
             waitingForWave = true;
@@ -77,7 +77,7 @@ public class CastleDefense {
                     System.out.println("Enemy Spawn Started");
                     int enemyType = (int) (Math.random() * availableEnemies.size());
                     try {
-                        if (Main.VERBOSE)
+                        if (Startup.VERBOSE)
                             System.out.println("SPAWNING ENEMY OF TYPE " + availableEnemies.get(enemyType).getName());
                         Object e = availableEnemies.get(enemyType).newInstance();
                         int row = (int) (Math.random() * 3) + 1;
@@ -96,7 +96,7 @@ public class CastleDefense {
                     main(icontrol);
                     System.out.println();
                 }
-            }, ((Main.ADMINMODE && Main.ACTIONMODE) ? 1500 : 5000));
+            }, ((Startup.ADMINMODE && Startup.ACTIONMODE) ? 1500 : 5000));
 
         }
     }
@@ -111,9 +111,9 @@ public class CastleDefense {
                     double multiplier = f.getCurrentHealth() / f.getMaxHealth();
                     int amount = (int) (f.getUnitCost(f) * multiplier);
                     addMoney(amount);
-                    if (Main.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
+                    if (Startup.VERBOSE) System.out.println(f + "HAS REACHED END OF BOARD. KILLING...");
                     if (!f.toString().equals("") && !f.toString().equalsIgnoreCase("scout")) {
-                        Main.b.sendNotification("Recieved $" + amount + " For " + f.toString());
+                        Startup.b.sendNotification("Recieved $" + amount + " For " + f.toString());
                     }
 
                     f.kill();
@@ -124,7 +124,7 @@ public class CastleDefense {
         addMoney(50 * wave);
         enemies.clear();
         friendlies.clear();
-        Main.b.unitList.clear();
+        Startup.b.unitList.clear();
 
         for (Turret t:turrets)
         {
@@ -133,40 +133,40 @@ public class CastleDefense {
         }
 
         for (Unit u: turrets)
-            Main.b.unitList.add(u);
+            Startup.b.unitList.add(u);
 
-        if(Main.VERBOSE) System.out.println("WAVE SETUP");
+        if(Startup.VERBOSE) System.out.println("WAVE SETUP");
         if (wave >= 0 && wave < 10 && !availableEnemies.contains(Peasant.class)){
-            if(Main.VERBOSE) System.out.println("PEASANT AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("PEASANT AVAILABLE");
             availableEnemies.add(Peasant.class);
         }
         if (wave >= 3 && !availableEnemies.contains(Archer.class)) {
-            if(Main.VERBOSE) System.out.println("ARCHER AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("ARCHER AVAILABLE");
             availableEnemies.add(Archer.class);
         }
         if (wave >= 5 && !availableEnemies.contains(Barbarian.class)) {
-            if(Main.VERBOSE) System.out.println("BARBARIAN AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("BARBARIAN AVAILABLE");
             availableEnemies.add(Barbarian.class);
         }
         if (wave >= 7 && !availableEnemies.contains(Cavalry.class)){
-            if(Main.VERBOSE) System.out.println("CAVALRY AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("CAVALRY AVAILABLE");
             availableEnemies.add(Cavalry.class);
         }
         if (wave >= 9 && !availableEnemies.contains(Assassin.class)){
-            if(Main.VERBOSE) System.out.println("ASSASSIN AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("ASSASSIN AVAILABLE");
             availableEnemies.add(Assassin.class);
-            if(Main.VERBOSE) System.out.println("PEASANT -NOT- AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("PEASANT -NOT- AVAILABLE");
             availableEnemies.remove(Peasant.class);
-            if(Main.VERBOSE) System.out.println("ENRAGED PEASANTS AVAILABLE");
+            if(Startup.VERBOSE) System.out.println("ENRAGED PEASANTS AVAILABLE");
             availableEnemies.add(EnragedPeasant.class);
         }
 
         enemyAmount = 3 * wave;
         System.out.println("Wave " + wave + " Started \n");
-        Main.b.sendNotification("Wave " + wave + " Started!");
+        Startup.b.sendNotification("Wave " + wave + " Started!");
         main(enemyAmount);
         turretPlacementLimit = wave/2;
-        Main.menu.repaint();
+        Startup.menu.repaint();
 
     }
 
@@ -183,19 +183,19 @@ public class CastleDefense {
     public static void doAction(Friendly u)
     {
         //Basic Conditions That Need To Be Met: Unit Has Health Remaining And Isn't At Edge Of Board
-        if (u.getX() < Main.b.getWidth()-((int)(Main.widthFactor * 50)))
+        if (u.getX() < Startup.b.getWidth()-((int)(Startup.widthFactor * 50)))
         {
             //Will Exit Method If Unit Is Currently Completing an Action
             if (u.isInAction()) return;
 
             u.currentlyAttacking = false;
-            for (int i = (int)u.getX()+((int)(Main.widthFactor * 50)); i < (((int)(Main.widthFactor * 50))+(int)u.getX())+(u.getRange())*((int)(Main.widthFactor * 20)); i++)
+            for (int i = (int)u.getX()+((int)(Startup.widthFactor * 50)); i < (((int)(Startup.widthFactor * 50))+(int)u.getX())+(u.getRange())*((int)(Startup.widthFactor * 20)); i++)
             {
 
                 for(Enemy e : enemies) {
                     if (!e.isDead() && e.getX() == i && e.getY() == u.getY() && !e.isProjectile()) {
                         u.attack(e);
-                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + e);
+                        if(Startup.VERBOSE) System.out.println(u + " ATTACKING " + e);
                         u.currentlyAttacking = true;
                     } else {}
                 }
@@ -203,21 +203,21 @@ public class CastleDefense {
 
             if (!u.currentlyAttacking && (!u.isSiegeWeapon() || nextWave)) {
                 u.move();
-               // if(Main.VERBOSE) System.out.println(u + " moving");
+               // if(Startup.VERBOSE) System.out.println(u + " moving");
             } else if (u.isSiegeWeapon() && (nextWave || waitingForWave)){
                 u.move();
             }
 
         }
-        else if (u.getX() >= Main.b.getWidth()-(((int)(Main.widthFactor * 50))))
+        else if (u.getX() >= Startup.b.getWidth()-(((int)(Startup.widthFactor * 50))))
         {
             double multiplier = u.getCurrentHealth()/u.getMaxHealth();
             int amount = (int)(u.getUnitCost(u)*multiplier);
             addMoney(amount);
-            if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. KILLING...");
+            if(Startup.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. KILLING...");
             if (!u.toString().equals("") && !u.toString().equalsIgnoreCase("scout"))
             {
-                Main.b.sendNotification("Recieved $" + amount + " For " + u.toString());
+                Startup.b.sendNotification("Recieved $" + amount + " For " + u.toString());
             }
 
             u.kill();
@@ -241,13 +241,13 @@ public class CastleDefense {
             if (t.isInAction()) return;
 
             t.currentlyAttacking = false;
-            for (int i = (int)t.getX()+((int)(Main.widthFactor * 50)); i < (((int)(Main.widthFactor * 50))+(int)t.getX())+(t.getRange())*((int)(Main.widthFactor * 20)); i++)
+            for (int i = (int)t.getX()+((int)(Startup.widthFactor * 50)); i < (((int)(Startup.widthFactor * 50))+(int)t.getX())+(t.getRange())*((int)(Startup.widthFactor * 20)); i++)
             {
 
                 for(Enemy e : enemies) {
                     if (!e.isDead() && e.getX() == i && e.getY() == t.getY() && !e.isProjectile()) {
                         t.attack(e);
-                        if(Main.VERBOSE) System.out.println("[Turret] " + t + " ATTACKING " + e);
+                        if(Startup.VERBOSE) System.out.println("[Turret] " + t + " ATTACKING " + e);
                         t.currentlyAttacking = true;
                     } else {}
                 }
@@ -268,11 +268,11 @@ public class CastleDefense {
             {
                 Assassin a = (Assassin) u;
                 if (!a.hasJumped) {
-                    for (int i = (int) a.getX() - 30 * ((int) (Main.widthFactor * 20)); i < (int) a.getX(); i++) {
+                    for (int i = (int) a.getX() - 30 * ((int) (Startup.widthFactor * 20)); i < (int) a.getX(); i++) {
                         for (Friendly f : friendlies) {
-                            if (!a.hasJumped && !f.isDead() && f.getX() + ((int) (Main.widthFactor * 50)) == i && a.getY() == f.getY() && !f.isProjectile()) {
+                            if (!a.hasJumped && !f.isDead() && f.getX() + ((int) (Startup.widthFactor * 50)) == i && a.getY() == f.getY() && !f.isProjectile()) {
                                 a.changeRow();
-                                if (Main.VERBOSE) System.out.println(a + " MOVING ROWS " + f);
+                                if (Startup.VERBOSE) System.out.println(a + " MOVING ROWS " + f);
                             } else {
 
                             }
@@ -281,24 +281,24 @@ public class CastleDefense {
                 }
 
             }
-            for (int i = (int)u.getX() - ((int)u.getRange())*((int)(Main.widthFactor * 20)); i < (int)u.getX(); i++)
+            for (int i = (int)u.getX() - ((int)u.getRange())*((int)(Startup.widthFactor * 20)); i < (int)u.getX(); i++)
             {
 
                 for(Friendly f : friendlies) {
-                    if (!f.isDead() && f.getX() + ((int)(Main.widthFactor * 50)) == i && u.getY() == f.getY()  && !f.isProjectile()) {
+                    if (!f.isDead() && f.getX() + ((int)(Startup.widthFactor * 50)) == i && u.getY() == f.getY()  && !f.isProjectile()) {
                         u.attack(f);
                         u.currentlyAttacking = true;
-                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + f);
+                        if(Startup.VERBOSE) System.out.println(u + " ATTACKING " + f);
                     } else {
 
                     }
                 }
 
                 for(Turret t : turrets) {
-                    if (!t.isDead() && t.getX() + ((int)(Main.widthFactor * 50)) == i && u.getY() == t.getY()  && !t.isProjectile()) {
+                    if (!t.isDead() && t.getX() + ((int)(Startup.widthFactor * 50)) == i && u.getY() == t.getY()  && !t.isProjectile()) {
                         u.attack(t);
                         u.currentlyAttacking = true;
-                        if(Main.VERBOSE) System.out.println(u + " ATTACKING " + t);
+                        if(Startup.VERBOSE) System.out.println(u + " ATTACKING " + t);
                     } else {
 
                     }
@@ -307,18 +307,18 @@ public class CastleDefense {
 
             if (!u.currentlyAttacking) {
                 u.move();
-                //if(Main.VERBOSE) System.out.println(u + " moving");
+                //if(Startup.VERBOSE) System.out.println(u + " moving");
             }
         }
         else if (u.getX() <= 0 && !u.isDead() && !u.isProjectile())
         {
-            if(Main.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
+            if(Startup.VERBOSE) System.out.println(u + "HAS REACHED END OF BOARD. GAME OVER.");
             loseLife();
             u.kill();
         }
         else if (u.getX() <= 0 && !u.isDead() && u.isProjectile())
         {
-            if (Main.VERBOSE) System.out.println(u + " (PROJECTILE) HAS REACHED THE END OF BOARD. KILLING...");
+            if (Startup.VERBOSE) System.out.println(u + " (PROJECTILE) HAS REACHED THE END OF BOARD. KILLING...");
             u.kill();
 
         }
@@ -326,7 +326,7 @@ public class CastleDefense {
 
     public static void pause(){
         paused = true;
-        if (Main.VERBOSE) System.out.println("Paused with " + enemyAmount + " left");
+        if (Startup.VERBOSE) System.out.println("Paused with " + enemyAmount + " left");
         t.cancel();
     }
     public static void resume(){
@@ -341,16 +341,16 @@ public class CastleDefense {
         if (lives <= 0) {
             endGame();
         }
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
 
     public static void endGame() {
         gameOver = true;
-        Main.saveData[0] = "T";
-        Main.saveData[1] = "" + wave;
-        Main.b.repaint();
-        SaveEditor.writeToFile(Main.saveFile,Main.saveData);
+        Startup.saveData[0] = "T";
+        Startup.saveData[1] = "" + wave;
+        Startup.b.repaint();
+        SaveEditor.writeToFile(Startup.saveFile, Startup.saveData);
     }
 
     //
@@ -367,7 +367,7 @@ public class CastleDefense {
         if (amount < 0) {}
         if (amount > balance) balance = 0;
         else balance -= amount;
-        Main.b.repaint();
+        Startup.b.repaint();
     }
 
     /**
@@ -377,7 +377,7 @@ public class CastleDefense {
     {
         if (amount < 0) {}
         else balance += amount;
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
     /*
@@ -387,7 +387,7 @@ public class CastleDefense {
     {
         if (amount < 0) return;
         balance = amount;
-        Main.menu.repaint();
+        Startup.menu.repaint();
     }
 
     public static int getBalance()

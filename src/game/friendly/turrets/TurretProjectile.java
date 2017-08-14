@@ -2,7 +2,7 @@ package game.friendly.turrets;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 
 import javax.imageio.ImageIO;
 import java.io.InputStream;
@@ -33,7 +33,7 @@ public class TurretProjectile extends Turret {
     public void spawn(Turret t){
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addFriendly(this);
 
         //Sets X and Y Coordinates Of Spawned Unit

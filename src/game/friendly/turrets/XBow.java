@@ -1,7 +1,7 @@
 package game.friendly.turrets;
 
 import base.Unit;
-import game.Main;
+import game.Startup;
 import game.friendly.Projectile;
 
 import java.util.Timer;
@@ -67,9 +67,9 @@ public class XBow extends Turret {
 
     public static void startCooldown()
     {
-        if (Main.ADMINMODE && Main.NOCOOLDOWN) return;
+        if (Startup.ADMINMODE && Startup.NOCOOLDOWN) return;
         isComplete = false;
-        Main.menu.repaint();
+        Startup.menu.repaint();
 
         //Sets Timer For Cooldown
         Timer t = new Timer();
@@ -77,7 +77,7 @@ public class XBow extends Turret {
             @Override
             public void run() {
                 isComplete = true;
-                Main.menu.repaint();
+                Startup.menu.repaint();
             }
         }, cooldown*1000);
     }

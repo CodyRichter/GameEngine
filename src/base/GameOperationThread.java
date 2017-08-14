@@ -1,7 +1,7 @@
 package base;
 
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 import game.enemies.Enemy;
 import game.friendly.Friendly;
 import game.friendly.turrets.Turret;
@@ -33,7 +33,7 @@ public class GameOperationThread implements Runnable
     {
 
         //will set the update speed proportional to screen size so it isn't annoyingly slow on really big screens(my laptop) or impossible on smaller screens(School Computers)
-        int period = (int) (10 *(1/Main.widthFactor));
+        int period = (int) (10 *(1/ Startup.widthFactor));
 
 
         gameBoard = board;
@@ -69,7 +69,7 @@ public class GameOperationThread implements Runnable
 //        if (fraction >= 100) {
 //            CastleDefense.addMoney(amountPerCycle);
 //            fraction = 0;
-//            Main.menu.repaint();
+//            Startup.menu.repaint();
 //        }
     }
 }

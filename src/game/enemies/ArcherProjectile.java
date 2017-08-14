@@ -2,7 +2,7 @@ package game.enemies;
 
 import base.Unit;
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 
 import javax.imageio.ImageIO;
 import java.io.InputStream;
@@ -31,7 +31,7 @@ public class ArcherProjectile extends Enemy {
     public void spawn(Archer a){
 
         //Adds Unit To List Of Units On Gameboard
-        Main.b.addUnit(this);
+        Startup.b.addUnit(this);
         CastleDefense.addEnemy(this);
 
         //Sets X and Y Coordinates Of Spawned Unit

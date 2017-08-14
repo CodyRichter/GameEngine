@@ -1,7 +1,7 @@
 package game.enemies;
 
 import game.CastleDefense;
-import game.Main;
+import game.Startup;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,9 +29,9 @@ public class EnragedPeasant extends Peasant {
 
             if (row > 3 || row < 1) return;
             EnragedPeasant e = new EnragedPeasant();
-            Main.b.addUnit(e);
+            Startup.b.addUnit(e);
             CastleDefense.enemies.add(e);
-            int x = Main.b.getWidth();
+            int x = Startup.b.getWidth();
             int y;
             if (row == 1) e.setRow(1);
             else if (row == 2) e.setRow(2);

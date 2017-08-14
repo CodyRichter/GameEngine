@@ -2,7 +2,7 @@ package base;
 
 import game.CastleDefense;
 import game.CastleDefenseBoard;
-import game.Main;
+import game.Startup;
 import game.friendly.turrets.Turret;
 
 import javax.imageio.ImageIO;
@@ -77,17 +77,17 @@ public class Board extends JPanel {
             else row = CastleDefense.ROW3Y;
             //Painting Normal Row
             g.setColor(rowColor);
-            g.fillRect(0, CastleDefense.ROW1Y, 3000, (int) (Main.heightFactor * 100));
-            g.fillRect(0, CastleDefense.ROW2Y, 3000, (int) (Main.heightFactor * 100));
-            g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Main.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW1Y, 3000, (int) (Startup.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW2Y, 3000, (int) (Startup.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Startup.heightFactor * 100));
             //Paints Square To Indicate Turret Placement Area
             g.setColor(selectedColor);
-            g.fillRect(CastleDefenseBoard.selectedColCoordinate, row, (int) (Main.heightFactor * 100), (int) (Main.heightFactor * 100));
+            g.fillRect(CastleDefenseBoard.selectedColCoordinate, row, (int) (Startup.heightFactor * 100), (int) (Startup.heightFactor * 100));
             //Displays Indicator For Max Turret Placement Distance
             g.setColor(Color.BLACK);
-            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW1Y, (int) (Main.heightFactor * 20), (int) (Main.heightFactor * 100));
-            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW2Y, (int) (Main.heightFactor * 20), (int) (Main.heightFactor * 100));
-            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW3Y, (int) (Main.heightFactor * 20), (int) (Main.heightFactor * 100));
+            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW1Y, (int) (Startup.heightFactor * 20), (int) (Startup.heightFactor * 100));
+            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW2Y, (int) (Startup.heightFactor * 20), (int) (Startup.heightFactor * 100));
+            g.fillRect(CastleDefense.TURRET_PLACEMENT_LIMIT, CastleDefense.ROW3Y, (int) (Startup.heightFactor * 20), (int) (Startup.heightFactor * 100));
 
 
         } else
@@ -98,29 +98,29 @@ public class Board extends JPanel {
             } else {
                 g.setColor(rowColor);
             }
-            g.fillRect(0, CastleDefense.ROW1Y, 3000, (int) (Main.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW1Y, 3000, (int) (Startup.heightFactor * 100));
             //Paints Row 2 With Correct Color (Highlighted If Selected)
             if (CastleDefenseBoard.selectedRow == 2) {
                 g.setColor(selectedColor);
             } else {
                 g.setColor(rowColor);
             }
-            g.fillRect(0, CastleDefense.ROW2Y, 3000, (int) (Main.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW2Y, 3000, (int) (Startup.heightFactor * 100));
             //Paints Row 3 With Correct Color (Highlighted If Selected)
             if (CastleDefenseBoard.selectedRow == 3) {
                 g.setColor(selectedColor);
             } else {
                 g.setColor(rowColor);
             }
-            g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Main.heightFactor * 100));
+            g.fillRect(0, CastleDefense.ROW3Y, 3000, (int) (Startup.heightFactor * 100));
         }
         g.setColor(Color.black);
-        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Main.widthFactor * 90)));
+        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Startup.widthFactor * 90)));
         g.drawString(titleMessage, 0, CastleDefense.ROW2Y);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Main.heightFactor * 40)));
-        g.drawString(notification, (this.getWidth()/2 - 150 * (int) (Main.widthFactor)), (this.getHeight()/2 + (int) (Main.heightFactor * 100)));
+        g.setFont(new Font("SansSerif", Font.PLAIN, (int) (Startup.heightFactor * 40)));
+        g.drawString(notification, (this.getWidth()/2 - 150 * (int) (Startup.widthFactor)), (this.getHeight()/2 + (int) (Startup.heightFactor * 100)));
 
 
         //
@@ -138,14 +138,14 @@ public class Board extends JPanel {
 
         g.setColor(Color.BLACK);
 
-        g.setFont(new Font("SansSerif", Font.ITALIC, (int) (Main.heightFactor * 15)));
+        g.setFont(new Font("SansSerif", Font.ITALIC, (int) (Startup.heightFactor * 15)));
 
         for (Unit u : unitList) {
             if (!u.isDead) {
-                AffineTransformOp at = new AffineTransformOp(AffineTransform.getScaleInstance(Main.widthFactor, Main.heightFactor), null);
+                AffineTransformOp at = new AffineTransformOp(AffineTransform.getScaleInstance(Startup.widthFactor, Startup.heightFactor), null);
 
                 //Displays Name Above Unit
-                g2d.drawString(u.toString(), (int) u.getX(), (int) u.getY() - ((int) (Main.heightFactor * 12)));
+                g2d.drawString(u.toString(), (int) u.getX(), (int) u.getY() - ((int) (Startup.heightFactor * 12)));
                 //Displays Health Bar Above Unit
                 if (!u.isProjectile())
                     g2d.drawString("HP: " + (int) u.getCurrentHealth() + "/" + (int) u.getMaxHealth(), (int) u.getX(), (int) u.getY());
