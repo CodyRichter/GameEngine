@@ -22,6 +22,7 @@ Spawn Units: Number Keys [1-9]
 
 Exit Game: [Esc]
 
+Complete and Up-To-Date Game Information Found at Wiki: https://github.com/Senarii/GameEngine/wiki 
 
 Authors:
 
